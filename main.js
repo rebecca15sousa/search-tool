@@ -50,6 +50,7 @@
 
 // BG Library test
 const searchBar = document.getElementById('searchBar');
+const resultsList = document.getElementById('resultsList');
 let bgList;
 
 Papa.parse("https://cors-anywhere.herokuapp.com/https://docs.google.com/spreadsheets/d/e/2PACX-1vSK-1NdXaNwkyIZPiKHahN5jC3pckcvaU9PBv1dN-PCJ-aP5x8Iss4ghw5qCwe0KYSbE0Kzclv-5J8q/pub?gid=332499702&single=true&output=csv", {
@@ -61,12 +62,13 @@ Papa.parse("https://cors-anywhere.herokuapp.com/https://docs.google.com/spreadsh
       bgList[i].Players = bgList[i].Players.split(",");
       bgList[i].Mode = bgList[i].Mode.split(",");
     };
+    displayResults(bgList);
   }
 });
 
 searchBar.addEventListener('keyup', (e) => {
   const searchString = e.target.value.toLowerCase();
-  const filteredBgs = bgList.filter(bg => {
+  const filteredBgs = bgList.filter((bg) => {
     return (
         bg.Game.toLowerCase().includes(searchString) ||
         includeSearch(bg.Players, searchString) ||
@@ -74,6 +76,7 @@ searchBar.addEventListener('keyup', (e) => {
     );
   });
   console.log(filteredBgs);
+  displayResults(filteredBgs);
 });
 
 function includeSearch(array, string) {
@@ -82,4 +85,17 @@ function includeSearch(array, string) {
       return true;
     }
   }
+}
+
+function displayResults(bgs) {
+  const htmlString = bgs.map((bg) => {
+    return `
+    <li class = "game">
+      <h2>${bg.Game}</h2>
+      <p>Players: ${bg.Players}</p>
+      <p>Mode: ${bg.Mode}</p>
+      <img src="${bg.Picture}"></img>
+    </li>`;
+  }).join('');
+  resultsList.innerHTML = htmlString;
 }
