@@ -52,18 +52,6 @@
 const searchBar = document.getElementById('searchBar');
 let bgList;
 
-Papa.parse("https://cors-anywhere.herokuapp.com/https://docs.google.com/spreadsheets/d/e/2PACX-1vSK-1NdXaNwkyIZPiKHahN5jC3pckcvaU9PBv1dN-PCJ-aP5x8Iss4ghw5qCwe0KYSbE0Kzclv-5J8q/pub?gid=332499702&single=true&output=csv", {
-  download: true,
-  header: true,
-  complete: function(results) {
-    bgList = results.data;
-    for(var i = 0; i < bgList.length; i++) {
-      bgList[i].Players = bgList[i].Players.split(",");
-      bgList[i].Mode = bgList[i].Mode.split(",");
-    };
-  }
-});
-
 searchBar.addEventListener('keyup', (e) => {
   const searchString = e.target.value.toLowerCase();
   const filteredBgs = bgList.filter(bg => {
@@ -82,4 +70,4 @@ function includeSearch(array, string) {
       return true;
     }
   }
-}
+}}
