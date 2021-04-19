@@ -50,11 +50,15 @@
 
 // BG Library test
 const searchBar = document.getElementById('searchBar');
+const resultsList = document.getElementById('resultsList');
 let bgList;
+
+
+//displayResults(bgList);
 
 searchBar.addEventListener('keyup', (e) => {
   const searchString = e.target.value.toLowerCase();
-  const filteredBgs = bgList.filter(bg => {
+  const filteredBgs = bgList.filter((bg) => {
     return (
         bg.Game.toLowerCase().includes(searchString) ||
         includeSearch(bg.Players, searchString) ||
@@ -62,6 +66,7 @@ searchBar.addEventListener('keyup', (e) => {
     );
   });
   console.log(filteredBgs);
+  displayResults(filteredBgs);
 });
 
 function includeSearch(array, string) {
@@ -70,4 +75,18 @@ function includeSearch(array, string) {
       return true;
     }
   }
-}}
+}
+
+function displayResults(bgs) {
+  const htmlString = bgs.map((bg) => {
+    return `
+    <li class = "game">
+      <h2>${bg.Game}</h2>
+      <p>Players: ${bg.Players}</p>
+      <p>Mode: ${bg.Mode}</p>
+      <img src="${bg.Picture}"></img>
+    </li>`;
+  }).join('');
+  resultsList.innerHTML = htmlString;
+}
+
