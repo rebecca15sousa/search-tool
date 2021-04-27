@@ -6,15 +6,15 @@ function start() {
     'clientId': '37348095959-i0nd20ns5vklh6q2drb7mf2am83vqou4.apps.googleusercontent.com',
     'scope': 'https://www.googleapis.com/auth/spreadsheets.readonly',
   }).then(function() {
-    parseSheet();
+    parseSheet("1ZLdvkWefFzPAZtWy8s6GG2HN17eRvJdH-LvL3Uqbeoc");
   });
 };
 
-function parseSheet() {
+function parseSheet(spreadsheetId) {
   // Reads values on the spreadsheet, starting from row 2.
   gapi.client.sheets.spreadsheets.values.get({
-    spreadsheetId: "1ZLdvkWefFzPAZtWy8s6GG2HN17eRvJdH-LvL3Uqbeoc",
-    range: "Board Games Database!A2:H"
+    spreadsheetId: spreadsheetId,
+    range: "A2:Z"
   }).then((response) => {
     let completeList = response.result.values;
     let gameList = [];
