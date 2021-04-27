@@ -53,9 +53,6 @@ const searchBar = document.getElementById('searchBar');
 const resultsList = document.getElementById('resultsList');
 let bgList;
 
-
-//displayResults(bgList);
-
 searchBar.addEventListener('keyup', (e) => {
   const searchString = e.target.value.toLowerCase();
   const filteredBgs = bgList.filter((bg) => {
@@ -89,4 +86,3 @@ function displayResults(bgs) {
   }).join('');
   resultsList.innerHTML = htmlString;
 }
-

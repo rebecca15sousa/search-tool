@@ -21,17 +21,19 @@ function parseSheet() {
     for (let i=0; i < completeList.length; i++) {
       // Creates a new game object and adds it to list.
       let item = completeList[i];
-      let game = new Game(item[0], item[1], item[5]);
+      let game = new Game(item[0], item[1], item[5], item[6]);
       gameList.push(game);
     }
     bgList = gameList;
+    displayResults(bgList);
   });
 }
 
-function Game(title, players, mode) {
+function Game(title, players, mode, picture) {
   this.Game = title;
   this.Players = splitArray(players);
   this.Mode = splitArray(mode);
+  this.Picture = picture;
 }
 
 function splitArray(array) {
