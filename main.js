@@ -26,7 +26,6 @@
 //         tags: ["obedient", "alert", "guard dog"]
 //     },
 // ];
-
 // searchBar.addEventListener('keyup', (e) => {
 //     const searchString = e.target.value.toLowerCase();
 //     const filteredDogs = dogs.filter(dog => {
@@ -39,7 +38,7 @@
 //     });
 //     console.log(filteredDogs);
 // });
-
+//
 // funçao pra loopar no array das tags e transformar cada elemento em lower case
 // function loop (array) {
 //     for (let i = 0; i < array.lenght; i++) {
@@ -51,7 +50,34 @@
 // BG Library test
 const searchBar = document.getElementById('searchBar');
 const resultsList = document.getElementById('resultsList');
+const filtersListDiv = document.getElementById('filtersListDiv');
 let bgList;
+const filtersList = [];
+
+function generateFilters() {
+  for (let i = 0; i < bgList.length; i++) {
+    let bg = bgList[i];
+    for (let j = 0; j < bg.Mode.length; j++) {
+      let filterName = bg.Mode[j].trim();
+      if (!filtersList.includes(filterName)) {
+        filtersList.push(filterName);
+      }
+    }
+  }
+  displayFilters(filtersList);
+}
+
+function displayFilters(filtersList) {
+  const htmlString = filtersList.map((item) => {
+    return `
+    <li>
+      <input type="checkbox" id="${item}">
+      <label for="${item}">${item}</label>
+      <br>
+    </li>`;
+  }).join('');
+  filtersListDiv.innerHTML = htmlString;
+}
 
 searchBar.addEventListener('keyup', (e) => {
   const searchString = e.target.value.toLowerCase();

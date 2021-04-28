@@ -26,6 +26,7 @@ function parseSheet(spreadsheetId) {
     }
     bgList = gameList;
     displayResults(bgList);
+    generateFilters();
   });
 }
 
