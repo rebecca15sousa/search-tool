@@ -53,6 +53,8 @@ const resultsList = document.getElementById('resultsList');
 const filtersListDiv = document.getElementById('filtersListDiv');
 let bgList;
 const filtersList = [];
+let filtersValues = [];
+
 
 function generateFilters() {
   for (let i = 0; i < bgList.length; i++) {
@@ -65,13 +67,18 @@ function generateFilters() {
     }
   }
   displayFilters(filtersList);
+  const checkboxesNode = document.querySelectorAll('.checkbox');
+  const checkboxesArray = Array.from(checkboxesNode);
+  checkboxesArray.forEach((checkbox) => {
+    checkbox.addEventListener('change', selectFilter);
+  });
 }
 
 function displayFilters(filtersList) {
   const htmlString = filtersList.map((item) => {
     return `
     <li>
-      <input type="checkbox" id="${item}">
+      <input type="checkbox" id="${item}" class="checkbox" value="${item}">
       <label for="${item}">${item}</label>
       <br>
     </li>`;
@@ -79,16 +86,38 @@ function displayFilters(filtersList) {
   filtersListDiv.innerHTML = htmlString;
 }
 
+function selectFilter(e) {
+  let filter = e.target;
+  if (filter.checked) {
+    filtersValues.push(filter.value);
+  } else {
+    let index = filtersValues.indexOf(filter.value);
+    filtersValues.splice(index, 1);
+  }
+  const filteredBgs = bgList.filter(searchFilters);
+  displayResults(filteredBgs);
+}
+
+function searchFilters(bg) {
+  for (let i = 0; i < bg.Mode.length; i++) {
+    let mode = bg.Mode[i];
+    for (let j = 0; j < filtersValues.length; j++) {
+      if (mode == filtersValues[j]) {
+        return true;
+      }
+    }
+  }
+}
+
 searchBar.addEventListener('keyup', (e) => {
   const searchString = e.target.value.toLowerCase();
   const filteredBgs = bgList.filter((bg) => {
     return (
-        bg.Game.toLowerCase().includes(searchString) ||
-        includeSearch(bg.Players, searchString) ||
-        includeSearch(bg.Mode, searchString)
+      bg.Game.toLowerCase().includes(searchString) ||
+      includeSearch(bg.Players, searchString) ||
+      includeSearch(bg.Mode, searchString)
     );
   });
-  console.log(filteredBgs);
   displayResults(filteredBgs);
 });
 
