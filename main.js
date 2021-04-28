@@ -88,13 +88,18 @@ function displayFilters(filtersList) {
 
 function selectFilter(e) {
   let filter = e.target;
+  let filteredBgs;
   if (filter.checked) {
     filtersValues.push(filter.value);
   } else {
     let index = filtersValues.indexOf(filter.value);
     filtersValues.splice(index, 1);
   }
-  const filteredBgs = bgList.filter(searchFilters);
+  if (filtersValues.length > 0) {
+    filteredBgs = bgList.filter(searchFilters);  
+  } else {
+    filteredBgs = bgList;
+  }
   displayResults(filteredBgs);
 }
 
