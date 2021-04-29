@@ -88,42 +88,48 @@ function displayFilters(filtersList) {
 
 function selectFilter(e) {
   let filter = e.target;
-  let filteredBgs;
   if (filter.checked) {
     filtersValues.push(filter.value);
   } else {
     let index = filtersValues.indexOf(filter.value);
     filtersValues.splice(index, 1);
   }
-  if (filtersValues.length > 0) {
-    filteredBgs = bgList.filter(searchFilters);  
-  } else {
-    filteredBgs = bgList;
-  }
-  displayResults(filteredBgs);
+  let searchResult = getResults();
+  displayResults(searchResult);
 }
 
 function searchFilters(bg) {
-  for (let i = 0; i < bg.Mode.length; i++) {
-    let mode = bg.Mode[i];
-    for (let j = 0; j < filtersValues.length; j++) {
-      if (mode == filtersValues[j]) {
-        return true;
+  if (filtersValues.length > 0) {
+    for (let i = 0; i < bg.Mode.length; i++) {
+      let mode = bg.Mode[i];
+      for (let j = 0; j < filtersValues.length; j++) {
+        if (mode == filtersValues[j]) {
+          return true;
+        }
       }
     }
+  } else {
+    return true;
   }
 }
 
-searchBar.addEventListener('keyup', (e) => {
-  const searchString = e.target.value.toLowerCase();
+function getResults() {
+  const searchString = searchBar.value.toLowerCase();
   const filteredBgs = bgList.filter((bg) => {
     return (
-      bg.Game.toLowerCase().includes(searchString) ||
+      (bg.Game.toLowerCase().includes(searchString) ||
       includeSearch(bg.Players, searchString) ||
-      includeSearch(bg.Mode, searchString)
+      includeSearch(bg.Mode, searchString)) &&
+      searchFilters(bg)
     );
   });
-  displayResults(filteredBgs);
+  console.log(filteredBgs);
+  return filteredBgs;
+}
+
+searchBar.addEventListener('keyup', () => {
+  let searchResult = getResults();
+  displayResults(searchResult);
 });
 
 function includeSearch(array, string) {
