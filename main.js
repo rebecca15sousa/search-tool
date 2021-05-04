@@ -128,8 +128,18 @@ function getResults() {
 }
 
 searchBar.addEventListener('keyup', () => {
-  let searchResult = getResults();
-  displayResults(searchResult);
+  const searchLenght = searchBar.value.length;
+  if (searchLenght >= 3) {
+    let searchResult = getResults();
+    displayResults(searchResult);
+  } else {
+    let searchResult = bgList.filter((bg) => {
+      return (
+        isFilterIncluded(bg)
+      );
+    });
+    displayResults(searchResult);
+  }
 });
 
 function includeSearch(array, string) {
