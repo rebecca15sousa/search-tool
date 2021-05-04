@@ -48,7 +48,7 @@ function selectFilter(e) {
   displayResults(searchResult);
 }
 
-function searchFilters(bg) {
+function isFilterIncluded(bg) {
   if (filtersValues.length > 0) {
     for (let i = 0; i < bg.Mode.length; i++) {
       let mode = bg.Mode[i];
@@ -68,9 +68,9 @@ function getResults() {
   const filteredBgs = bgList.filter((bg) => {
     return (
       (bg.Game.toLowerCase().includes(searchString) ||
-      includeSearch(bg.Players, searchString) ||
-      includeSearch(bg.Mode, searchString)) &&
-      searchFilters(bg)
+      isStringIncluded(bg.Players, searchString) ||
+      isStringIncluded(bg.Mode, searchString)) &&
+      isFilterIncluded(bg)
     );
   });
   console.log(filteredBgs);
@@ -92,7 +92,7 @@ searchBar.addEventListener('keyup', () => {
   }
 });
 
-function includeSearch(array, string) {
+function isStringIncluded(array, string) {
   for (let i = 0; i < array.length; i++) {
     if (array[i].toLowerCase().includes(string)) {
       return true;
