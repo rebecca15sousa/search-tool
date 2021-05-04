@@ -1,11 +1,12 @@
+// ------------------------------------- GLOBAL VARIABLES ------------------------------------- //
 const searchBar = document.getElementById('searchBar');
 const resultsList = document.getElementById('resultsList');
 const filtersListDiv = document.getElementById('filtersListDiv');
 let bgList;
-const filtersList = [];
-let filtersValues = [];
+const filtersList = []; //array with all existent filter values
+let filtersValues = []; //array with filter values that are checked
 
-
+// ------------------------------------- CODE ------------------------------------- //
 function generateFilters() {
   for (let i = 0; i < bgList.length; i++) {
     let bg = bgList[i];
@@ -36,6 +37,7 @@ function displayFilters(filtersList) {
   filtersListDiv.innerHTML = htmlString;
 }
 
+//performs search action if filter is checked/unchecked
 function selectFilter(e) {
   let filter = e.target;
   if (filter.checked) {
@@ -48,6 +50,7 @@ function selectFilter(e) {
   displayResults(searchResult);
 }
 
+//checks if filter value is the same as array element from spreadsheet
 function isFilterIncluded(bg) {
   if (filtersValues.length > 0) {
     for (let i = 0; i < bg.Mode.length; i++) {
@@ -92,6 +95,7 @@ searchBar.addEventListener('keyup', () => {
   }
 });
 
+//checks if search value is included in array element from spreadsheet
 function isStringIncluded(array, string) {
   for (let i = 0; i < array.length; i++) {
     if (array[i].toLowerCase().includes(string)) {
