@@ -68,31 +68,32 @@ function isFilterIncluded(bg) {
 
 function getResults() {
   const searchString = searchBar.value.toLowerCase();
-  const filteredBgs = bgList.filter((bg) => {
-    return (
-      (bg.Game.toLowerCase().includes(searchString) ||
-      isStringIncluded(bg.Players, searchString) ||
-      isStringIncluded(bg.Mode, searchString)) &&
-      isFilterIncluded(bg)
-    );
-  });
-  console.log(filteredBgs);
-  return filteredBgs;
-}
-
-searchBar.addEventListener('keyup', () => {
   const searchLenght = searchBar.value.length;
   if (searchLenght >= 3) {
-    let searchResult = getResults();
-    displayResults(searchResult);
+    const filteredBgs = bgList.filter((bg) => {
+      return (
+        (bg.Game.toLowerCase().includes(searchString) ||
+        isStringIncluded(bg.Players, searchString) ||
+        isStringIncluded(bg.Mode, searchString)) &&
+        isFilterIncluded(bg)
+      );
+    });
+    console.log(filteredBgs);
+    return filteredBgs;
   } else {
-    let searchResult = bgList.filter((bg) => {
+    const filteredBgs = bgList.filter((bg) => {
       return (
         isFilterIncluded(bg)
       );
     });
-    displayResults(searchResult);
+    console.log(filteredBgs);
+    return filteredBgs;
   }
+}
+
+searchBar.addEventListener('keyup', () => {
+    let searchResult = getResults();
+    displayResults(searchResult);
 });
 
 //checks if search value is included in array element from spreadsheet
