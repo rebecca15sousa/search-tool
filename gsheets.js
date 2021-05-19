@@ -24,8 +24,8 @@ function parseSheet(spreadsheetId) {
       let game = new Game(item[0], item[1], item[5], item[6]);
       gameList.push(game);
     }
-    bgList = gameList;
-    displayResults(bgList);
+    spreadsheet = gameList;
+    displayResults(spreadsheet);
     generateFilters();
   });
 }

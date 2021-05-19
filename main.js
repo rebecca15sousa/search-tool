@@ -2,16 +2,16 @@
 const searchBar = document.getElementById('searchBar');
 const resultsList = document.getElementById('resultsList');
 const filtersListDiv = document.getElementById('filtersListDiv');
-let bgList;
+let spreadsheet;
 const filtersList = []; //array with all existent filter values
 let filtersValues = []; //array with filter values that are checked
 
 // ------------------------------------- CODE ------------------------------------- //
 function generateFilters() {
-  for (let i = 0; i < bgList.length; i++) {
-    let bg = bgList[i];
-    for (let j = 0; j < bg.Mode.length; j++) {
-      let filterName = bg.Mode[j].trim();
+  for (let i = 0; i < spreadsheet.length; i++) {
+    let item = spreadsheet[i];
+    for (let j = 0; j < item.Mode.length; j++) {
+      let filterName = item.Mode[j].trim();
       if (!filtersList.includes(filterName)) {
         filtersList.push(filterName);
       }
@@ -51,10 +51,10 @@ function selectFilter(e) {
 }
 
 //checks if filter value is the same as array element from spreadsheet
-function isFilterIncluded(bg) {
+function isFilterIncluded(item) {
   if (filtersValues.length > 0) {
-    for (let i = 0; i < bg.Mode.length; i++) {
-      let mode = bg.Mode[i];
+    for (let i = 0; i < item.Mode.length; i++) {
+      let mode = item.Mode[i];
       for (let j = 0; j < filtersValues.length; j++) {
         if (mode == filtersValues[j]) {
           return true;
@@ -70,24 +70,24 @@ function getResults() {
   const searchString = searchBar.value.toLowerCase();
   const searchLenght = searchBar.value.length;
   if (searchLenght >= 3) {
-    const filteredBgs = bgList.filter((bg) => {
+    const filteredItems = spreadsheet.filter((item) => {
       return (
-        (bg.Game.toLowerCase().includes(searchString) ||
-        isStringIncluded(bg.Players, searchString) ||
-        isStringIncluded(bg.Mode, searchString)) &&
-        isFilterIncluded(bg)
+        (item.Game.toLowerCase().includes(searchString) ||
+        isStringIncluded(item.Players, searchString) ||
+        isStringIncluded(item.Mode, searchString)) &&
+        isFilterIncluded(item)
       );
     });
-    console.log(filteredBgs);
-    return filteredBgs;
+    console.log(filteredItems);
+    return filteredItems;
   } else {
-    const filteredBgs = bgList.filter((bg) => {
+    const filteredItems = spreadsheet.filter((item) => {
       return (
-        isFilterIncluded(bg)
+        isFilterIncluded(item)
       );
     });
-    console.log(filteredBgs);
-    return filteredBgs;
+    console.log(filteredItems);
+    return filteredItems;
   }
 }
 
@@ -105,14 +105,14 @@ function isStringIncluded(array, string) {
   }
 }
 
-function displayResults(bgs) {
-  const htmlString = bgs.map((bg) => {
+function displayResults(searchResult) {
+  const htmlString = searchResult.map((item) => {
     return `
     <li class = "game">
-      <h2>${bg.Game}</h2>
-      <p>Players: ${bg.Players}</p>
-      <p>Mode: ${bg.Mode}</p>
-      <img src="${bg.Picture}"></img>
+      <h2>${item.Game}</h2>
+      <p>Players: ${item.Players}</p>
+      <p>Mode: ${item.Mode}</p>
+      <img src="${item.Picture}"></img>
     </li>`;
   }).join('');
   resultsList.innerHTML = htmlString;
