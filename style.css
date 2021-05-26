@@ -1,0 +1,8 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+header {
+    display: block;
+    text-align: center;
+}
