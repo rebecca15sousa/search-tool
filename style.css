@@ -6,3 +6,15 @@ header {
     display: block;
     text-align: center;
 }
+
+.search-bar-div {
+    display: flex;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: .5rem;
+}
+
+#searchBar {
+    width: 100%;
+    border: none;
+}
