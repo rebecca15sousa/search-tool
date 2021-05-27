@@ -18,3 +18,21 @@ header {
     width: 100%;
     border: none;
 }
+
+.content {
+    display: flex;
+}
+
+.filters-left {
+    flex: 20%;
+}
+
+#resultsList {
+    flex: 80%;
+}
+
+.no-bullet {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}

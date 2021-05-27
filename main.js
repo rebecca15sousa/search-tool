@@ -1,7 +1,7 @@
 // ------------------------------------- GLOBAL VARIABLES ------------------------------------- //
 const searchBar = document.getElementById('searchBar');
 const resultsList = document.getElementById('resultsList');
-const filtersListDiv = document.getElementById('filtersListDiv');
+const filtersListContainer = document.getElementById('filtersListContainer');
 let spreadsheet;
 const filtersList = []; //array with all existent filter values
 let filtersValues = []; //array with filter values that are checked
@@ -34,7 +34,7 @@ function displayFilters(filtersList) {
       <br>
     </li>`;
   }).join('');
-  filtersListDiv.innerHTML = htmlString;
+  filtersListContainer.innerHTML = htmlString;
 }
 
 //performs search action if filter is checked/unchecked
