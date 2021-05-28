@@ -108,11 +108,13 @@ function isStringIncluded(array, string) {
 function displayResults(searchResult) {
   const htmlString = searchResult.map((item) => {
     return `
-    <li class = "game">
-      <h2>${item.Game}</h2>
-      <p>Players: ${item.Players}</p>
-      <p>Mode: ${item.Mode}</p>
-      <img src="${item.Picture}"></img>
+    <li class="item-complete">
+      <img src="${item.Picture}" class="item-img"></img>
+      <div class="item-content">
+        <h2 class="item-title">${item.Game}</h2>
+        <p class="item-text">Players: ${item.Players}</p>
+        <p class="item-text">Mode: ${item.Mode}</p>
+      </div>
     </li>`;
   }).join('');
   resultsList.innerHTML = htmlString;
