@@ -1,23 +1,22 @@
 // ------------------------------------- GLOBAL VARIABLES ------------------------------------- //
 const searchBar = document.getElementById('searchBar');
 const resultsList = document.getElementById('resultsList');
-const filtersListContainer = document.getElementById('filtersListContainer');
+const filtersPlayed = document.getElementById('filtersPlayed');
+const filtersMode = document.getElementById('filtersMode');
 let spreadsheet;
 const filtersList = []; //array with all existent filter values
 let filtersValues = []; //array with filter values that are checked
 
 // ------------------------------------- CODE ------------------------------------- //
 function generateFilters() {
+  let playedList, modeList;
   for (let i = 0; i < spreadsheet.length; i++) {
     let item = spreadsheet[i];
-    for (let j = 0; j < item.Mode.length; j++) {
-      let filterName = item.Mode[j].trim();
-      if (!filtersList.includes(filterName)) {
-        filtersList.push(filterName);
-      }
-    }
+    playedList = bla(item[4]);
+    modeList = bla(item[5]);
   }
-  displayFilters(filtersList);
+  displayFilters(playedList, filtersMode);
+  displayFilters(modeList, filtersPlayed);
   const checkboxesNode = document.querySelectorAll('.checkbox');
   const checkboxesArray = Array.from(checkboxesNode);
   checkboxesArray.forEach((checkbox) => {
@@ -25,7 +24,17 @@ function generateFilters() {
   });
 }
 
-function displayFilters(filtersList) {
+function bla(category) {
+  for (let j = 0; j < category.length; j++) {
+    let filterName = category[j].trim();
+    if (!filtersList.includes(filterName)) {
+      filtersList.push(filterName);
+    }
+  }
+  return filtersList;
+}
+
+function displayFilters(filtersList, container) {
   const htmlString = filtersList.map((item) => {
     return `
     <li>
@@ -34,7 +43,7 @@ function displayFilters(filtersList) {
       <br>
     </li>`;
   }).join('');
-  filtersListContainer.innerHTML = htmlString;
+  container.innerHTML = htmlString;
 }
 
 //performs search action if filter is checked/unchecked
@@ -109,11 +118,11 @@ function displayResults(searchResult) {
   const htmlString = searchResult.map((item) => {
     return `
     <li class="item-complete">
-      <img src="${item.Picture}" class="item-img"></img>
+      <img src="${item[6]}" class="item-img"></img>
       <div class="item-content">
-        <h2 class="item-title">${item.Game}</h2>
-        <p class="item-text">Players: ${item.Players}</p>
-        <p class="item-text">Mode: ${item.Mode}</p>
+        <h2 class="item-title">${item[0]}</h2>
+        <p class="item-text">Players: ${item[1]}</p>
+        <p class="item-text">Mode: ${item[5]}</p>
       </div>
     </li>`;
   }).join('');

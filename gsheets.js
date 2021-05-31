@@ -21,12 +21,16 @@ function parseSheet(spreadsheetId) {
     for (let i=0; i < completeList.length; i++) {
       // Creates a new game object and adds it to list.
       let item = completeList[i];
-      let game = new Game(item[0], item[1], item[5], item[6]);
-      gameList.push(game);
+      let itemParsed = new Object();
+      for (let j = 0; j < item.length; j++) {
+        itemParsed[j] = splitArray(item[j]);
+      }
+      gameList.push(itemParsed);
     }
     spreadsheet = gameList;
     displayResults(spreadsheet);
     generateFilters();
+    // generateFilters("5");
   });
 }
 
