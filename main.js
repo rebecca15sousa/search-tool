@@ -3,18 +3,21 @@ const searchBar = document.getElementById('searchBar');
 const resultsList = document.getElementById('resultsList');
 const filtersPlayed = document.getElementById('filtersPlayed');
 const filtersMode = document.getElementById('filtersMode');
+const capsuleFiltersDiv = document.getElementById('capsuleFiltersDiv');
 let spreadsheet;
 const filtersList = []; //array with all existent filter values
 let filtersValues = []; //array with filter values that are checked
 
 // ------------------------------------- CODE ------------------------------------- //
 function generateFilters() {
-  let playedList, modeList;
+  let playedList, modeList, complexityList;
   for (let i = 0; i < spreadsheet.length; i++) {
     let item = spreadsheet[i];
+    complexityList = bla(item[3]);
     playedList = bla(item[4]);
     modeList = bla(item[5]);
   }
+  displayCapsule(complexityList, capsuleFiltersDiv);
   displayFilters(playedList, filtersMode);
   displayFilters(modeList, filtersPlayed);
   const checkboxesNode = document.querySelectorAll('.checkbox');
@@ -39,6 +42,19 @@ function displayFilters(filtersList, container) {
     return `
     <li>
       <input type="checkbox" id="${item}" class="checkbox" value="${item}">
+      <label for="${item}">${item}</label>
+      <br>
+    </li>`;
+  }).join('');
+  container.innerHTML = htmlString;
+}
+
+//TEMPORARY
+function displayCapsule(filtersList, container) {
+  const htmlString = filtersList.map((item) => {
+    return `
+    <li>
+      <input type="radio" id="${item}" class="radio" name="capsule" value="${item}">
       <label for="${item}">${item}</label>
       <br>
     </li>`;
