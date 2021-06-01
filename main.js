@@ -18,6 +18,11 @@ function generateFilters() {
     modeList = bla(item[5]);
   }
   displayCapsule(complexityList, capsuleFiltersDiv);
+  const capsulesNode = document.querySelectorAll('.radio-input');
+  const capsulesArray = Array.from(capsulesNode);
+  capsulesArray.forEach((capsule) => {
+    capsule.addEventListener('change', activateCapsule);
+  });
   displayFilters(playedList, filtersMode);
   displayFilters(modeList, filtersPlayed);
   const checkboxesNode = document.querySelectorAll('.checkbox');
@@ -53,13 +58,26 @@ function displayFilters(filtersList, container) {
 function displayCapsule(filtersList, container) {
   const htmlString = filtersList.map((item) => {
     return `
-    <li>
-      <input type="radio" id="${item}" class="radio" name="capsule" value="${item}">
-      <label for="${item}">${item}</label>
+    <li class="radio-li">
+      <input type="radio" id="${item}" class="radio-input" name="capsule" value="${item}">
+      <label for="${item}" class="radio-label">${item}</label>
       <br>
     </li>`;
   }).join('');
   container.innerHTML = htmlString;
+}
+
+function activateCapsule(e) {
+  let radio = e.target;
+  let label = radio.nextElementSibling;
+  console.log(label);
+  let allLabel = document.querySelectorAll('.radio-label');
+  if (radio.checked) {
+    for (let i = 0; i < allLabel.length; i++) {
+      allLabel[i].classList.remove("active");
+    }
+    label.classList.add("active");
+  }
 }
 
 //performs search action if filter is checked/unchecked

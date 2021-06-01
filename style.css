@@ -21,6 +21,45 @@ header {
     border: none;
 }
 
+/* CAPSULE FILTER */
+#capsuleFiltersDiv {
+    margin: .5em 0;
+}
+
+.radio-li {
+    display: inline-block;
+    margin: .5em 0;
+}
+
+.radio-input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.radio-label {
+    cursor: pointer;
+    background-color: #ddd;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: .3em .5em;
+    margin: .5em;
+}
+
+.radio-label:hover {
+    background-color: cadetblue;
+}
+
+.active {
+    background-color: chartreuse;
+}
+
+.active:hover {
+    background-color: rgb(79, 158, 0);
+}
+
 /* MAIN CONTENT */
 .content {
     display: flex;
@@ -52,17 +91,17 @@ header {
     width: 20rem;
 }
 
-.item-content {
+/* .item-content {
 
-}
+} */
 
 .item-title {
     margin: 0;
 }
 
-.item-text {
+/* .item-text {
 
-}
+} */
 
 .no-bullet {
     list-style-type: none;
