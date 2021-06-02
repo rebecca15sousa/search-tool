@@ -5,10 +5,27 @@ const filtersPlayed = document.getElementById('filtersPlayed');
 const filtersMode = document.getElementById('filtersMode');
 const capsuleFiltersDiv = document.getElementById('capsuleFiltersDiv');
 let spreadsheet;
+const sortBtn = document.getElementById('sortBtn');
+const dropContent = document.getElementById('dropContent');
 const filtersList = []; //array with all existent filter values
 let filtersValues = []; //array with filter values that are checked
 
 // ------------------------------------- CODE ------------------------------------- //
+//Sort by button functionality
+sortBtn.addEventListener('click', toggleSortBy);
+
+function toggleSortBy() {
+  dropContent.classList.toggle("show");
+}
+
+window.addEventListener('click', closeSortBy);
+
+function closeSortBy(e) {
+  if (!e.target.matches('#sortBtn')) {
+    dropContent.classList.remove("show");
+  }
+}
+
 function generateFilters() {
   let playedList, modeList, complexityList;
   for (let i = 0; i < spreadsheet.length; i++) {
