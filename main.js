@@ -7,11 +7,13 @@ const capsuleFiltersDiv = document.getElementById('capsuleFiltersDiv');
 let spreadsheet;
 const sortBtn = document.getElementById('sortBtn');
 const dropContent = document.getElementById('dropContent');
-const filtersList = []; //array with all existent filter values
-let filtersValues = []; //array with filter values that are checked
+// const filtersList = []; //array with all existent filter values
+// let filtersValues = []; //array with filter values that are checked
+let valuesPlayed = [];
+let valuesMode = [];
 
 // ------------------------------------- CODE ------------------------------------- //
-//Sort by button functionality
+//"Sort by" button functionality
 sortBtn.addEventListener('click', toggleSortBy);
 
 function toggleSortBy() {
@@ -28,20 +30,17 @@ function closeSortBy(e) {
 
 function generateFilters() {
   let playedList, modeList, complexityList;
-  for (let i = 0; i < spreadsheet.length; i++) {
-    let item = spreadsheet[i];
-    complexityList = bla(item[3]);
-    playedList = bla(item[4]);
-    modeList = bla(item[5]);
-  }
+  complexityList = bla("3");
+  playedList = bla("4");
+  modeList = bla("5");
   displayCapsule(complexityList, capsuleFiltersDiv);
   const capsulesNode = document.querySelectorAll('.radio-input');
   const capsulesArray = Array.from(capsulesNode);
   capsulesArray.forEach((capsule) => {
     capsule.addEventListener('change', activateCapsule);
   });
-  displayFilters(playedList, filtersMode);
-  displayFilters(modeList, filtersPlayed);
+  displayFilters(playedList, filtersPlayed, 4);
+  displayFilters(modeList, filtersMode, 5);
   const checkboxesNode = document.querySelectorAll('.checkbox');
   const checkboxesArray = Array.from(checkboxesNode);
   checkboxesArray.forEach((checkbox) => {
@@ -50,20 +49,25 @@ function generateFilters() {
 }
 
 function bla(category) {
-  for (let j = 0; j < category.length; j++) {
-    let filterName = category[j].trim();
-    if (!filtersList.includes(filterName)) {
-      filtersList.push(filterName);
+  const filtersList = [];
+  for (let i = 0; i < spreadsheet.length; i++) {
+    let item = spreadsheet[i];
+    let key = item[category];
+    for (let j = 0; j < key.length; j++) {
+      let filterName = key[j].trim();
+      if (!filtersList.includes(filterName)) {
+        filtersList.push(filterName);
+      }
     }
   }
   return filtersList;
 }
 
-function displayFilters(filtersList, container) {
+function displayFilters(filtersList, container, column) {
   const htmlString = filtersList.map((item) => {
     return `
     <li>
-      <input type="checkbox" id="${item}" class="checkbox" value="${item}">
+      <input type="checkbox" id="${item}" class="checkbox" data-column="${column}" value="${item}">
       <label for="${item}">${item}</label>
       <br>
     </li>`;
@@ -97,29 +101,35 @@ function activateCapsule(e) {
   }
 }
 
-//performs search action if filter is checked/unchecked
+//when filter is checked/unchecked, adds or deletes filter value from array and calls getResults
 function selectFilter(e) {
   let filter = e.target;
-  if (filter.checked) {
-    filtersValues.push(filter.value);
-  } else {
-    let index = filtersValues.indexOf(filter.value);
-    filtersValues.splice(index, 1);
+  let column = filter.getAttribute("data-column");
+  if (column == 4) {
+    if (filter.checked) {
+      valuesPlayed.push(filter.value);
+    } else {
+      let index = valuesPlayed.indexOf(filter.value);
+      valuesPlayed.splice(index, 1);
+    }
+  } else if (column == 5) {
+    if (filter.checked) {
+      valuesMode.push(filter.value);
+    } else {
+      let index = valuesMode.indexOf(filter.value);
+      valuesMode.splice(index, 1);
+    }
   }
   let searchResult = getResults();
   displayResults(searchResult);
 }
 
-//checks if filter value is the same as array element from spreadsheet
-function isFilterIncluded(item) {
-  if (filtersValues.length > 0) {
-    for (let i = 0; i < item.Mode.length; i++) {
-      let mode = item.Mode[i];
-      for (let j = 0; j < filtersValues.length; j++) {
-        if (mode == filtersValues[j]) {
-          return true;
-        }
-      }
+//checks if item contains all checked filters
+function isFilterIncluded(item, category, filters) {
+  if (filters.length > 0) {
+    let isMatch = filters.every((val) => item[category].includes(val));
+    if (isMatch) {
+      return true;
     }
   } else {
     return true;
@@ -135,7 +145,8 @@ function getResults() {
         (item.Game.toLowerCase().includes(searchString) ||
         isStringIncluded(item.Players, searchString) ||
         isStringIncluded(item.Mode, searchString)) &&
-        isFilterIncluded(item)
+        isFilterIncluded(item, 4, valuesPlayed) &&
+        isFilterIncluded(item, 5, valuesMode)
       );
     });
     console.log(filteredItems);
@@ -143,7 +154,8 @@ function getResults() {
   } else {
     const filteredItems = spreadsheet.filter((item) => {
       return (
-        isFilterIncluded(item)
+        isFilterIncluded(item, 4, valuesPlayed) &&
+        isFilterIncluded(item, 5, valuesMode)
       );
     });
     console.log(filteredItems);

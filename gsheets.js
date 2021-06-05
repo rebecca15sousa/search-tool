@@ -30,7 +30,6 @@ function parseSheet(spreadsheetId) {
     spreadsheet = gameList;
     displayResults(spreadsheet);
     generateFilters();
-    // generateFilters("5");
   });
 }
 
