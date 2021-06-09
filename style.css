@@ -52,11 +52,11 @@ header {
     background-color: cadetblue;
 }
 
-.active {
+.radio-input:checked + label {
     background-color: chartreuse;
 }
 
-.active:hover {
+.radio-input:checked + label:hover {
     background-color: rgb(79, 158, 0);
 }
 
