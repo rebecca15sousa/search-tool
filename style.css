@@ -24,6 +24,8 @@ header {
 /* CAPSULE FILTER */
 #capsuleFiltersDiv {
     margin: .5em 0;
+    overflow: auto;
+    white-space: nowrap;
 }
 
 .radio-li {
