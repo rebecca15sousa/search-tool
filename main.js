@@ -30,10 +30,12 @@ function closeSortBy(e) {
 }
 
 function generateFilters() {
-  let playedList, modeList, complexityList;
+  let playedList, modeList, complexityList, sortByList;
   complexityList = bla("3");
   playedList = bla("4");
   modeList = bla("5");
+  sortByList = bla("4");
+  displaySortBy(sortByList, dropContent);
   displayFilters(complexityList, capsuleFiltersDiv, 3, "radio");
   const capsulesNode = document.querySelectorAll('.radio-input');
   const capsulesArray = Array.from(capsulesNode);
@@ -72,6 +74,14 @@ function displayFilters(filtersList, container, column, type) {
       <label for="${item}" class="${type}-label">${item}</label>
       <br>
     </li>`;
+  }).join('');
+  container.innerHTML += htmlString;
+}
+
+function displaySortBy(sortByList, container) {
+  const htmlString = sortByList.map((item) => {
+    return `
+    <span class="drop-item">${item}</span>`;
   }).join('');
   container.innerHTML += htmlString;
 }
