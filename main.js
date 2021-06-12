@@ -7,12 +7,13 @@ const capsuleFiltersDiv = document.getElementById('capsuleFiltersDiv');
 let spreadsheet;
 const sortBtn = document.getElementById('sortBtn');
 const dropContent = document.getElementById('dropContent');
-// const filtersList = []; //array with all existent filter values
-// let filtersValues = []; //array with filter values that are checked
-let valuesComplex = [];
-let valuesPlayed = [];
-let valuesMode = [];
+let valuesComplex = []; //array with complexity filter values that are checked
+let valuesPlayed = []; //array with played filter values that are checked
+let valuesMode = []; //array with mode filter values that are checked
 
+let resultItems = spreadsheet;
+let noNumber = 0;
+let yesNumber = 0;
 // ------------------------------------- CODE ------------------------------------- //
 //"Sort by" button functionality
 sortBtn.addEventListener('click', toggleSortBy);
@@ -26,6 +27,79 @@ window.addEventListener('click', closeSortBy);
 function closeSortBy(e) {
   if (!e.target.matches('#sortBtn')) {
     dropContent.classList.remove("show");
+  }
+}
+
+//Sorting functionality
+dropContent.addEventListener('click', sortItems);
+
+function sortItems(e) {
+  let target = e.target;
+  let value = target.getAttribute("data-value");
+  if (value == "Yes") {
+    sortYes();
+  } else if (value == "No") {
+    sortNo();
+  }
+}
+
+function countYes() {
+  yesNumber = 0;
+  for (let i = 0; i < resultItems.length; i++) {
+    let item = resultItems[i];
+    let key = item[4];
+    for (let j = 0; j < key.length; j++) {
+      if (key[j] == "Yes") {
+        yesNumber++;
+      }
+    }
+  }
+}
+
+function sortNo() {
+  countYes();
+  for (let i = 0; yesNumber > 0; i++) {
+    let item = resultItems[i];
+    let key = item[4];
+    for (let j = 0; j < key.length; j++) {
+      if (key[j] == "Yes") {
+        let temp = item;
+        resultItems.splice(i, 1);
+        resultItems.push(temp);
+        i--;
+        yesNumber--;
+      }
+    }
+  }
+}
+
+function countNo() {
+  noNumber = 0;
+  for (let i = 0; i < resultItems.length; i++) {
+    let item = resultItems[i];
+    let key = item[4];
+    for (let j = 0; j < key.length; j++) {
+      if (key[j] == "No") {
+        noNumber++;
+      }
+    }
+  }
+}
+
+function sortYes() {
+  countNo();
+  for (let i = 0; noNumber > 0; i++) {
+    let item = resultItems[i];
+    let key = item[4];
+    for (let j = 0; j < key.length; j++) {
+      if (key[j] == "No") {
+        let temp = item;
+        resultItems.splice(i, 1);
+        resultItems.push(temp);
+        i--;
+        noNumber--;
+      }
+    }
   }
 }
 
@@ -81,7 +155,7 @@ function displayFilters(filtersList, container, column, type) {
 function displaySortBy(sortByList, container) {
   const htmlString = sortByList.map((item) => {
     return `
-    <span class="drop-item">${item}</span>`;
+    <span class="drop-item" data-value="${item}">${item}</span>`;
   }).join('');
   container.innerHTML += htmlString;
 }
@@ -132,6 +206,7 @@ function selectFilter(e) {
     }
   }
   let searchResult = getResults();
+  //executar sort by
   displayResults(searchResult);
 }
 
@@ -165,6 +240,7 @@ function getResults() {
       );
     });
     console.log(filteredItems);
+    resultItems = filteredItems;
     return filteredItems;
   } else {
     const filteredItems = spreadsheet.filter((item) => {
@@ -175,12 +251,14 @@ function getResults() {
       );
     });
     console.log(filteredItems);
+    resultItems = filteredItems;
     return filteredItems;
   }
 }
 
 searchBar.addEventListener('keyup', () => {
     let searchResult = getResults();
+    //executar sort by
     displayResults(searchResult);
 });
 
