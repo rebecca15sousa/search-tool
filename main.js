@@ -105,10 +105,10 @@ function sortYes() {
 
 function generateFilters() {
   let playedList, modeList, complexityList, sortByList;
-  complexityList = bla("3");
-  playedList = bla("4");
-  modeList = bla("5");
-  sortByList = bla("4");
+  complexityList = getFiltersList("3");
+  playedList = getFiltersList("4");
+  modeList = getFiltersList("5");
+  sortByList = getFiltersList("4");
   displaySortBy(sortByList, dropContent);
   displayFilters(complexityList, capsuleFiltersDiv, 3, "radio");
   const capsulesNode = document.querySelectorAll('.radio-input');
@@ -125,7 +125,7 @@ function generateFilters() {
   });
 }
 
-function bla(category) {
+function getFiltersList(category) {
   const filtersList = [];
   for (let i = 0; i < spreadsheet.length; i++) {
     let item = spreadsheet[i];
