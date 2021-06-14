@@ -11,9 +11,9 @@ let valuesComplex = []; //array with complexity filter values that are checked
 let valuesPlayed = []; //array with played filter values that are checked
 let valuesMode = []; //array with mode filter values that are checked
 
-let resultItems = spreadsheet;
 let noNumber = 0;
 let yesNumber = 0;
+let sortValue;
 // ------------------------------------- CODE ------------------------------------- //
 //"Sort by" button functionality
 sortBtn.addEventListener('click', toggleSortBy);
@@ -31,22 +31,27 @@ function closeSortBy(e) {
 }
 
 //Sorting functionality
-dropContent.addEventListener('click', sortItems);
+dropContent.addEventListener('click', getSortValue);
 
-function sortItems(e) {
+function getSortValue(e) {
   let target = e.target;
-  let value = target.getAttribute("data-value");
-  if (value == "Yes") {
-    sortYes();
-  } else if (value == "No") {
-    sortNo();
+  sortValue = target.getAttribute("data-value");
+  let searchResult = getResults();
+  displayResults(searchResult);
+}
+
+function sortItems(filteredItems) {
+  if (sortValue == "Yes") {
+    sortYes(filteredItems);
+  } else if (sortValue == "No") {
+    sortNo(filteredItems);
   }
 }
 
-function countYes() {
+function countYes(filteredItems) {
   yesNumber = 0;
-  for (let i = 0; i < resultItems.length; i++) {
-    let item = resultItems[i];
+  for (let i = 0; i < filteredItems.length; i++) {
+    let item = filteredItems[i];
     let key = item[4];
     for (let j = 0; j < key.length; j++) {
       if (key[j] == "Yes") {
@@ -56,16 +61,16 @@ function countYes() {
   }
 }
 
-function sortNo() {
-  countYes();
+function sortNo(filteredItems) {
+  countYes(filteredItems);
   for (let i = 0; yesNumber > 0; i++) {
-    let item = resultItems[i];
+    let item = filteredItems[i];
     let key = item[4];
     for (let j = 0; j < key.length; j++) {
       if (key[j] == "Yes") {
         let temp = item;
-        resultItems.splice(i, 1);
-        resultItems.push(temp);
+        filteredItems.splice(i, 1);
+        filteredItems.push(temp);
         i--;
         yesNumber--;
       }
@@ -73,10 +78,10 @@ function sortNo() {
   }
 }
 
-function countNo() {
+function countNo(filteredItems) {
   noNumber = 0;
-  for (let i = 0; i < resultItems.length; i++) {
-    let item = resultItems[i];
+  for (let i = 0; i < filteredItems.length; i++) {
+    let item = filteredItems[i];
     let key = item[4];
     for (let j = 0; j < key.length; j++) {
       if (key[j] == "No") {
@@ -86,16 +91,16 @@ function countNo() {
   }
 }
 
-function sortYes() {
-  countNo();
+function sortYes(filteredItems) {
+  countNo(filteredItems);
   for (let i = 0; noNumber > 0; i++) {
-    let item = resultItems[i];
+    let item = filteredItems[i];
     let key = item[4];
     for (let j = 0; j < key.length; j++) {
       if (key[j] == "No") {
         let temp = item;
-        resultItems.splice(i, 1);
-        resultItems.push(temp);
+        filteredItems.splice(i, 1);
+        filteredItems.push(temp);
         i--;
         noNumber--;
       }
@@ -206,7 +211,6 @@ function selectFilter(e) {
     }
   }
   let searchResult = getResults();
-  //executar sort by
   displayResults(searchResult);
 }
 
@@ -239,8 +243,8 @@ function getResults() {
         isFilterIncluded(item, 5, valuesMode)
       );
     });
-    console.log(filteredItems);
-    resultItems = filteredItems;
+    // console.log(filteredItems);
+    sortItems(filteredItems);
     return filteredItems;
   } else {
     const filteredItems = spreadsheet.filter((item) => {
@@ -250,15 +254,14 @@ function getResults() {
         isFilterIncluded(item, 5, valuesMode)
       );
     });
-    console.log(filteredItems);
-    resultItems = filteredItems;
+    // console.log(filteredItems);
+    sortItems(filteredItems);
     return filteredItems;
   }
 }
 
 searchBar.addEventListener('keyup', () => {
     let searchResult = getResults();
-    //executar sort by
     displayResults(searchResult);
 });
 
