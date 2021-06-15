@@ -2,16 +2,43 @@
     box-sizing: border-box;
 }
 
+:root {
+    --ff: 'Open Sans', sans-serif;
+    --fw-reg: 400;
+    --fw-bold: 700;
+    --fs-h1: 3rem;
+    --fs-h2: 2.25rem;
+    --fs-h3: 1.25rem;
+    --fs-body: 1rem;
+    --clr-light: #ededed;
+    --clr-dark: #bbbbbb;
+    --clr-hover: #cecece;
+    --clr-select: #3d3d3d;
+    --clr-hover-select: #939393;
+}
+
 /* HEADER */
 header {
     display: block;
     text-align: center;
 }
 
+.title {
+    font-family: var(--ff);
+    font-size: var(--fs-h1);
+    font-weight: var(--fw-bold);
+}
+
+.attribution {
+    font-family: var(--ff);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-reg);
+}
+
 /* SEARCH BAR */
 .search-bar-div {
     display: flex;
-    border: 2px solid black;
+    border: 1px solid var(--clr-dark);
     border-radius: 5px;
     padding: .5rem;
 }
@@ -42,30 +69,35 @@ header {
 }
 
 .radio-label {
+    font-family: var(--ff);
     cursor: pointer;
-    background-color: #ddd;
-    border: 2px solid black;
+    background-color: var(--clr-light);
+    border: 1px solid var(--clr-dark);
     border-radius: 20px;
     padding: .3em .5em;
     margin: .5em;
 }
 
 .radio-label:hover {
-    background-color: cadetblue;
+    background-color: var(--clr-hover);
 }
 
 .radio-input:checked + label {
-    background-color: chartreuse;
+    background-color: var(--clr-select);
 }
 
 .radio-input:checked + label:hover {
-    background-color: rgb(79, 158, 0);
+    background-color: var(--clr-hover-select);
 }
 
 /* SORT BY */
 .drop-container {
     position: relative;
     float: right;
+}
+
+.sort-by {
+    display: inline-block;
 }
 
 #sortBtn {
@@ -112,15 +144,24 @@ header {
 .filters-left {
     flex: 20%;
     margin: 3rem auto;
-    border-right: 2px solid black;
+    border-right: 1px solid var(--clr-dark);
 }
 
 .filters-title {
     margin: 0 0 1em;
+    font-family: var(--ff);
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-bold);
+}
+
+.checkbox-label {
+    font-family: var(--ff);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-reg);
 }
 
 .divider {
-    border-top: 2px solid black;
+    border-top: 1px solid var(--clr-dark);
 }
 
 #resultsList {
@@ -146,11 +187,16 @@ header {
 
 .item-title {
     margin: 0;
+    font-family: var(--ff);
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-bold);
 }
 
-/* .item-text {
-
-} */
+.item-text {
+    font-family: var(--ff);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-reg);
+}
 
 .no-bullet {
     list-style-type: none;
