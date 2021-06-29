@@ -36,6 +36,11 @@ dropContent.addEventListener('click', getSortValue);
 function getSortValue(e) {
   let target = e.target;
   sortValue = target.getAttribute("data-value");
+  sortBtn.textContent = sortValue;
+  let arrow = document.createElement("i");
+  arrow.classList.add("fa", "fa-arrow-down");
+  arrow.setAttribute("aria-hidden", "true");
+  sortBtn.appendChild(arrow);
   let searchResult = getResults();
   displayResults(searchResult);
 }
