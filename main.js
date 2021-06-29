@@ -6,6 +6,7 @@ const filtersMode = document.getElementById('filtersMode');
 const capsuleFiltersDiv = document.getElementById('capsuleFiltersDiv');
 let spreadsheet;
 const sortBtn = document.getElementById('sortBtn');
+const arrowIcon = document.getElementById('arrowIcon');
 const dropContent = document.getElementById('dropContent');
 let valuesComplex = []; //array with complexity filter values that are checked
 let valuesPlayed = []; //array with played filter values that are checked
@@ -25,7 +26,7 @@ function toggleSortBy() {
 window.addEventListener('click', closeSortBy);
 
 function closeSortBy(e) {
-  if (!e.target.matches('#sortBtn')) {
+  if (!e.target.matches('#sortBtn') && !e.target.matches('#arrowIcon')) {
     dropContent.classList.remove("show");
   }
 }
@@ -37,10 +38,7 @@ function getSortValue(e) {
   let target = e.target;
   sortValue = target.getAttribute("data-value");
   sortBtn.textContent = sortValue;
-  let arrow = document.createElement("i");
-  arrow.classList.add("fa", "fa-arrow-down");
-  arrow.setAttribute("aria-hidden", "true");
-  sortBtn.appendChild(arrow);
+  sortBtn.appendChild(arrowIcon);
   let searchResult = getResults();
   displayResults(searchResult);
 }
