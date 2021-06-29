@@ -10,11 +10,14 @@
     --fs-h2: 2.25rem;
     --fs-h3: 1.25rem;
     --fs-body: 1rem;
+    --fc-light: #ffffff;
+    --fc-dark: #000000;
     --clr-light: #ededed;
     --clr-dark: #bbbbbb;
-    --clr-hover: #cecece;
-    --clr-select: #3d3d3d;
-    --clr-hover-select: #939393;
+    --clr-hover: #dfdfdf;
+    --clr-select: #000000;
+    --clr-hover-select: #7a7a7a;
+    --clr-hover-select-border: #6d6d6d;
 }
 
 /* HEADER */
@@ -84,10 +87,13 @@ header {
 
 .radio-input:checked + label {
     background-color: var(--clr-select);
+    border-color: var(--clr-select);
+    color: var(--fc-light);
 }
 
 .radio-input:checked + label:hover {
     background-color: var(--clr-hover-select);
+    border-color: var(--clr-hover-select-border);
 }
 
 /* SORT BY */
