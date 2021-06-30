@@ -79,6 +79,7 @@ header {
     border-radius: 20px;
     padding: .3em .5em;
     margin: .5em;
+    transition: 0.3s;
 }
 
 .radio-label:hover {
