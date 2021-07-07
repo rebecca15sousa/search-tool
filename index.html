@@ -25,13 +25,17 @@
         <input type="search" name="searchBar" id="searchBar" placeholder="Search...">
     </div>
 
-    <ul id="capsuleFiltersDiv" class="no-bullet">
-        <li class="radio-li">
-            <input type="checkbox" id="All" class="radio-input" data-column="3" value="All">
-            <label for="All" id="allLabel" class="radio-label">All</label>
-            <br>
-        </li>
-    </ul>
+    <div id="capsuleDiv">
+        <button id="left"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+        <button id="right"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+        <ul id="capsuleFilters" class="no-bullet">
+            <li class="radio-li">
+                <input type="checkbox" id="All" class="radio-input" data-column="3" value="All">
+                <label for="All" id="allLabel" class="radio-label">All</label>
+                <br>
+            </li>
+        </ul>
+    </div>
 
     <div class="drop-container">
         <p class="sort-by">Sort by: </p>

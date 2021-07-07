@@ -3,8 +3,10 @@ const searchBar = document.getElementById('searchBar');
 const resultsList = document.getElementById('resultsList');
 const filtersPlayed = document.getElementById('filtersPlayed');
 const filtersMode = document.getElementById('filtersMode');
-const capsuleFiltersDiv = document.getElementById('capsuleFiltersDiv');
+const capsuleFilters = document.getElementById('capsuleFilters');
 let spreadsheet;
+const leftCapBtn = document.getElementById('left');
+const rightCapBtn = document.getElementById('right');
 const sortBtn = document.getElementById('sortBtn');
 const arrowIcon = document.getElementById('arrowIcon');
 const dropContent = document.getElementById('dropContent');
@@ -16,6 +18,21 @@ let noNumber = 0;
 let yesNumber = 0;
 let sortValue;
 // ------------------------------------- CODE ------------------------------------- //
+// capsuleFilters.addEventListener('scroll', );
+
+
+
+leftCapBtn.addEventListener('click', scrollLeft);
+rightCapBtn.addEventListener('click', scrollRight);
+
+function scrollLeft() {
+  capsuleFilters.scrollLeft -= 20;
+}
+
+function scrollRight() {
+  capsuleFilters.scrollLeft += 20;
+}
+
 //"Sort by" button functionality
 sortBtn.addEventListener('click', toggleSortBy);
 
@@ -118,7 +135,7 @@ function generateFilters() {
   modeList = getFiltersList("5");
   sortByList = getFiltersList("4");
   displaySortBy(sortByList, dropContent);
-  displayFilters(complexityList, capsuleFiltersDiv, 3, "radio");
+  displayFilters(complexityList, capsuleFilters, 3, "radio");
   const capsulesNode = document.querySelectorAll('.radio-input');
   const capsulesArray = Array.from(capsulesNode);
   capsulesArray.forEach((capsule) => {

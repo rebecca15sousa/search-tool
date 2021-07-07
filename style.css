@@ -56,10 +56,27 @@ header {
 }
 
 /* CAPSULE FILTER */
-#capsuleFiltersDiv {
+#left {
+    position: absolute;
+    z-index: 10;
+}
+
+#right {
+    position: absolute;
+    right: 0px;
+    z-index: 10;
+}
+
+#capsuleFilters {
     margin: .5em 0;
     overflow: auto;
     white-space: nowrap;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#capsuleFilters::-webkit-scrollbar {
+    display: none;
 }
 
 .radio-li {
