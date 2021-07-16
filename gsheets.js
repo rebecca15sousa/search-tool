@@ -54,6 +54,13 @@ function splitArray(array) {
 sheetIdBtn.addEventListener('click', function() {
   if (sheetIdInput.value != "") {
     sheetIdModal.style.display = "none";
+    localStorage.setItem("ID", sheetIdInput.value);
     gapi.load('client', start);
   }
 });
+
+if (localStorage.getItem("ID")) {
+  sheetIdModal.style.display = "none";
+  sheetIdInput.value = localStorage.getItem("ID");
+  gapi.load('client', start);
+}
