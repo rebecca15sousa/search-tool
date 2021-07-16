@@ -1,3 +1,7 @@
+const sheetIdBtn = document.getElementById('sheetIdBtn');
+const sheetIdInput = document.getElementById('sheetIdInput');
+const sheetIdModal = document.getElementById('sheetIdModal');
+
 function start() {
   // Initializes the Google Sheets API library.
   gapi.client.init({
@@ -6,7 +10,7 @@ function start() {
     'clientId': '37348095959-i0nd20ns5vklh6q2drb7mf2am83vqou4.apps.googleusercontent.com',
     'scope': 'https://www.googleapis.com/auth/spreadsheets.readonly',
   }).then(function() {
-    parseSheet("1ZLdvkWefFzPAZtWy8s6GG2HN17eRvJdH-LvL3Uqbeoc");
+    parseSheet(sheetIdInput.value);
   });
 };
 
@@ -47,4 +51,9 @@ function splitArray(array) {
 }
 
 // Loads the Google Sheets API library.
-gapi.load('client', start);
+sheetIdBtn.addEventListener('click', function() {
+  if (sheetIdInput.value != "") {
+    sheetIdModal.style.display = "none";
+    gapi.load('client', start);
+  }
+});
