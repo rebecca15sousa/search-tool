@@ -166,6 +166,7 @@ function getFiltersList(category) {
 }
 
 function displayFilters(filtersList, container, column, type) {
+  container.innerHTML = "";
   const htmlString = filtersList.map((item) => {
     return `
     <li class="${type}-li">
@@ -178,6 +179,7 @@ function displayFilters(filtersList, container, column, type) {
 }
 
 function displaySortBy(sortByList, container) {
+  container.innerHTML = "";
   const htmlString = sortByList.map((item) => {
     return `
     <span class="drop-item" data-value="${item}">${item}</span>`;

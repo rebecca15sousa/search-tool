@@ -1,6 +1,7 @@
 const sheetIdBtn = document.getElementById('sheetIdBtn');
 const sheetIdInput = document.getElementById('sheetIdInput');
 const sheetIdModal = document.getElementById('sheetIdModal');
+const changeIdBtn = document.getElementById('changeIdBtn');
 
 function start() {
   // Initializes the Google Sheets API library.
@@ -51,6 +52,10 @@ function splitArray(array) {
 }
 
 // Loads the Google Sheets API library.
+changeIdBtn.addEventListener('click', function() {
+  sheetIdModal.style.display = "block";
+});
+
 sheetIdBtn.addEventListener('click', function() {
   if (sheetIdInput.value != "") {
     sheetIdModal.style.display = "none";
