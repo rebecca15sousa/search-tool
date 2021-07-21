@@ -150,11 +150,16 @@ function generateFilters() {
   });
 }
 
+//loops through all cells of a specific collumn and gets every unique element to create a filter list
 function getFiltersList(category) {
   const filtersList = [];
+  //loops through entire spreadsheet, line by line
   for (let i = 0; i < spreadsheet.length; i++) {
+    //item is a complete single line in spreadsheet
     let item = spreadsheet[i];
+    //key is a specific cell inside the line
     let key = item[category];
+    //loops through specific cell
     for (let j = 0; j < key.length; j++) {
       let filterName = key[j].trim();
       if (!filtersList.includes(filterName)) {
@@ -187,6 +192,7 @@ function displaySortBy(sortByList, container) {
   container.innerHTML += htmlString;
 }
 
+//changes checked status for capsule filters
 function activateCapsule(e) {
   let radio = e.target;
   let allRadio = document.querySelectorAll('.radio-input');
@@ -251,6 +257,7 @@ function isFilterIncluded(item, category, filters) {
   }
 }
 
+//executes search on spreadsheet
 function getResults() {
   const searchString = searchBar.value.toLowerCase();
   const searchLenght = searchBar.value.length;
