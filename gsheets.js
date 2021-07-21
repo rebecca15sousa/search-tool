@@ -65,7 +65,6 @@ formBtn.addEventListener('click', function() {
   columnsForm.style.display = "none";
   const formItems = document.querySelectorAll('.form-items');
   formInputs = [];
-  console.log(formInputs);
   for (let k = 0; k < formItems.length; k++) {
     let input = formItems[k].value;
     formInputs.push(input);

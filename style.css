@@ -279,7 +279,7 @@ header {
 }
 
 .item-img {
-    width: 20rem;
+    max-width: 20rem;
 }
 
 /* .item-content {
