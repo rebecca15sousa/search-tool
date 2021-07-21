@@ -2,8 +2,9 @@ const sheetIdBtn = document.getElementById('sheetIdBtn');
 const sheetIdInput = document.getElementById('sheetIdInput');
 const sheetIdModal = document.getElementById('sheetIdModal');
 const changeIdBtn = document.getElementById('changeIdBtn');
-const formulario = document.getElementById('formulario');
+const columnsForm = document.getElementById('columnsForm');
 const formBtn = document.getElementById('formBtn');
+let formInputs = [];
 
 function start() {
   // Initializes the Google Sheets API library.
@@ -23,12 +24,6 @@ function parseSheet(spreadsheetId) {
     spreadsheetId: spreadsheetId,
     range: "A:Z"
   }).then((response) => {
-    const formItems = document.querySelectorAll('.form-items');
-    let formInputs = [];
-    for (let k = 0; k < formItems.length; k++) {
-      let input = formItems[k].value;
-      formInputs.push(input);
-    }
     let completeList = response.result.values;
     let gameList = [];
     for (let i = 1; i < completeList.length; i++) {
@@ -61,18 +56,27 @@ changeIdBtn.addEventListener('click', function() {
 sheetIdBtn.addEventListener('click', function() {
   if (sheetIdInput.value != "") {
     sheetIdModal.style.display = "none";
-    formulario.style.display = "block";
+    columnsForm.style.display = "block";
     localStorage.setItem("ID", sheetIdInput.value);
   }
 });
 
 formBtn.addEventListener('click', function() {
-  formulario.style.display = "none";
+  columnsForm.style.display = "none";
+  const formItems = document.querySelectorAll('.form-items');
+  formInputs = [];
+  console.log(formInputs);
+  for (let k = 0; k < formItems.length; k++) {
+    let input = formItems[k].value;
+    formInputs.push(input);
+  }
+  localStorage.setItem("formInputs", JSON.stringify(formInputs));
   gapi.load('client', start);
 });
 
 if (localStorage.getItem("ID")) {
   sheetIdModal.style.display = "none";
   sheetIdInput.value = localStorage.getItem("ID");
+  formInputs = JSON.parse(localStorage.getItem("formInputs"));
   gapi.load('client', start);
 }
