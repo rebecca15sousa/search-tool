@@ -84,6 +84,11 @@
     padding: .5em;
 }
 
+/* FORM */
+#formulario {
+    display: none;
+}
+
 /* HEADER */
 header {
     display: block;

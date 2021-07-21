@@ -72,7 +72,7 @@ function countYes(filteredItems) {
   yesNumber = 0;
   for (let i = 0; i < filteredItems.length; i++) {
     let item = filteredItems[i];
-    let key = item[4];
+    let key = item[3];
     for (let j = 0; j < key.length; j++) {
       if (key[j] == "Yes") {
         yesNumber++;
@@ -85,7 +85,7 @@ function sortNo(filteredItems) {
   countYes(filteredItems);
   for (let i = 0; yesNumber > 0; i++) {
     let item = filteredItems[i];
-    let key = item[4];
+    let key = item[3];
     for (let j = 0; j < key.length; j++) {
       if (key[j] == "Yes") {
         let temp = item;
@@ -102,7 +102,7 @@ function countNo(filteredItems) {
   noNumber = 0;
   for (let i = 0; i < filteredItems.length; i++) {
     let item = filteredItems[i];
-    let key = item[4];
+    let key = item[3];
     for (let j = 0; j < key.length; j++) {
       if (key[j] == "No") {
         noNumber++;
@@ -115,7 +115,7 @@ function sortYes(filteredItems) {
   countNo(filteredItems);
   for (let i = 0; noNumber > 0; i++) {
     let item = filteredItems[i];
-    let key = item[4];
+    let key = item[3];
     for (let j = 0; j < key.length; j++) {
       if (key[j] == "No") {
         let temp = item;
@@ -130,19 +130,19 @@ function sortYes(filteredItems) {
 
 function generateFilters() {
   let playedList, modeList, complexityList, sortByList;
-  complexityList = getFiltersList("3");
-  playedList = getFiltersList("4");
-  modeList = getFiltersList("5");
-  sortByList = getFiltersList("4");
+  complexityList = getFiltersList("2");
+  playedList = getFiltersList("3");
+  modeList = getFiltersList("4");
+  sortByList = getFiltersList("3");
   displaySortBy(sortByList, dropContent);
-  displayFilters(complexityList, capsuleFilters, 3, "radio");
+  displayFilters(complexityList, capsuleFilters, 2, "radio");
   const capsulesNode = document.querySelectorAll('.radio-input');
   const capsulesArray = Array.from(capsulesNode);
   capsulesArray.forEach((capsule) => {
     capsule.addEventListener('change', activateCapsule);
   });
-  displayFilters(playedList, filtersPlayed, 4, "checkbox");
-  displayFilters(modeList, filtersMode, 5, "checkbox");
+  displayFilters(playedList, filtersPlayed, 3, "checkbox");
+  displayFilters(modeList, filtersMode, 4, "checkbox");
   const checkboxesNode = document.querySelectorAll('input[type=checkbox]');
   const checkboxesArray = Array.from(checkboxesNode);
   checkboxesArray.forEach((checkbox) => {
@@ -215,7 +215,7 @@ function selectFilter(e) {
   let filter = e.target;
   let column = filter.getAttribute("data-column");
   let capAllInput = document.getElementById('All');
-  if (column == 3) {
+  if (column == 2) {
     if (filter.checked) {
       valuesComplex = [];
       valuesComplex.push(filter.value);
@@ -223,14 +223,14 @@ function selectFilter(e) {
       valuesComplex = [];
       valuesComplex.push(capAllInput.value);
     }
-  } else if (column == 4) {
+  } else if (column == 3) {
     if (filter.checked) {
       valuesPlayed.push(filter.value);
     } else {
       let index = valuesPlayed.indexOf(filter.value);
       valuesPlayed.splice(index, 1);
     }
-  } else if (column == 5) {
+  } else if (column == 4) {
     if (filter.checked) {
       valuesMode.push(filter.value);
     } else {
@@ -266,10 +266,10 @@ function getResults() {
       return (
         (isStringIncluded(item[0], searchString) ||
         isStringIncluded(item[1], searchString) ||
-        isStringIncluded(item[5], searchString)) &&
-        isFilterIncluded(item, 3, valuesComplex) &&
-        isFilterIncluded(item, 4, valuesPlayed) &&
-        isFilterIncluded(item, 5, valuesMode)
+        isStringIncluded(item[4], searchString)) &&
+        isFilterIncluded(item, 2, valuesComplex) &&
+        isFilterIncluded(item, 3, valuesPlayed) &&
+        isFilterIncluded(item, 4, valuesMode)
       );
     });
     // console.log(filteredItems);
@@ -278,9 +278,9 @@ function getResults() {
   } else {
     const filteredItems = spreadsheet.filter((item) => {
       return (
-        isFilterIncluded(item, 3, valuesComplex) &&
-        isFilterIncluded(item, 4, valuesPlayed) &&
-        isFilterIncluded(item, 5, valuesMode)
+        isFilterIncluded(item, 2, valuesComplex) &&
+        isFilterIncluded(item, 3, valuesPlayed) &&
+        isFilterIncluded(item, 4, valuesMode)
       );
     });
     // console.log(filteredItems);
@@ -307,11 +307,11 @@ function displayResults(searchResult) {
   const htmlString = searchResult.map((item) => {
     return `
     <li class="item-complete">
-      <img src="${item[6]}" class="item-img"></img>
+      <img src="${item[5]}" class="item-img"></img>
       <div class="item-content">
         <h2 class="item-title">${item[0]}</h2>
         <p class="item-text">Players: ${item[1]}</p>
-        <p class="item-text">Mode: ${item[5]}</p>
+        <p class="item-text">Mode: ${item[4]}</p>
       </div>
     </li>`;
   }).join('');
