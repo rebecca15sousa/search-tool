@@ -1,4 +1,5 @@
-const sheetIdBtn = document.getElementById('sheetIdBtn');
+const sheetIdSubmit = document.getElementById('sheetIdSubmit');
+const sheetIdCancel = document.getElementById('sheetIdCancel');
 const sheetIdInput = document.getElementById('sheetIdInput');
 const sheetIdModal = document.getElementById('sheetIdModal');
 const changeIdBtn = document.getElementById('changeIdBtn');
@@ -53,12 +54,16 @@ changeIdBtn.addEventListener('click', function() {
   sheetIdModal.style.display = "block";
 });
 
-sheetIdBtn.addEventListener('click', function() {
+sheetIdSubmit.addEventListener('click', function() {
   if (sheetIdInput.value != "") {
     sheetIdModal.style.display = "none";
     columnsForm.style.display = "block";
     localStorage.setItem("ID", sheetIdInput.value);
   }
+});
+
+sheetIdCancel.addEventListener('click', function() {
+  sheetIdModal.style.display = "none";
 });
 
 formBtn.addEventListener('click', function() {

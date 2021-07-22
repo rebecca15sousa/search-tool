@@ -73,7 +73,7 @@
     outline: none;
 }
 
-#sheetIdBtn {
+.sheet-id-btn {
     font-family: var(--ff);
     font-size: var(--fs-body);
     background-color: var(--clr-dark);
