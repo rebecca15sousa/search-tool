@@ -18,7 +18,15 @@ let noNumber = 0;
 let yesNumber = 0;
 let sortValue;
 // ------------------------------------- CODE ------------------------------------- //
-// capsuleFilters.addEventListener('scroll', );
+// capsuleFilters.addEventListener('wheel', function(e) {
+//   if (e.deltaX < 0) {
+//     console.log('esquerda');
+//     scrollLeft();
+//   } else if (e.deltaX > 0) {
+//     console.log('direita');
+//     scrollRight();
+//   }
+// });
 
 
 
@@ -310,8 +318,8 @@ function displayResults(searchResult) {
       <img src="${item[5]}" class="item-img"></img>
       <div class="item-content">
         <h2 class="item-title">${item[0]}</h2>
-        <p class="item-text">Players: ${item[1]}</p>
-        <p class="item-text">Mode: ${item[4]}</p>
+        <p class="item-text">${item[1]}</p>
+        <p class="item-text">${item[4]}</p>
       </div>
     </li>`;
   }).join('');

@@ -22,7 +22,6 @@
 
 /* MODAL */
 .modal {
-    display: block;
     position: fixed;
     z-index: 2;
     top: 0;
@@ -32,6 +31,10 @@
     background-color: rgba(0,0,0,0.4);
 }
 
+#sheetIdModal {
+    display: block;
+}
+
 .modal-content {
     background-color: var(--clr-light);
     margin: 20% auto;
@@ -39,14 +42,14 @@
     border-radius: 5px;
 }
 
-.submit-txt {
+.modal-title {
     font-family: var(--ff);
-    font-size: var(--fs-h1);
+    font-size: var(--fs-h2);
     font-weight: var(--fw-bold);
     text-align: center;
 }
 
-.sample-txt {
+.modal-txt {
     font-family: var(--ff);
     font-size: var(--fs-body);
     font-weight: var(--fw-reg);
@@ -73,6 +76,10 @@
     outline: none;
 }
 
+.sheet-id-btn-div {
+    display: flex;
+}
+
 .sheet-id-btn {
     font-family: var(--ff);
     font-size: var(--fs-body);
@@ -80,13 +87,35 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-bottom: 1em;
+    margin: 0 .5em 1em;
     padding: .5em;
 }
 
 /* FORM */
 #columnsForm {
     display: none;
+}
+
+.form-div {
+    text-align: center;
+}
+
+.form-labels {
+    font-family: var(--ff);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-reg);
+}
+
+.form-items {
+    border: 1px solid var(--clr-dark);
+    border-radius: 5px;
+    padding: .5rem;
+    margin-bottom: 1em;
+    width: 10%;
+}
+
+.form-items:focus {
+
 }
 
 /* HEADER */

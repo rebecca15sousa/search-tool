@@ -12,38 +12,46 @@
     <title>Search Tool</title>
 </head>
 <body>
-    <div class="modal" id="sheetIdModal">
+    <div id="sheetIdModal" class="modal">
         <div class="modal-content">
-            <h1 class="submit-txt"><label for="sheetIdInput">Submit your spreadsheet Id</label></h1>
-            <p class="sample-txt">Sample Id: 1ZLdvkWefFzPAZtWy8s6GG2HN17eRvJdH-LvL3Uqbeoc</p>
+            <h2 class="modal-title"><label for="sheetIdInput">Submit your spreadsheet Id</label></h2>
+            <p class="modal-txt">Sample Id: 1ZLdvkWefFzPAZtWy8s6GG2HN17eRvJdH-LvL3Uqbeoc</p>
             <div class="sheet-id-div">
                 <input type="text" name="sheetIdInput" id="sheetIdInput" placeholder="Spreadsheet Id...">
-                <button type="button" id="sheetIdSubmit" class="sheet-id-btn">Submit</button>
-                <button type="button" id="sheetIdCancel" class="sheet-id-btn">Cancel</button>
+                <div class="sheet-id-btn-div">
+                    <button type="button" id="sheetIdSubmit" class="sheet-id-btn">Submit</button>
+                    <button type="button" id="sheetIdCancel" class="sheet-id-btn">Cancel</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <div id="columnsForm">
-        <label for="formTitle">Title</label>
-        <input type="text" id="formTitle" name="formTitle" class="form-items">
-        <br>
-        <label for="formInfo">Information</label>
-        <input type="text" id="formInfo" name="formInfo" class="form-items">
-        <br>
-        <label for="formCapFilt">Capsule filters</label>
-        <input type="text" id="formCapFilt" name="formCapFilt" class="form-items">
-        <br>
-        <label for="formFilt1">Filter 1</label>
-        <input type="text" id="formFilt1" name="formFilt1" class="form-items">
-        <br>
-        <label for="formFilt2">Filter 2</label>
-        <input type="text" id="formFilt2" name="formFilt2" class="form-items">
-        <br>
-        <label for="formImg">Image</label>
-        <input type="text" id="formImg" name="formImg" class="form-items">
-        <br>
-        <button type="button" id="formBtn">Submit</button>
+    <div id="columnsForm" class="modal">
+        <div class="modal-content">
+            <h2 class="modal-title">Choose what you want to display</h2>
+            <p class="modal-txt">Write the columns' numbers for each category</p>
+            <div class="form-div">
+                <label for="formTitle" class="form-labels">Title</label>
+                <input type="text" id="formTitle" name="formTitle" class="form-items">
+                <br>
+                <label for="formInfo" class="form-labels">Information</label>
+                <input type="text" id="formInfo" name="formInfo" class="form-items">
+                <br>
+                <label for="formCapFilt" class="form-labels">Capsule filters</label>
+                <input type="text" id="formCapFilt" name="formCapFilt" class="form-items">
+                <br>
+                <label for="formFilt1" class="form-labels">Filter 1</label>
+                <input type="text" id="formFilt1" name="formFilt1" class="form-items">
+                <br>
+                <label for="formFilt2" class="form-labels">Filter 2</label>
+                <input type="text" id="formFilt2" name="formFilt2" class="form-items">
+                <br>
+                <label for="formImg" class="form-labels">Image</label>
+                <input type="text" id="formImg" name="formImg" class="form-items">
+                <br>
+                <button type="button" id="formBtn" class="sheet-id-btn">Submit</button>
+            </div>
+        </div>
     </div>
     
     <header>
