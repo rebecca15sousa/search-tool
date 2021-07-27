@@ -58,6 +58,9 @@ sheetIdSubmit.addEventListener('click', function() {
   if (sheetIdInput.value != "") {
     sheetIdModal.style.display = "none";
     columnsForm.style.display = "block";
+    let url = new URL(sheetIdInput.value);
+    let urlArray = url.pathname.split('/');
+    sheetIdInput.value = urlArray[3];
     localStorage.setItem("ID", sheetIdInput.value);
   }
 });
