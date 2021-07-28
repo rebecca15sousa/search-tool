@@ -6,6 +6,8 @@ const changeIdBtn = document.getElementById('changeIdBtn');
 const columnsForm = document.getElementById('columnsForm');
 const formBtn = document.getElementById('formBtn');
 let formInputs = [];
+const filterTitle1 = document.getElementById('filterTitle1');
+const filterTitle2 = document.getElementById('filterTitle2');
 
 function start() {
   // Initializes the Google Sheets API library.
@@ -26,6 +28,15 @@ function parseSheet(spreadsheetId) {
     range: "A:Z"
   }).then((response) => {
     let completeList = response.result.values;
+    let firstLine = completeList[0];
+    for (let k = 0; k < firstLine.length; k++) {
+      let index = formInputs[k];
+      if (k == 3) {
+        filterTitle1.textContent = firstLine[index];
+      } else if (k == 4) {
+        filterTitle2.textContent = firstLine[index];
+      }
+    }
     let gameList = [];
     for (let i = 1; i < completeList.length; i++) {
       // Creates a new game object and adds it to list.
