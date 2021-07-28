@@ -179,7 +179,15 @@ function getFiltersList(category) {
 }
 
 function displayFilters(filtersList, container, column, type) {
-  container.innerHTML = "";
+  if (type == "radio") {
+    container.innerHTML =  `<li class="radio-li">
+    <input type="checkbox" id="All" class="radio-input" data-column="3" value="All">
+    <label for="All" id="allLabel" class="radio-label">All</label>
+    <br>
+  </li>`;
+  } else {
+    container.innerHTML = "";
+  }
   const htmlString = filtersList.map((item) => {
     return `
     <li class="${type}-li">
@@ -192,7 +200,8 @@ function displayFilters(filtersList, container, column, type) {
 }
 
 function displaySortBy(sortByList, container) {
-  container.innerHTML = "";
+  container.innerHTML = `<span class="drop-item" data-value="Newest">Newest</span>
+  <span class="drop-item" data-value="Oldest">Oldest</span>`;
   const htmlString = sortByList.map((item) => {
     return `
     <span class="drop-item" data-value="${item}">${item}</span>`;
