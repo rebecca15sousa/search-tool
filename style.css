@@ -12,6 +12,7 @@
     --fs-body: 1rem;
     --fc-light: #ffffff;
     --fc-dark: #000000;
+    --fc-hover: #717272;
     --clr-light: #ededed;
     --clr-dark: #bbbbbb;
     --clr-hover: #dfdfdf;
@@ -115,7 +116,7 @@
 }
 
 .form-items:focus {
-
+    outline: none;
 }
 
 /* HEADER */
@@ -322,10 +323,35 @@ header {
     font-weight: var(--fw-bold);
 }
 
+.item-title-link:link {
+    color: var(--fc-dark);
+    text-decoration: none;
+}
+
+.item-title-link:visited {
+    color: var(--fc-dark);
+    text-decoration: none;
+}
+
+.item-title-link:hover {
+    color: var(--fc-hover);
+    text-decoration: none;
+}
+
 .item-text {
     font-family: var(--ff);
     font-size: var(--fs-body);
     font-weight: var(--fw-reg);
+}
+
+.item-text-link:link {
+    color: var(--fc-dark);
+    text-decoration: none;
+}
+
+.item-text-link:visited {
+    color: var(--fc-dark);
+    text-decoration: none;
 }
 
 .no-bullet {
