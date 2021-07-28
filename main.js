@@ -34,11 +34,17 @@ leftCapBtn.addEventListener('click', scrollLeft);
 rightCapBtn.addEventListener('click', scrollRight);
 
 function scrollLeft() {
-  capsuleFilters.scrollLeft -= 20;
+  capsuleFilters.scrollBy({
+    left: -400,
+    behavior: 'smooth'
+  });
 }
 
 function scrollRight() {
-  capsuleFilters.scrollLeft += 20;
+  capsuleFilters.scrollBy({
+    left: 400,
+    behavior: 'smooth'
+  });
 }
 
 //"Sort by" button functionality
