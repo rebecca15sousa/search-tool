@@ -333,7 +333,7 @@ function displayResults(searchResult) {
       <img src="${item[5]}" class="item-img"></img>
       <div class="item-content">
         <h2 class="item-title">${item[0]}</h2>
-        <p class="item-text">${item[4]}</p>
+        <p class="item-text">${item[4].join(', ')}</p>
         <p class="item-text">${item[1]}</p>
       </div>
     </li>`;
