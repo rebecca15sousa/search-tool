@@ -44,7 +44,7 @@ function parseSheet(spreadsheetId) {
       let itemParsed = new Object();
       for (let j = 0; j < item.length; j++) {
         let index = formInputs[j];
-        itemParsed[j] = splitArray(item[index]);
+        itemParsed[j] = splitArray(item[index], j);
       }
       gameList.push(itemParsed);
     }
@@ -54,9 +54,13 @@ function parseSheet(spreadsheetId) {
   });
 }
 
-function splitArray(array) {
+function splitArray(array, j) {
   if (array) {
-    return (array.length > 1) ? array.split(", ") : array;
+    if (j == 2 || j == 3 || j == 4) {
+      return array.split(", ");
+    } else {
+      return array;
+    }
   } else {return "";}
 }
 
