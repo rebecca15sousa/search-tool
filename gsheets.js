@@ -29,21 +29,16 @@ function parseSheet(spreadsheetId) {
   }).then((response) => {
     let completeList = response.result.values;
     let firstLine = completeList[0];
-    for (let k = 0; k < firstLine.length; k++) {
-      let index = formInputs[k];
-      if (k == 3) {
-        filterTitle1.textContent = firstLine[index];
-      } else if (k == 4) {
-        filterTitle2.textContent = firstLine[index];
-      }
-    }
+    createFilterTitle(firstLine, filterTitle1, 3);
+    createFilterTitle(firstLine, filterTitle2, 4);
     let gameList = [];
     for (let i = 1; i < completeList.length; i++) {
       // Creates a new game object and adds it to list.
       let item = completeList[i];
       let itemParsed = new Object();
-      for (let j = 0; j < item.length; j++) {
-        let index = formInputs[j];
+      for (let j = 0; j < formInputs.length; j++) {
+        let letter = formInputs[j];
+        let index = letter.charCodeAt(0) - 97;
         itemParsed[j] = splitArray(item[index], j);
       }
       gameList.push(itemParsed);
@@ -62,6 +57,12 @@ function splitArray(array, j) {
       return array;
     }
   } else {return "";}
+}
+
+function createFilterTitle(firstLine, filterTitle, i) {
+  let letter = formInputs[i];
+  let index = letter.charCodeAt(0) - 97;
+  filterTitle.textContent = firstLine[index];
 }
 
 // Loads the Google Sheets API library.
@@ -89,7 +90,7 @@ formBtn.addEventListener('click', function() {
   const formItems = document.querySelectorAll('.form-items');
   formInputs = [];
   for (let k = 0; k < formItems.length; k++) {
-    let input = formItems[k].value;
+    let input = formItems[k].value.toLowerCase();
     formInputs.push(input);
   }
   localStorage.setItem("formInputs", JSON.stringify(formInputs));
