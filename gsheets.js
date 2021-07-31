@@ -4,7 +4,8 @@ const sheetIdInput = document.getElementById('sheetIdInput');
 const sheetIdModal = document.getElementById('sheetIdModal');
 const changeIdBtn = document.getElementById('changeIdBtn');
 const columnsForm = document.getElementById('columnsForm');
-const formBtn = document.getElementById('formBtn');
+const formSubmit = document.getElementById('formSubmit');
+const formCancel = document.getElementById('formCancel');
 let formInputs = [];
 const filterTitle1 = document.getElementById('filterTitle1');
 const filterTitle2 = document.getElementById('filterTitle2');
@@ -85,7 +86,7 @@ sheetIdCancel.addEventListener('click', function() {
   sheetIdModal.style.display = "none";
 });
 
-formBtn.addEventListener('click', function() {
+formSubmit.addEventListener('click', function() {
   columnsForm.style.display = "none";
   const formItems = document.querySelectorAll('.form-items');
   formInputs = [];
@@ -95,6 +96,10 @@ formBtn.addEventListener('click', function() {
   }
   localStorage.setItem("formInputs", JSON.stringify(formInputs));
   gapi.load('client', start);
+});
+
+formCancel.addEventListener('click', function() {
+  columnsForm.style.display = "none";
 });
 
 if (localStorage.getItem("ID")) {
