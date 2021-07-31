@@ -1,8 +1,8 @@
 // ------------------------------------- GLOBAL VARIABLES ------------------------------------- //
 const searchBar = document.getElementById('searchBar');
 const resultsList = document.getElementById('resultsList');
-const filtersPlayed = document.getElementById('filtersPlayed');
-const filtersMode = document.getElementById('filtersMode');
+const filters1 = document.getElementById('filters1');
+const filters2 = document.getElementById('filters2');
 const capsuleFilters = document.getElementById('capsuleFilters');
 let spreadsheet;
 const leftCapBtn = document.getElementById('left');
@@ -143,20 +143,20 @@ function sortYes(filteredItems) {
 }
 
 function generateFilters() {
-  let playedList, modeList, complexityList, sortByList;
-  complexityList = getFiltersList("2");
-  playedList = getFiltersList("3");
-  modeList = getFiltersList("4");
+  let filterList1, filterList2, capsuleList, sortByList;
+  capsuleList = getFiltersList("2");
+  filterList1 = getFiltersList("3");
+  filterList2 = getFiltersList("4");
   sortByList = getFiltersList("3");
   displaySortBy(sortByList, dropContent);
-  displayFilters(complexityList, capsuleFilters, 2, "radio");
+  displayFilters(capsuleList, capsuleFilters, 2, "radio");
   const capsulesNode = document.querySelectorAll('.radio-input');
   const capsulesArray = Array.from(capsulesNode);
   capsulesArray.forEach((capsule) => {
     capsule.addEventListener('change', activateCapsule);
   });
-  displayFilters(playedList, filtersPlayed, 3, "checkbox");
-  displayFilters(modeList, filtersMode, 4, "checkbox");
+  displayFilters(filterList1, filters1, 3, "checkbox");
+  displayFilters(filterList2, filters2, 4, "checkbox");
   const checkboxesNode = document.querySelectorAll('input[type=checkbox]');
   const checkboxesArray = Array.from(checkboxesNode);
   checkboxesArray.forEach((checkbox) => {
