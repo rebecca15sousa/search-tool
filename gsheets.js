@@ -78,7 +78,6 @@ sheetIdSubmit.addEventListener('click', function() {
     let url = new URL(sheetIdInput.value);
     let urlArray = url.pathname.split('/');
     sheetIdInput.value = urlArray[3];
-    localStorage.setItem("ID", sheetIdInput.value);
   }
 });
 
@@ -94,6 +93,7 @@ formSubmit.addEventListener('click', function() {
     let input = formItems[k].value.toLowerCase();
     formInputs.push(input);
   }
+  localStorage.setItem("ID", sheetIdInput.value);
   localStorage.setItem("formInputs", JSON.stringify(formInputs));
   gapi.load('client', start);
 });
