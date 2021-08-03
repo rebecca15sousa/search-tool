@@ -287,8 +287,8 @@ function getResults() {
   if (searchLenght >= 3) {
     const filteredItems = spreadsheet.filter((item) => {
       return (
-        (isStringIncluded(item[0], searchString) ||
-        isStringIncluded(item[1], searchString) ||
+        (item[0].toLowerCase().includes(searchString) ||
+        item[1].toLowerCase().includes(searchString) ||
         isStringIncluded(item[4], searchString)) &&
         isFilterIncluded(item, 2, valuesComplex) &&
         isFilterIncluded(item, 3, valuesPlayed) &&
