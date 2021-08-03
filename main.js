@@ -75,71 +75,17 @@ function getSortValue(e) {
 }
 
 function sortItems(filteredItems) {
-  if (sortValue == "Yes") {
-    sortYes(filteredItems);
-  } else if (sortValue == "No") {
-    sortNo(filteredItems);
-  }
-}
-
-function countYes(filteredItems) {
-  yesNumber = 0;
+  let temp = [];
   for (let i = 0; i < filteredItems.length; i++) {
     let item = filteredItems[i];
-    let key = item[3];
-    for (let j = 0; j < key.length; j++) {
-      if (key[j] == "Yes") {
-        yesNumber++;
-      }
+    let keys = item[3];
+    if (keys.some((key) => key == sortValue)) {
+      temp.unshift(item);
+    } else {
+      temp.push(item);
     }
   }
-}
-
-function sortNo(filteredItems) {
-  countYes(filteredItems);
-  for (let i = 0; yesNumber > 0; i++) {
-    let item = filteredItems[i];
-    let key = item[3];
-    for (let j = 0; j < key.length; j++) {
-      if (key[j] == "Yes") {
-        let temp = item;
-        filteredItems.splice(i, 1);
-        filteredItems.push(temp);
-        i--;
-        yesNumber--;
-      }
-    }
-  }
-}
-
-function countNo(filteredItems) {
-  noNumber = 0;
-  for (let i = 0; i < filteredItems.length; i++) {
-    let item = filteredItems[i];
-    let key = item[3];
-    for (let j = 0; j < key.length; j++) {
-      if (key[j] == "No") {
-        noNumber++;
-      }
-    }
-  }
-}
-
-function sortYes(filteredItems) {
-  countNo(filteredItems);
-  for (let i = 0; noNumber > 0; i++) {
-    let item = filteredItems[i];
-    let key = item[3];
-    for (let j = 0; j < key.length; j++) {
-      if (key[j] == "No") {
-        let temp = item;
-        filteredItems.splice(i, 1);
-        filteredItems.push(temp);
-        i--;
-        noNumber--;
-      }
-    }
-  }
+  return temp;
 }
 
 function generateFilters() {
@@ -295,9 +241,8 @@ function getResults() {
         isFilterIncluded(item, 4, valuesMode)
       );
     });
-    // console.log(filteredItems);
-    sortItems(filteredItems);
-    return filteredItems;
+    let sortedItems = sortItems(filteredItems);
+    return sortedItems;
   } else {
     const filteredItems = spreadsheet.filter((item) => {
       return (
@@ -306,9 +251,8 @@ function getResults() {
         isFilterIncluded(item, 4, valuesMode)
       );
     });
-    // console.log(filteredItems);
-    sortItems(filteredItems);
-    return filteredItems;
+    let sortedItems = sortItems(filteredItems);
+    return sortedItems;
   }
 }
 
