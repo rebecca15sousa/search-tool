@@ -9,6 +9,7 @@ const formCancel = document.getElementById('formCancel');
 let formInputs = [];
 const filterTitle1 = document.getElementById('filterTitle1');
 const filterTitle2 = document.getElementById('filterTitle2');
+const loader = document.getElementById('loader');
 
 function start() {
   // Initializes the Google Sheets API library.
@@ -19,6 +20,7 @@ function start() {
     'scope': 'https://www.googleapis.com/auth/spreadsheets.readonly',
   }).then(function() {
     parseSheet(sheetIdInput.value);
+    loader.style.display = "none";
   });
 };
 
@@ -66,7 +68,7 @@ function createFilterTitle(firstLine, filterTitle, i) {
   filterTitle.textContent = firstLine[index];
 }
 
-// Loads the Google Sheets API library.
+// Changes spreadsheet input
 changeIdBtn.addEventListener('click', function() {
   sheetIdModal.style.display = "block";
 });
@@ -95,16 +97,20 @@ formSubmit.addEventListener('click', function() {
   }
   localStorage.setItem("ID", sheetIdInput.value);
   localStorage.setItem("formInputs", JSON.stringify(formInputs));
-  gapi.load('client', start);
+  displayResults([]);
+  loader.style.display = "block";
+  gapi.load('client', start); // Loads the Google Sheets API library.
 });
 
 formCancel.addEventListener('click', function() {
   columnsForm.style.display = "none";
 });
 
+// Checks if there is spreadsheet input in local storage and loads it
 if (localStorage.getItem("ID")) {
   sheetIdModal.style.display = "none";
   sheetIdInput.value = localStorage.getItem("ID");
   formInputs = JSON.parse(localStorage.getItem("formInputs"));
-  gapi.load('client', start);
+  loader.style.display = "block";
+  gapi.load('client', start); // Loads the Google Sheets API library.
 }

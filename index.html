@@ -12,10 +12,13 @@
     <title>Search Tool</title>
 </head>
 <body>
+    <!-- LOADER -->
+    <div id="loader" class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+
+    <!-- MODALS -->
     <div id="sheetIdModal" class="modal">
         <div class="modal-content">
             <h2 class="modal-title"><label for="sheetIdInput">Submit your spreadsheet URL</label></h2>
-            <!-- <p class="modal-txt">Sample Id: 1ZLdvkWefFzPAZtWy8s6GG2HN17eRvJdH-LvL3Uqbeoc</p> -->
             <div class="sheet-id-div">
                 <input type="text" name="sheetIdInput" id="sheetIdInput" placeholder="Spreadsheet URL...">
                 <div class="sheet-id-btn-div">
@@ -57,7 +60,8 @@
             </div>
         </div>
     </div>
-    
+
+    <!-- APP -->
     <header>
         <h1 class="title">Spreadsheet search tool</h1>
         <p class="attribution">Developed by 
