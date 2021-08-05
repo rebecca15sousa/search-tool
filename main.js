@@ -88,6 +88,27 @@ function sortItems(filteredItems) {
   return temp;
 }
 
+function sortDate(filteredItems) {
+  for (let i = 0; i < filteredItems.length; i++) {
+    let item = filteredItems[i];
+    let dateStg = item[7];
+    if (dateStg == "Living Document") {
+      let dateObj = new Date();
+      item[7] = dateObj;
+    } else {
+      let dateObj = new Date(dateStg);
+      item[7] = dateObj;
+    }
+  }
+  if (sortValue == "Newest") {
+    const sortedItems = filteredItems.sort((a, b) => b[7] > a[7] ? 1 : -1);
+    return sortedItems;
+  } else {
+    const sortedItems = filteredItems.sort((a, b) => b[7] < a[7] ? 1 : -1);
+    return sortedItems;
+  }
+}
+
 function generateFilters() {
   let filterList1, filterList2, capsuleList, sortByList;
   capsuleList = getFiltersList("2");
@@ -230,8 +251,9 @@ function isFilterIncluded(item, category, filters) {
 function getResults() {
   const searchString = searchBar.value.toLowerCase();
   const searchLenght = searchBar.value.length;
+  let filteredItems;
   if (searchLenght >= 3) {
-    const filteredItems = spreadsheet.filter((item) => {
+    filteredItems = spreadsheet.filter((item) => {
       return (
         (item[0].toLowerCase().includes(searchString) ||
         item[1].toLowerCase().includes(searchString) ||
@@ -241,16 +263,19 @@ function getResults() {
         isFilterIncluded(item, 4, valuesMode)
       );
     });
-    let sortedItems = sortItems(filteredItems);
-    return sortedItems;
   } else {
-    const filteredItems = spreadsheet.filter((item) => {
+    filteredItems = spreadsheet.filter((item) => {
       return (
         isFilterIncluded(item, 2, valuesComplex) &&
         isFilterIncluded(item, 3, valuesPlayed) &&
         isFilterIncluded(item, 4, valuesMode)
       );
     });
+  }
+  if (sortValue == "Newest" || sortValue == "Oldest") {
+    let sortedItems = sortDate(filteredItems);
+    return sortedItems;
+  } else {
     let sortedItems = sortItems(filteredItems);
     return sortedItems;
   }
