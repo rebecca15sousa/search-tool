@@ -21,6 +21,7 @@ function start() {
     'scope': 'https://www.googleapis.com/auth/spreadsheets.readonly',
   }).then(function() {
     parseSheet(sheetIdInput.value);
+    resetInputs();
     loader.style.display = "none";
   });
 };
@@ -117,4 +118,12 @@ if (localStorage.getItem("ID")) {
   formInputs = JSON.parse(localStorage.getItem("formInputs"));
   loader.style.display = "block";
   gapi.load('client', start); // Loads the Google Sheets API library.
+}
+
+// Clears all input fields
+function resetInputs() {
+  let inputs = document.querySelectorAll('input[type="text"]');
+  for (let i = 0; i < inputs.length; i++) {
+    inputs[i].value = "";
+  }
 }
