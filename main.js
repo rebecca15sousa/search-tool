@@ -173,8 +173,12 @@ function displayFilters(filtersList, container, column, type) {
 }
 
 function displaySortBy(sortByList, container) {
-  container.innerHTML = `<span class="drop-item" data-value="Newest">Newest</span>
-  <span class="drop-item" data-value="Oldest">Oldest</span>`;
+  if (localStorage.getItem("formDate")) {
+    container.innerHTML = `<span class="drop-item" data-value="Newest">Newest</span>
+    <span class="drop-item" data-value="Oldest">Oldest</span>`;
+  } else {
+    container.innerHTML = "";
+  }
   const htmlString = sortByList.map((item) => {
     return `
     <span class="drop-item" data-value="${item}">${item}</span>`;

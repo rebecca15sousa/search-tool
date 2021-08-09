@@ -6,6 +6,7 @@ const changeIdBtn = document.getElementById('changeIdBtn');
 const columnsForm = document.getElementById('columnsForm');
 const formSubmit = document.getElementById('formSubmit');
 const formCancel = document.getElementById('formCancel');
+const formDate = document.getElementById('formDate');
 let formInputs = [];
 const filterTitle1 = document.getElementById('filterTitle1');
 const filterTitle2 = document.getElementById('filterTitle2');
@@ -94,6 +95,9 @@ formSubmit.addEventListener('click', function() {
   for (let k = 0; k < formItems.length; k++) {
     let input = formItems[k].value.toLowerCase();
     formInputs.push(input);
+  }
+  if (formDate.value != "") {
+    localStorage.setItem("formDate", formDate.value);
   }
   localStorage.setItem("ID", sheetIdInput.value);
   localStorage.setItem("formInputs", JSON.stringify(formInputs));
