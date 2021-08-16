@@ -7,8 +7,6 @@ const capsuleFilters = document.getElementById('capsuleFilters');
 let spreadsheet;
 const leftCapBtn = document.getElementById('left');
 const rightCapBtn = document.getElementById('right');
-const sortBtn = document.getElementById('sortBtn');
-const arrowIcon = document.getElementById('arrowIcon');
 const dropContent = document.getElementById('dropContent');
 let valuesComplex = []; //array with complexity filter values that are checked
 let valuesPlayed = []; //array with played filter values that are checked
@@ -176,6 +174,7 @@ function displaySortBy(sortByList, container) {
   if (localStorage.getItem("formDate")) {
     container.innerHTML = `<span class="drop-item" data-value="Newest">Newest</span>
     <span class="drop-item" data-value="Oldest">Oldest</span>`;
+    localStorage.removeItem("formDate");
   } else {
     container.innerHTML = "";
   }

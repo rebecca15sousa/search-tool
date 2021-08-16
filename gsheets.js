@@ -11,6 +11,8 @@ let formInputs = [];
 const filterTitle1 = document.getElementById('filterTitle1');
 const filterTitle2 = document.getElementById('filterTitle2');
 const loader = document.getElementById('loader');
+const sortBtn = document.getElementById('sortBtn');
+const arrowIcon = document.getElementById('arrowIcon');
 
 function start() {
   // Initializes the Google Sheets API library.
@@ -122,6 +124,8 @@ if (localStorage.getItem("ID")) {
 
 // Clears all input fields
 function resetInputs() {
+  sortBtn.textContent = "";
+  sortBtn.appendChild(arrowIcon);
   let inputs = document.querySelectorAll('input[type="text"]');
   for (let i = 0; i < inputs.length; i++) {
     inputs[i].value = "";
