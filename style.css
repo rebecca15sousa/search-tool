@@ -80,7 +80,7 @@
     }
   }
 
-/* MODAL */
+/* MODALS */
 .modal {
     position: fixed;
     z-index: 2;
@@ -194,6 +194,21 @@ header {
     font-family: var(--ff);
     font-size: var(--fs-body);
     font-weight: var(--fw-reg);
+}
+
+#changeIdBtn {
+    font-family: var(--ff);
+    cursor: pointer;
+    background-color: var(--clr-light);
+    border: 1px solid var(--clr-dark);
+    border-radius: 20px;
+    padding: .3em .5em;
+    margin-bottom: .5em;
+    transition: 0.3s;
+}
+
+#changeIdBtn:hover {
+    background-color: var(--clr-hover);
 }
 
 /* SEARCH BAR */
