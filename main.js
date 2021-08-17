@@ -122,6 +122,7 @@ function generateFilters() {
   });
   displayFilters(filterList1, filters1, 3, "checkbox");
   displayFilters(filterList2, filters2, 4, "checkbox");
+  addEllipsis();
   const checkboxesNode = document.querySelectorAll('input[type=checkbox]');
   const checkboxesArray = Array.from(checkboxesNode);
   checkboxesArray.forEach((checkbox) => {
@@ -163,7 +164,7 @@ function displayFilters(filtersList, container, column, type) {
     return `
     <li class="${type}-li">
       <input type="checkbox" id="${item}" class="${type}-input" data-column="${column}" value="${item}">
-      <label for="${item}" class="${type}-label">${item}</label>
+      <label for="${item}" class="${type}-label ellipsis">${item}</label>
       <br>
     </li>`;
   }).join('');
@@ -183,6 +184,16 @@ function displaySortBy(sortByList, container) {
     <span class="drop-item" data-value="${item}">${item}</span>`;
   }).join('');
   container.innerHTML += htmlString;
+}
+
+function addEllipsis() {
+  let labels = document.querySelectorAll('.ellipsis');
+  for (let i = 0; i < labels.length; i++) {
+    let label = labels[i];
+    if (label.textContent.length > 27) {
+      label.textContent = label.textContent.substr(0, 24) + " (...)";
+    }
+  }
 }
 
 //changes checked status for capsule filters
