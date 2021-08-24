@@ -322,10 +322,18 @@ function displayResults(searchResult) {
           <p class="item-text">${item[7]}</p>
         </div>
         <div>
-          <a class="item-text-link" href="${item[6]}" target="_blank" rel="noopener noreferrer"><p class="item-text">${item[1]}</p></a>
+          <a class="item-text-link" href="${item[6]}" target="_blank" rel="noopener noreferrer"><p class="item-text">${checkDescription(item)}</p></a>
         </div>
       </div>
     </li>`;
   }).join('');
   resultsList.innerHTML = htmlString;
+}
+
+function checkDescription(item) {
+  if (item[1] == "") {
+    return "No description available.";
+  } else {
+    return item[1];
+  }
 }
