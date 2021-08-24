@@ -316,7 +316,11 @@ function displayResults(searchResult) {
       <a href="${item[6]}" target="_blank" rel="noopener noreferrer"><img src="${item[5]}" class="item-img"></a>
       <div class="item-content">
         <h2 class="item-title"><a class="item-title-link" href="${item[6]}" target="_blank" rel="noopener noreferrer">${item[0]}</a></h2>
-        <p class="item-text">${item[4].join(', ')}</p>
+        <div>
+          <p class="item-text">${item[4].join(', ')}</p>
+          <p class="item-text">${item[2].join(', ')}</p>
+          <p class="item-text">${item[7]}</p>
+        </div>
         <div>
           <a class="item-text-link" href="${item[6]}" target="_blank" rel="noopener noreferrer"><p class="item-text">${item[1]}</p></a>
         </div>
