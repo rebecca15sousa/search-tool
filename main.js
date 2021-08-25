@@ -296,8 +296,8 @@ function getResults() {
 }
 
 searchBar.addEventListener('keyup', () => {
-    let searchResult = getResults();
-    displayResults(searchResult);
+  let searchResult = getResults();
+  displayResults(searchResult);
 });
 
 //checks if search value is included in array element from spreadsheet
