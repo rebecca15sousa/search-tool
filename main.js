@@ -153,7 +153,7 @@ function getFiltersList(category) {
 function displayFilters(filtersList, container, column, type) {
   if (type == "radio") {
     container.innerHTML =  `<li class="radio-li">
-    <input type="checkbox" id="All" class="radio-input" data-column="3" value="All">
+    <input type="checkbox" id="All" class="radio-input" data-column="2" value="All">
     <label for="All" id="allLabel" class="radio-label">All</label>
     <br>
   </li>`;
