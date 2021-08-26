@@ -316,13 +316,15 @@ function displayResults(searchResult) {
       <a href="${item[6]}" target="_blank" rel="noopener noreferrer"><img src="${item[5]}" class="item-img"></a>
       <div class="item-content">
         <h2 class="item-title"><a class="item-title-link" href="${item[6]}" target="_blank" rel="noopener noreferrer">${item[0]}</a></h2>
-        <div>
-          <p class="item-text">${item[4].join(', ')}</p>
+        <div class="subtitle-div">
+          <div class="${setStatusColour(item)} status-circle"></div>
+          <p class="item-text status-text">${item[3]}</p>  
           <p class="item-text">${item[2].join(', ')}</p>
-          <p class="item-text">${item[7]}</p>
         </div>
         <div>
           <a class="item-text-link" href="${item[6]}" target="_blank" rel="noopener noreferrer"><p class="item-text">${checkDescription(item)}</p></a>
+          <p class="item-text">${item[7]}</p>
+          <p class="item-text">${item[4].join(', ')}</p>
         </div>
       </div>
     </li>`;
@@ -335,5 +337,15 @@ function checkDescription(item) {
     return "No description available.";
   } else {
     return item[1];
+  }
+}
+
+function setStatusColour(item) {
+  if (item[3] == "Finished") {
+    return "status-circle-green";
+  } else if (item[3] == "On-going") {
+    return "status-circle-yellow";
+  } else {
+    return "status-circle-orange";
   }
 }

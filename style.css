@@ -428,6 +428,24 @@ header {
     text-decoration: none;
 }
 
+.status-circle {
+    border-radius: 50px;
+    width: var(--fs-body);
+    height: var(--fs-body);
+}
+
+.status-circle-green {
+    background-color: green;
+}
+
+.status-circle-yellow {
+    background-color: yellow;
+}
+
+.status-circle-orange {
+    background-color: orange;
+}
+
 .no-bullet {
     list-style-type: none;
     padding: 0;
