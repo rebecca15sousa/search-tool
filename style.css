@@ -434,18 +434,6 @@ header {
     height: var(--fs-body);
 }
 
-.status-circle-green {
-    background-color: green;
-}
-
-.status-circle-yellow {
-    background-color: yellow;
-}
-
-.status-circle-orange {
-    background-color: orange;
-}
-
 .no-bullet {
     list-style-type: none;
     padding: 0;

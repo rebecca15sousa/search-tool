@@ -317,8 +317,8 @@ function displayResults(searchResult) {
       <div class="item-content">
         <h2 class="item-title"><a class="item-title-link" href="${item[6]}" target="_blank" rel="noopener noreferrer">${item[0]}</a></h2>
         <div class="subtitle-div">
-          <div class="${setStatusColour(item)} status-circle"></div>
-          <p class="item-text status-text">${item[3]}</p>  
+          <div class="status-circle" style="background-color: ${setStatusColour(item)}"></div>
+          <p class="item-text" style="color: ${setStatusColour(item)}">${item[3]}</p>  
           <p class="item-text">${item[2].join(', ')}</p>
         </div>
         <div>
@@ -342,10 +342,10 @@ function checkDescription(item) {
 
 function setStatusColour(item) {
   if (item[3] == "Finished") {
-    return "status-circle-green";
+    return "green";
   } else if (item[3] == "On-going") {
-    return "status-circle-yellow";
+    return "yellow";
   } else {
-    return "status-circle-orange";
+    return "orange";
   }
 }
