@@ -115,6 +115,7 @@ function generateFilters() {
   sortByList = getFiltersList("3");
   displaySortBy(sortByList, dropContent);
   displayFilters(capsuleList, capsuleFilters, 2, "radio");
+  document.getElementById('All').checked = true;
   const capsulesNode = document.querySelectorAll('.radio-input');
   const capsulesArray = Array.from(capsulesNode);
   capsulesArray.forEach((capsule) => {
@@ -316,10 +317,10 @@ function displayResults(searchResult) {
       <a href="${item[6]}" target="_blank" rel="noopener noreferrer"><img src="${item[5]}" class="item-img"></a>
       <div class="item-content">
         <h2 class="item-title"><a class="item-title-link" href="${item[6]}" target="_blank" rel="noopener noreferrer">${item[0]}</a></h2>
-        <div class="subtitle-div">
-          <div class="status-circle" style="background-color: ${setStatusColour(item)}"></div>
-          <p class="item-text" style="color: ${setStatusColour(item)}">${item[3]}</p>  
-          <p class="item-text">${item[2].join(', ')}</p>
+        <div>
+          <div class="status-circle display-inline" style="background-color: ${setStatusColour(item)}"></div>
+          <p class="item-text display-inline" style="color: ${setStatusColour(item)}">${item[3]}</p>  
+          <p class="item-text display-inline">${item[2].join(', ')}</p>
         </div>
         <div>
           <a class="item-text-link" href="${item[6]}" target="_blank" rel="noopener noreferrer"><p class="item-text">${checkDescription(item)}</p></a>

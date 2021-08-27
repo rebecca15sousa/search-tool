@@ -428,6 +428,10 @@ header {
     text-decoration: none;
 }
 
+.display-inline {
+    display: inline-block;
+}
+
 .status-circle {
     border-radius: 50px;
     width: var(--fs-body);
