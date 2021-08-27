@@ -84,6 +84,7 @@ sheetIdSubmit.addEventListener('click', function() {
     let url = new URL(sheetIdInput.value);
     let urlArray = url.pathname.split('/');
     sheetIdInput.value = urlArray[3];
+    localStorage.removeItem("formDate");
   }
 });
 

@@ -176,7 +176,6 @@ function displaySortBy(sortByList, container) {
   if (localStorage.getItem("formDate")) {
     container.innerHTML = `<span class="drop-item" data-value="Newest">Newest</span>
     <span class="drop-item" data-value="Oldest">Oldest</span>`;
-    localStorage.removeItem("formDate");
   } else {
     container.innerHTML = "";
   }
