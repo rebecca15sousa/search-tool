@@ -51,7 +51,6 @@ function parseSheet(spreadsheetId) {
       gameList.push(itemParsed);
     }
     spreadsheet = gameList;
-    displayResults(spreadsheet);
     generateFilters();
   });
 }

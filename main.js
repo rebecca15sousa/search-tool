@@ -114,6 +114,7 @@ function generateFilters() {
   filterList2 = getFiltersList("4");
   sortByList = getFiltersList("3");
   displaySortBy(sortByList, dropContent);
+  startSortBy();
   displayFilters(capsuleList, capsuleFilters, 2, "radio");
   document.getElementById('All').checked = true;
   const capsulesNode = document.querySelectorAll('.radio-input');
@@ -129,6 +130,14 @@ function generateFilters() {
   checkboxesArray.forEach((checkbox) => {
     checkbox.addEventListener('change', selectFilter);
   });
+}
+
+function startSortBy() {
+  sortBtn.textContent = dropContent.firstChild.getAttribute("data-value");
+  sortBtn.appendChild(arrowIcon);
+  sortValue = sortBtn.textContent;
+  let searchResult = getResults();
+  displayResults(searchResult);
 }
 
 //loops through all cells of a specific collumn and gets every unique element to create a filter list
