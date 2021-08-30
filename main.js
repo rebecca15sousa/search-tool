@@ -326,19 +326,31 @@ function displayResults(searchResult) {
       <div class="item-content">
         <h2 class="item-title"><a class="item-title-link" href="${item[6]}" target="_blank" rel="noopener noreferrer">${item[0]}</a></h2>
         <div>
-          <div class="status-circle display-inline" style="background-color: ${setStatusColour(item)}"></div>
-          <p class="item-text display-inline" style="color: ${setStatusColour(item)}">${item[3]}</p>  
+          <div class="status-div display-inline" style="background-color: ${setStatusBack(item)}">
+            <div class="status-circle display-inline" style="background-color: ${setStatusColour(item)}"></div>
+            <p class="item-text status-text display-inline" style="color: ${setStatusColour(item)}">${item[3]}</p>
+          </div>
           <p class="item-text display-inline">${item[2].join(', ')}</p>
         </div>
         <div>
-          <a class="item-text-link" href="${item[6]}" target="_blank" rel="noopener noreferrer"><p class="item-text">${checkDescription(item)}</p></a>
-          <p class="item-text">${item[7]}</p>
-          <p class="item-text">${item[4].join(', ')}</p>
+          <a class="item-text-link" href="${item[6]}" target="_blank" rel="noopener noreferrer"><p class="item-text margin">${checkDescription(item)}</p></a>
+          <p class="item-text margin">${item[7]}</p>
+          <p class="item-text margin">Tags: ${item[4].join(', ')}</p>
         </div>
       </div>
     </li>`;
   }).join('');
   resultsList.innerHTML = htmlString;
+}
+
+function setStatusBack(item) {
+  if (item[3] == "Finished") {
+    return "#ededed";
+  } else if (item[3] == "On-going") {
+    return "#565656";
+  } else {
+    return "#565656";
+  }
 }
 
 function checkDescription(item) {

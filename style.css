@@ -386,10 +386,6 @@ header {
     max-width: 20rem;
 }
 
-/* .item-content {
-
-} */
-
 .item-title {
     margin: 0;
     font-family: var(--ff);
@@ -416,6 +412,7 @@ header {
     font-family: var(--ff);
     font-size: var(--fs-body);
     font-weight: var(--fw-reg);
+    margin: 0;
 }
 
 .item-text-link:link {
@@ -430,6 +427,16 @@ header {
 
 .display-inline {
     display: inline-block;
+}
+
+.margin {
+    margin: 1em 0;
+}
+
+.status-div {
+    border-radius: 20px;
+    border: 2px solid black;
+    padding: .3em .5em;
 }
 
 .status-circle {
