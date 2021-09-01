@@ -334,13 +334,18 @@ function displayResults(searchResult) {
         </div>
         <div>
           <a class="item-text-link" href="${item[6]}" target="_blank" rel="noopener noreferrer"><p class="item-text margin">${checkDescription(item)}</p></a>
-          <p class="item-text margin">${item[7]}</p>
+          <p class="item-text margin">${displayDate(item)}</p>
           <p class="item-text margin">Tags: ${item[4].join(', ')}</p>
         </div>
       </div>
     </li>`;
   }).join('');
   resultsList.innerHTML = htmlString;
+}
+
+function displayDate(item) {
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  return (months[item[7].getMonth()] + " " + item[7].getFullYear());
 }
 
 function setStatusBack(item) {
