@@ -11,6 +11,9 @@ const dropContent = document.getElementById('dropContent');
 let valuesComplex = []; //array with complexity filter values that are checked
 let valuesPlayed = []; //array with played filter values that are checked
 let valuesMode = []; //array with mode filter values that are checked
+const tagSearch = document.getElementById('tagSearch');
+
+let filterList2;
 
 let noNumber = 0;
 let yesNumber = 0;
@@ -116,7 +119,7 @@ function sortByLowestInstance(filteredItems, category) {
 }
 
 function generateFilters() {
-  let filterList1, filterList2, capsuleList, sortByList;
+  let filterList1, capsuleList, sortByList;
   capsuleList = getFiltersList("2");
   filterList1 = getFiltersList("3");
   filterList2 = getFiltersList("4");
@@ -343,6 +346,21 @@ function isStringIncluded(array, string) {
       return true;
     }
   }
+}
+
+tagSearch.addEventListener('keyup', () => {
+  let searchResult = searchTags();
+  displayFilters(searchResult, filters2, 4, "checkbox");
+});
+
+function searchTags() {
+  const searchString = tagSearch.value.toLowerCase();
+  let filteredTags = filterList2.filter((tag) => {
+    return (
+      tag.name.toLowerCase().includes(searchString)
+    );
+  });
+  return filteredTags;
 }
 
 function displayResults(searchResult) {
