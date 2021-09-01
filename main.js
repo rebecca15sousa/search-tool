@@ -99,12 +99,20 @@ function sortDate(filteredItems) {
     }
   }
   if (sortValue == "Newest") {
-    const sortedItems = filteredItems.sort((a, b) => b[7] > a[7] ? 1 : -1);
-    return sortedItems;
+    return sortByHighestInstance(filteredItems, "7");
   } else {
-    const sortedItems = filteredItems.sort((a, b) => b[7] < a[7] ? 1 : -1);
-    return sortedItems;
+    return sortByLowestInstance(filteredItems, "7");
   }
+}
+
+function sortByHighestInstance(filteredItems, category) {
+  const sortedItems = filteredItems.sort((a, b) => b[category] > a[category] ? 1 : -1);
+  return sortedItems;
+}
+
+function sortByLowestInstance(filteredItems, category) {
+  const sortedItems = filteredItems.sort((a, b) => b[category] < a[category] ? 1 : -1);
+  return sortedItems;
 }
 
 function generateFilters() {
@@ -140,7 +148,7 @@ function startSortBy() {
   displayResults(searchResult);
 }
 
-//loops through all cells of a specific collumn and gets every unique element to create a filter list
+//loops through all cells of a specific collumn and gets every unique element to create a ordered filter list
 function getFiltersList(category) {
   const filtersList = [];
   //loops through entire spreadsheet, line by line
@@ -152,12 +160,31 @@ function getFiltersList(category) {
     //loops through specific cell
     for (let j = 0; j < key.length; j++) {
       let filterName = key[j].trim();
-      if (!filtersList.includes(filterName)) {
-        filtersList.push(filterName);
+      //checks every obj on array to see if current loop value already exists
+      if (!filtersList.some((obj) => isIncluded(obj, filterName))) {
+        //if it doesn't exist, create new obj for it
+        let tag = new Tag(filterName);
+        filtersList.push(tag);
       }
     }
   }
-  return filtersList;
+  return sortByHighestInstance(filtersList, "number");
+}
+
+function Tag(name) {
+  this.name = name;
+  this.number = 1;
+}
+
+//checks if obj name property is equal to current loop value
+function isIncluded(obj, filterName) {
+  if (obj.name === filterName) {
+    //if it is equal, increment number property
+    obj.number++;
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function displayFilters(filtersList, container, column, type) {
@@ -173,8 +200,8 @@ function displayFilters(filtersList, container, column, type) {
   const htmlString = filtersList.map((item) => {
     return `
     <li class="${type}-li">
-      <input type="checkbox" id="${item}" class="${type}-input" data-column="${column}" value="${item}">
-      <label for="${item}" class="${type}-label ellipsis">${item}</label>
+      <input type="checkbox" id="${item.name}" class="${type}-input" data-column="${column}" value="${item.name}">
+      <label for="${item.name}" class="${type}-label ellipsis">${item.name}</label>
       <br>
     </li>`;
   }).join('');
@@ -190,7 +217,7 @@ function displaySortBy(sortByList, container) {
   }
   const htmlString = sortByList.map((item) => {
     return `
-    <span class="drop-item" data-value="${item}">${item}</span>`;
+    <span class="drop-item" data-value="${item.name}">${item.name}</span>`;
   }).join('');
   container.innerHTML += htmlString;
 }
