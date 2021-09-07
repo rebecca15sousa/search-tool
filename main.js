@@ -203,8 +203,8 @@ function displayFilters(filtersList, container, column, type) {
   const htmlString = filtersList.map((item) => {
     return `
     <li class="${type}-li">
-      <input type="checkbox" id="${item.name}" class="${type}-input" data-column="${column}" value="${item.name}">
-      <label for="${item.name}" class="${type}-label ellipsis">${item.name}</label>
+      <input type="checkbox" id="${type} + ${item.name}" class="${type}-input" data-column="${column}" value="${item.name}">
+      <label for="${type} + ${item.name}" class="${type}-label ellipsis">${item.name}</label>
       <br>
     </li>`;
   }).join('');
@@ -373,19 +373,68 @@ function displayResults(searchResult) {
         <div>
           <div class="status-div display-inline" style="background-color: ${setStatusBack(item)}">
             <div class="status-circle display-inline" style="background-color: ${setStatusColour(item)}"></div>
-            <p class="item-text status-text display-inline" style="color: ${setStatusColour(item)}">${item[3]}</p>
+            <p class="item-text display-inline" style="color: ${setStatusColour(item)}">${item[3]}</p>
           </div>
-          <p class="item-text display-inline">${item[2].join(', ')}</p>
+          <p class="item-text display-inline">${displayTags(item[2], "type")}</p>
         </div>
         <div>
           <a class="item-text-link" href="${item[6]}" target="_blank" rel="noopener noreferrer"><p class="item-text margin">${checkDescription(item)}</p></a>
           <p class="item-text margin">${displayDate(item)}</p>
-          <p class="item-text margin">Tags: ${item[4].join(', ')}</p>
+          <p class="item-text margin">Tags: ${displayTags(item[4], "tag")}</p>
         </div>
       </div>
     </li>`;
   }).join('');
   resultsList.innerHTML = htmlString;
+  let typeTextNode = document.querySelectorAll('.type-text');
+  let typeTextArray = Array.from(typeTextNode);
+  typeTextArray.forEach((typeText) => {
+    typeText.addEventListener('click', searchTextType);
+  });
+  let tagTextNode = document.querySelectorAll('.tag-text');
+  let tagTextArray = Array.from(tagTextNode);
+  tagTextArray.forEach((tagText) => {
+    tagText.addEventListener('click', searchTextTags);
+  });
+}
+
+function displayTags(item, tagClass) {
+  const htmlString = item.map((tag) => {
+    return `
+    <span class="${tagClass}-text">${tag}</span>`
+  }).join();
+  return htmlString;
+}
+
+function searchTextTags(e) {
+  let filter = e.target;
+  let list = document.querySelectorAll('.checkbox-input');
+  for (let i = 0; i < list.length; i++) {
+    if (filter.innerHTML == list[i].value && !valuesMode.includes(list[i].value)) {
+      list[i].checked = true;
+      let event = {
+        target: list[i]
+      };
+      selectFilter(event);
+    }
+  }
+}
+
+function searchTextType(e) {
+  let filter = e.target;
+  let list = document.querySelectorAll('.radio-input');
+  for (let i = 0; i < list.length; i++) {
+    if (filter.innerHTML == list[i].value) {
+      for (let j = 0; j < list.length; j++) {
+        list[j].checked = false;
+      }
+      list[i].checked = true;
+      let event = {
+        target: list[i]
+      };
+      selectFilter(event);
+    }
+  }
 }
 
 function displayDate(item) {

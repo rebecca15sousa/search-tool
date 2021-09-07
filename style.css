@@ -443,6 +443,7 @@ header {
     border-radius: 50px;
     width: var(--fs-body);
     height: var(--fs-body);
+    vertical-align: text-top;
 }
 
 .no-bullet {
