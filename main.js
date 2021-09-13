@@ -125,6 +125,7 @@ function generateFilters() {
   filterList2 = getFiltersList("4");
   sortByList = getFiltersList("3");
   displaySortBy(sortByList, dropContent);
+  // console.log(dropContent.innerHTML);
   startSortBy();
   displayFilters(capsuleList, capsuleFilters, 2, "radio");
   document.getElementById('All').checked = true;
@@ -144,7 +145,8 @@ function generateFilters() {
 }
 
 function startSortBy() {
-  sortBtn.textContent = dropContent.firstChild.getAttribute("data-value");
+  // console.log(dropContent);
+  sortBtn.textContent = dropContent.firstElementChild.getAttribute("data-value");
   sortBtn.appendChild(arrowIcon);
   sortValue = sortBtn.textContent;
   let searchResult = getResults();
@@ -212,6 +214,7 @@ function displayFilters(filtersList, container, column, type) {
 }
 
 function displaySortBy(sortByList, container) {
+  // console.log(sortByList);
   if (localStorage.getItem("formDate")) {
     container.innerHTML = `<span class="drop-item" data-value="Newest">Newest</span>
     <span class="drop-item" data-value="Oldest">Oldest</span>`;
@@ -219,10 +222,12 @@ function displaySortBy(sortByList, container) {
     container.innerHTML = "";
   }
   const htmlString = sortByList.map((item) => {
+    // console.log(item.name);
     return `
     <span class="drop-item" data-value="${item.name}">${item.name}</span>`;
   }).join('');
   container.innerHTML += htmlString;
+  // console.log(container.innerHTML);
 }
 
 function addEllipsis() {
@@ -438,8 +443,13 @@ function searchTextType(e) {
 }
 
 function displayDate(item) {
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  return (months[item[7].getMonth()] + " " + item[7].getFullYear());
+  if (formDate.value != "") {
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    return (months[item[7].getMonth()] + " " + item[7].getFullYear());
+  } else {
+    return item[7];
+  }
+  
 }
 
 function setStatusBack(item) {

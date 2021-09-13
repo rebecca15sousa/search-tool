@@ -1,6 +1,8 @@
 const sheetIdSubmit = document.getElementById('sheetIdSubmit');
 const sheetIdCancel = document.getElementById('sheetIdCancel');
 const sheetIdInput = document.getElementById('sheetIdInput');
+const demoInput = document.getElementById('demoInput');
+let sheetId;
 const sheetIdModal = document.getElementById('sheetIdModal');
 const changeIdBtn = document.getElementById('changeIdBtn');
 const columnsForm = document.getElementById('columnsForm');
@@ -14,6 +16,15 @@ const loader = document.getElementById('loader');
 const sortBtn = document.getElementById('sortBtn');
 const arrowIcon = document.getElementById('arrowIcon');
 
+const formTitle = document.getElementById('formTitle');
+const formInfo = document.getElementById('formInfo');
+const formCapFilt = document.getElementById('formCapFilt');
+const formFilt1 = document.getElementById('formFilt1');
+const formFilt2 = document.getElementById('formFilt2');
+const formImg = document.getElementById('formImg');
+const formLink = document.getElementById('formLink');
+
+
 function start() {
   // Initializes the Google Sheets API library.
   gapi.client.init({
@@ -22,7 +33,7 @@ function start() {
     'clientId': '37348095959-i0nd20ns5vklh6q2drb7mf2am83vqou4.apps.googleusercontent.com',
     'scope': 'https://www.googleapis.com/auth/spreadsheets.readonly',
   }).then(function() {
-    parseSheet(sheetIdInput.value);
+    parseSheet(sheetId);
     resetInputs();
     loader.style.display = "none";
   });
@@ -76,13 +87,25 @@ changeIdBtn.addEventListener('click', function() {
   sheetIdModal.style.display = "block";
 });
 
+demoInput.addEventListener('click', function() {
+  sheetIdInput.value = "https://docs.google.com/spreadsheets/d/1ZLdvkWefFzPAZtWy8s6GG2HN17eRvJdH-LvL3Uqbeoc/edit#gid=332499702";
+  formTitle.value = "a";
+  formInfo.value = "b";
+  formCapFilt.value = "d";
+  formFilt1.value = "e";
+  formFilt2.value = "f";
+  formImg.value = "g";
+  formLink.value = "h";
+  formDate.value = "";
+});
+
 sheetIdSubmit.addEventListener('click', function() {
   if (sheetIdInput.value != "") {
     sheetIdModal.style.display = "none";
     columnsForm.style.display = "block";
     let url = new URL(sheetIdInput.value);
     let urlArray = url.pathname.split('/');
-    sheetIdInput.value = urlArray[3];
+    sheetId = urlArray[3];
     localStorage.removeItem("formDate");
   }
 });
@@ -102,7 +125,7 @@ formSubmit.addEventListener('click', function() {
   if (formDate.value != "") {
     localStorage.setItem("formDate", formDate.value);
   }
-  localStorage.setItem("ID", sheetIdInput.value);
+  localStorage.setItem("ID", sheetId);
   localStorage.setItem("formInputs", JSON.stringify(formInputs));
   displayResults([]);
   loader.style.display = "block";
@@ -116,7 +139,7 @@ formCancel.addEventListener('click', function() {
 // Checks if there is spreadsheet input in local storage and loads it
 if (localStorage.getItem("ID")) {
   sheetIdModal.style.display = "none";
-  sheetIdInput.value = localStorage.getItem("ID");
+  sheetId = localStorage.getItem("ID");
   formInputs = JSON.parse(localStorage.getItem("formInputs"));
   loader.style.display = "block";
   gapi.load('client', start); // Loads the Google Sheets API library.
@@ -126,8 +149,8 @@ if (localStorage.getItem("ID")) {
 function resetInputs() {
   sortBtn.textContent = "";
   sortBtn.appendChild(arrowIcon);
-  let inputs = document.querySelectorAll('input[type="text"]');
-  for (let i = 0; i < inputs.length; i++) {
-    inputs[i].value = "";
-  }
+  // let inputs = document.querySelectorAll('input[type="text"]');
+  // for (let i = 0; i < inputs.length; i++) {
+  //   inputs[i].value = "";
+  // }
 }

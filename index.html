@@ -20,6 +20,8 @@
         <div class="modal-content">
             <h2 class="modal-title"><label for="sheetIdInput">Submit your spreadsheet URL</label></h2>
             <div class="sheet-id-div">
+                <p class="modal-txt">Input your Google sheet URL, then for each collumn that you want to display it's content, write it's corresponding letter on your preferred input field.</p>
+                <p class="modal-txt">Click here to select a <span id="demoInput">Demo Spreadsheet</span>.</p>
                 <input type="text" name="sheetIdInput" id="sheetIdInput" placeholder="Spreadsheet URL...">
                 <div class="sheet-id-btn-div">
                     <button type="button" id="sheetIdSubmit" class="sheet-id-btn">Submit</button>
@@ -31,32 +33,32 @@
 
     <div id="columnsForm" class="modal">
         <div class="modal-content">
-            <h2 class="modal-title">Choose what you want to display</h2>
-            <p class="modal-txt">Write the columns' letters for each category</p>
+            <h2 class="modal-title">Assign your spreadsheet columns</h2>
+            <p class="modal-txt">Input the matching column letter for each category. Leave all fields for categories that you don't have blank</p>
             <div class="form-div">
                 <label for="formTitle" class="form-labels">Title</label>
                 <input type="text" id="formTitle" name="formTitle" class="form-items">
                 <br>
-                <label for="formInfo" class="form-labels">Information</label>
-                <input type="text" id="formInfo" name="formInfo" class="form-items">
+                <label for="formInfo" class="form-labels">Document Description</label>
+                <input type="text" id="formInfo" name="formInfo" class="form-items" >
                 <br>
-                <label for="formCapFilt" class="form-labels">Capsule filters</label>
-                <input type="text" id="formCapFilt" name="formCapFilt" class="form-items">
+                <label for="formCapFilt" class="form-labels">Document Type</label>
+                <input type="text" id="formCapFilt" name="formCapFilt" class="form-items" >
                 <br>
-                <label for="formFilt1" class="form-labels">Filter 1</label>
-                <input type="text" id="formFilt1" name="formFilt1" class="form-items">
+                <label for="formFilt1" class="form-labels">Document Status</label>
+                <input type="text" id="formFilt1" name="formFilt1" class="form-items" >
                 <br>
-                <label for="formFilt2" class="form-labels">Filter 2</label>
-                <input type="text" id="formFilt2" name="formFilt2" class="form-items">
+                <label for="formFilt2" class="form-labels">Tags</label>
+                <input type="text" id="formFilt2" name="formFilt2" class="form-items" >
                 <br>
-                <label for="formImg" class="form-labels">Image</label>
-                <input type="text" id="formImg" name="formImg" class="form-items">
+                <label for="formImg" class="form-labels">Thumbnails</label>
+                <input type="text" id="formImg" name="formImg" class="form-items" >
                 <br>
                 <label for="formLink" class="form-labels">Link</label>
-                <input type="text" id="formLink" name="formLink" class="form-items">
+                <input type="text" id="formLink" name="formLink" class="form-items" >
                 <br>
                 <label for="formDate" class="form-labels">Date</label>
-                <input type="text" id="formDate" name="formDate" class="form-items">
+                <input type="text" id="formDate" name="formDate" class="form-items" >
                 <br>
                 <button type="button" id="formSubmit" class="sheet-id-btn">Submit</button>
                 <button type="button" id="formCancel" class="sheet-id-btn">Cancel</button>
@@ -71,12 +73,12 @@
             <a href="https://github.com/rebecca15sousa" target="_blank" rel="noopener noreferrer">Rebecca Sousa</a> and 
             <a href="https://github.com/visampaio" target="_blank" rel="noopener noreferrer">Viviane Sampaio</a>
         </p>
-        <button type="button" id="changeIdBtn">Change source</button>
+        <button type="button" id="changeIdBtn">Select a Spreadsheet</button>
     </header>
 
     <div class="search-bar-div">
         <i class="fa fa-search" aria-hidden="true"></i>
-        <input type="text" name="searchBar" id="searchBar" placeholder="Search...">
+        <input type="text" name="searchBar" id="searchBar" placeholder="Search for a document Title, Description, Tag, Etc">
     </div>
 
     <div id="capsuleDiv">

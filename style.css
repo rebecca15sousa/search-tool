@@ -10,6 +10,7 @@
     --fs-h2: 2.25rem;
     --fs-h3: 1.25rem;
     --fs-body: 1rem;
+    --fs-half: 0.5rem;
     --fc-light: #ffffff;
     --fc-dark: #000000;
     --fc-hover: #717272;
@@ -98,6 +99,7 @@
 .modal-content {
     background-color: var(--clr-light);
     margin: 10% auto;
+    padding: 2em;
     width: 70%;
     border-radius: 5px;
 }
@@ -107,6 +109,7 @@
     font-size: var(--fs-h2);
     font-weight: var(--fw-bold);
     text-align: center;
+    margin: 0;
 }
 
 .modal-txt {
@@ -114,6 +117,10 @@
     font-size: var(--fs-body);
     font-weight: var(--fw-reg);
     text-align: center;
+}
+
+#demoInput {
+    cursor: pointer;
 }
 
 .sheet-id-div {
@@ -127,7 +134,7 @@
     border: 1px solid var(--clr-dark);
     border-radius: 5px;
     padding: .5rem;
-    margin-bottom: 1em;
+    margin: 1em 0;
     width: 50%;
     text-align: center;
 }
@@ -147,7 +154,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin: 0 .5em 1em;
+    margin: 0 .5em;
     padding: .5em;
 }
 
@@ -444,6 +451,10 @@ header {
     width: var(--fs-body);
     height: var(--fs-body);
     vertical-align: text-top;
+}
+
+.tag-text, .type-text {
+    cursor: pointer;
 }
 
 .no-bullet {
