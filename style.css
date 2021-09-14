@@ -253,16 +253,55 @@ header {
 }
 
 /* CAPSULE FILTER */
-#left {
-    position: absolute;
-    z-index: 1;
+#capsuleDiv {
+    display: flex;
+    align-items: center;
 }
 
-#right {
+/* #leftBtnDiv {
+    position: absolute;
+    left: 0px;
+    z-index: 1;
+    display: flex;
+} */
+
+/* #leftOuterDiv {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+}
+
+#leftInnerDiv {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+#leftInnerDiv::after {
+    background: linear-gradient(to right, white 20%, rgba(255, 255, 255, 0) 80%);
+    width: 50px;
+    content: "";
+}
+
+#leftBtn {
+    background: transparent;
+    border: none;
+} */
+
+#rightBtnDiv {
     position: absolute;
     right: 0px;
     z-index: 1;
+    display: flex;
 }
+
+/* #rightBtnDiv::before {
+
+}
+
+#rightBtn {
+    
+} */
 
 #capsuleFilters {
     margin: .5em 0;

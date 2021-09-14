@@ -4,9 +4,10 @@ const resultsList = document.getElementById('resultsList');
 const filters1 = document.getElementById('filters1');
 const filters2 = document.getElementById('filters2');
 const capsuleFilters = document.getElementById('capsuleFilters');
+const capsuleDiv = document.getElementById('capsuleDiv');
 let spreadsheet;
-const leftCapBtn = document.getElementById('left');
-const rightCapBtn = document.getElementById('right');
+const leftCapBtn = document.getElementById('leftBtn');
+const rightCapBtn = document.getElementById('rightBtn');
 const dropContent = document.getElementById('dropContent');
 let valuesComplex = []; //array with complexity filter values that are checked
 let valuesPlayed = []; //array with played filter values that are checked
@@ -20,13 +21,31 @@ let yesNumber = 0;
 let sortValue;
 // ------------------------------------- CODE ------------------------------------- //
 // capsuleFilters.addEventListener('wheel', function(e) {
-//   if (e.deltaX < 0) {
-//     console.log('esquerda');
-//     scrollLeft();
-//   } else if (e.deltaX > 0) {
-//     console.log('direita');
-//     scrollRight();
+//   console.log("rodou");
+//   let bla = e.target;
+//   if (bla.deltaX < 0) {
+//     console.log("esquerda");
+//   } else if (bla.deltaX > 0) {
+//     console.log("direita");
 //   }
+// });
+
+
+// capsuleFilters.addEventListener('scroll', function(e) {
+//   console.log("rodou");
+//   //Element.scrollLeft
+//   //pegar valores do capsuleFilters.scrollLeft de antes e depois do evento e subtrair, se o resultado for positivo ele vai pra direita, se for negativo vai pra esquerda
+// });
+
+// capsuleFilters.addEventListener('wheel', function(e) {
+//   console.log("rodou");
+//   // if (e.deltaX < 0) {
+//   //   console.log('esquerda');
+//   //   scrollLeft();
+//   // } else if (e.deltaX > 0) {
+//   //   console.log('direita');
+//   //   scrollRight();
+//   // }
 // });
 
 
