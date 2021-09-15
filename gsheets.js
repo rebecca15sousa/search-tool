@@ -148,9 +148,5 @@ if (localStorage.getItem("ID")) {
 // Clears all input fields
 function resetInputs() {
   sortBtn.textContent = "";
-  sortBtn.appendChild(arrowIcon);
-  // let inputs = document.querySelectorAll('input[type="text"]');
-  // for (let i = 0; i < inputs.length; i++) {
-  //   inputs[i].value = "";
-  // }
+  // sortBtn.appendChild(arrowIcon);
 }

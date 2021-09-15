@@ -77,7 +77,7 @@ function toggleSortBy() {
 window.addEventListener('click', closeSortBy);
 
 function closeSortBy(e) {
-  if (!e.target.matches('#sortBtn') && !e.target.matches('#arrowIcon')) {
+  if (!e.target.matches('#sortBtn') /*&& !e.target.matches('#arrowIcon')*/) {
     dropContent.classList.remove("show");
   }
 }
@@ -89,7 +89,7 @@ function getSortValue(e) {
   let target = e.target;
   sortValue = target.getAttribute("data-value");
   sortBtn.textContent = sortValue;
-  sortBtn.appendChild(arrowIcon);
+  // sortBtn.appendChild(arrowIcon);
   let searchResult = getResults();
   displayResults(searchResult);
 }
@@ -164,9 +164,8 @@ function generateFilters() {
 }
 
 function startSortBy() {
-  // console.log(dropContent);
   sortBtn.textContent = dropContent.firstElementChild.getAttribute("data-value");
-  sortBtn.appendChild(arrowIcon);
+  // sortBtn.appendChild(arrowIcon);
   sortValue = sortBtn.textContent;
   let searchResult = getResults();
   displayResults(searchResult);
@@ -233,20 +232,17 @@ function displayFilters(filtersList, container, column, type) {
 }
 
 function displaySortBy(sortByList, container) {
-  // console.log(sortByList);
   if (localStorage.getItem("formDate")) {
-    container.innerHTML = `<span class="drop-item" data-value="Newest">Newest</span>
-    <span class="drop-item" data-value="Oldest">Oldest</span>`;
+    container.innerHTML = `<span class="drop-item dropdown-item" data-value="Newest">Newest</span>
+    <span class="drop-item dropdown-item" data-value="Oldest">Oldest</span>`;
   } else {
     container.innerHTML = "";
   }
   const htmlString = sortByList.map((item) => {
-    // console.log(item.name);
     return `
-    <span class="drop-item" data-value="${item.name}">${item.name}</span>`;
+    <span class="drop-item dropdown-item" data-value="${item.name}">${item.name}</span>`;
   }).join('');
   container.innerHTML += htmlString;
-  // console.log(container.innerHTML);
 }
 
 function addEllipsis() {

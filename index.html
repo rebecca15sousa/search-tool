@@ -93,12 +93,20 @@
         <ul id="capsuleFilters" class="no-bullet"></ul>
     </div>
 
-    <div class="drop-container">
+    <!-- <div class="drop-container">
         <p class="sort-by">Sort by: </p>
         <button id="sortBtn"> <i class="fa fa-arrow-down" aria-hidden="true" id="arrowIcon"></i></button>
         <div id="dropContent" class="drop-content"></div>
+    </div> -->
+
+    <!-- bs test -->
+    <div class="drop-container dropdown">
+        <p class="sort-by">Sort by: </p>
+        <button type="button" id="sortBtn" class="btn dropdown-toggle"></button>
+        <div id="dropContent" class="drop-content dropdown-menu" aria-labelledby="sortBtn"></div>
     </div>
     
+
     <div class="content">
         <div class="filters-left">
             <h3 class="filters-title" id="filterTitle1"></h3>
@@ -111,11 +119,11 @@
         <ul id="resultsList" class="no-bullet"></ul>
     </div>
 
+    <!-- SCRIPTS -->
     <script src="https://apis.google.com/js/api.js" type="text/javascript"></script>
+    <!-- <script src="bootstrap/bootstrap.bundle.js"></script> -->
     <script src="gsheets.js"></script>
-
     <script src="main.js"></script>
-
-    <script src="bootstrap/bootstrap.bundle.js"></script>
+    
 </body>
 </html>
