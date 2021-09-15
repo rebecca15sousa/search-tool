@@ -233,14 +233,14 @@ function displayFilters(filtersList, container, column, type) {
 
 function displaySortBy(sortByList, container) {
   if (localStorage.getItem("formDate")) {
-    container.innerHTML = `<span class="drop-item dropdown-item" data-value="Newest">Newest</span>
-    <span class="drop-item dropdown-item" data-value="Oldest">Oldest</span>`;
+    container.innerHTML = `<span class="dropdown-item" data-value="Newest">Newest</span>
+    <span class="dropdown-item" data-value="Oldest">Oldest</span>`;
   } else {
     container.innerHTML = "";
   }
   const htmlString = sortByList.map((item) => {
     return `
-    <span class="drop-item dropdown-item" data-value="${item.name}">${item.name}</span>`;
+    <span class="dropdown-item" data-value="${item.name}">${item.name}</span>`;
   }).join('');
   container.innerHTML += htmlString;
 }
