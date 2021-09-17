@@ -159,3 +159,11 @@ if (localStorage.getItem("ID")) {
 function resetInputs() {
   sortBtn.textContent = "";
 }
+
+//Closes modals when clicking outside them
+window.addEventListener('click', function(e) {
+  if (e.target.matches('.modal')) {
+    closeSheetIdModal();
+    closeColumnsForm();
+  }
+});
