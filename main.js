@@ -16,8 +16,6 @@ const tagSearch = document.getElementById('tagSearch');
 
 let filterList2;
 
-let noNumber = 0;
-let yesNumber = 0;
 let sortValue;
 // ------------------------------------- CODE ------------------------------------- //
 // capsuleFilters.addEventListener('wheel', function(e) {
@@ -77,7 +75,7 @@ function toggleSortBy() {
 window.addEventListener('click', closeSortBy);
 
 function closeSortBy(e) {
-  if (!e.target.matches('#sortBtn') /*&& !e.target.matches('#arrowIcon')*/) {
+  if (!e.target.matches('#sortBtn')) {
     dropContent.classList.remove("show");
   }
 }
@@ -89,7 +87,6 @@ function getSortValue(e) {
   let target = e.target;
   sortValue = target.getAttribute("data-value");
   sortBtn.textContent = sortValue;
-  // sortBtn.appendChild(arrowIcon);
   let searchResult = getResults();
   displayResults(searchResult);
 }

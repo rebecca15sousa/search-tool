@@ -1,5 +1,6 @@
 const sheetIdSubmit = document.getElementById('sheetIdSubmit');
 const sheetIdCancel = document.getElementById('sheetIdCancel');
+const sheetIdClose = document.getElementById('sheetIdClose');
 const sheetIdInput = document.getElementById('sheetIdInput');
 const demoInput = document.getElementById('demoInput');
 let sheetId;
@@ -8,13 +9,14 @@ const changeIdBtn = document.getElementById('changeIdBtn');
 const columnsForm = document.getElementById('columnsForm');
 const formSubmit = document.getElementById('formSubmit');
 const formCancel = document.getElementById('formCancel');
-const formDate = document.getElementById('formDate');
+const formClose = document.getElementById('formClose');
 let formInputs = [];
+
 const filterTitle1 = document.getElementById('filterTitle1');
 const filterTitle2 = document.getElementById('filterTitle2');
 const loader = document.getElementById('loader');
 const sortBtn = document.getElementById('sortBtn');
-const arrowIcon = document.getElementById('arrowIcon');
+// const arrowIcon = document.getElementById('arrowIcon');
 
 const formTitle = document.getElementById('formTitle');
 const formInfo = document.getElementById('formInfo');
@@ -23,7 +25,7 @@ const formFilt1 = document.getElementById('formFilt1');
 const formFilt2 = document.getElementById('formFilt2');
 const formImg = document.getElementById('formImg');
 const formLink = document.getElementById('formLink');
-
+const formDate = document.getElementById('formDate');
 
 function start() {
   // Initializes the Google Sheets API library.
@@ -110,9 +112,13 @@ sheetIdSubmit.addEventListener('click', function() {
   }
 });
 
-sheetIdCancel.addEventListener('click', function() {
+sheetIdClose.addEventListener('click', closeSheetIdModal);
+
+sheetIdCancel.addEventListener('click', closeSheetIdModal);
+
+function closeSheetIdModal() {
   sheetIdModal.style.display = "none";
-});
+}
 
 formSubmit.addEventListener('click', function() {
   columnsForm.style.display = "none";
@@ -132,9 +138,13 @@ formSubmit.addEventListener('click', function() {
   gapi.load('client', start); // Loads the Google Sheets API library.
 });
 
-formCancel.addEventListener('click', function() {
+formClose.addEventListener('click', closeColumnsForm);
+
+formCancel.addEventListener('click', closeColumnsForm);
+
+function closeColumnsForm() {
   columnsForm.style.display = "none";
-});
+}
 
 // Checks if there is spreadsheet input in local storage and loads it
 if (localStorage.getItem("ID")) {
@@ -148,5 +158,4 @@ if (localStorage.getItem("ID")) {
 // Clears all input fields
 function resetInputs() {
   sortBtn.textContent = "";
-  // sortBtn.appendChild(arrowIcon);
 }
