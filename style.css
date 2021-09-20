@@ -181,7 +181,7 @@
 
 /* HEADER */
 header {
-    display: block;
+    /* display: block; */
     text-align: center;
 }
 
@@ -235,12 +235,12 @@ header {
     align-items: center;
 }
 
-/* #leftBtnDiv {
+#leftBtnDiv {
     position: absolute;
-    left: 0px;
+    left: 1rem;
     z-index: 1;
-    display: flex;
-} */
+    /* display: flex; */
+}
 
 /* #leftOuterDiv {
     position: absolute;
@@ -267,9 +267,13 @@ header {
 
 #rightBtnDiv {
     position: absolute;
-    right: 0px;
+    right: 1rem;
     z-index: 1;
-    display: flex;
+    /* display: flex; */
+}
+
+.cap-btn {
+    background-color: var(--clr-dark);
 }
 
 /* #rightBtnDiv::before {
@@ -281,7 +285,7 @@ header {
 } */
 
 #capsuleFilters {
-    margin: .5em 0;
+    /* margin: .5em 0; */
     overflow: auto;
     white-space: nowrap;
     -ms-overflow-style: none;
@@ -334,7 +338,7 @@ header {
 /* SORT BY */
 .dropdown {
     float: right;
-    margin-right: 2em;
+    /* margin-right: 2em; */
 }
 
 .sort-by {
@@ -359,6 +363,7 @@ header {
 }
 
 .dropdown-item {
+    font-family: var(--ff);
     cursor: pointer;
 }
 
