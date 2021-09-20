@@ -272,6 +272,7 @@ function activateCapsule(e) {
 
 //when filter is checked/unchecked, adds or deletes filter value from array and calls getResults
 function selectFilter(e) {
+  // console.log("clicou");
   let filter = e.target;
   let column = filter.getAttribute("data-column");
   let capAllInput = document.getElementById('All');
@@ -365,20 +366,35 @@ function isStringIncluded(array, string) {
   }
 }
 
-tagSearch.addEventListener('keyup', () => {
-  let searchResult = searchTags();
-  displayFilters(searchResult, filters2, 4, "checkbox");
-});
+// tagSearch.addEventListener('keyup', () => {
+//   let searchResult = searchTags();
+//   displayFilters(searchResult, filters2, 4, "checkbox");
+// });
 
-function searchTags() {
+// function searchTags() {
+//   const searchString = tagSearch.value.toLowerCase();
+//   let filteredTags = filterList2.filter((tag) => {
+//     return (
+//       tag.name.toLowerCase().includes(searchString)
+//     );
+//   });
+//   return filteredTags;
+// }
+
+tagSearch.addEventListener('keyup', () => {
   const searchString = tagSearch.value.toLowerCase();
-  let filteredTags = filterList2.filter((tag) => {
-    return (
-      tag.name.toLowerCase().includes(searchString)
-    );
-  });
-  return filteredTags;
-}
+  let filters2 = document.getElementById('filters2');
+  let items = filters2.getElementsByTagName('li');
+  for (let i = 0; i < items.length; i++) {
+    let label = items[i].querySelector('.checkbox-label');
+    let labelValue = label.textContent.toLowerCase();
+    if (labelValue.includes(searchString)) {
+      items[i].style.display = "";
+    } else {
+      items[i].style.display = "none";
+    }
+  }
+});
 
 function displayResults(searchResult) {
   const htmlString = searchResult.map((item) => {
