@@ -16,7 +16,6 @@ const filterTitle1 = document.getElementById('filterTitle1');
 const filterTitle2 = document.getElementById('filterTitle2');
 const loader = document.getElementById('loader');
 const sortBtn = document.getElementById('sortBtn');
-// const arrowIcon = document.getElementById('arrowIcon');
 
 const formTitle = document.getElementById('formTitle');
 const formInfo = document.getElementById('formInfo');
