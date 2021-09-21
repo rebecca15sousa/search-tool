@@ -366,7 +366,7 @@ header {
     display: block;
 }
 
-/* MAIN CONTENT */
+/* SIDE FILTERS */
 .content {
     display: flex;
 }
@@ -384,16 +384,36 @@ header {
     font-weight: var(--fw-bold);
 }
 
+.checkbox-input {
+    cursor: pointer;
+}
+
 .checkbox-label {
     font-family: var(--ff);
     font-size: var(--fs-body);
     font-weight: var(--fw-reg);
+    cursor: pointer;
+}
+
+.checkbox-input:hover, .checkbox-label:hover {
+    border-color: var(--clr-hover-select-border);
+}
+
+.checkbox-input:checked:hover {
+    background-color: red;
 }
 
 .divider {
     border-top: 1px solid var(--clr-dark);
 }
 
+.no-bullet {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* SEARCH RESULTS */
 #resultsList {
     flex: 80%;
     display: flex;
@@ -473,10 +493,4 @@ header {
 
 .tag-text, .type-text {
     cursor: pointer;
-}
-
-.no-bullet {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
 }

@@ -218,7 +218,7 @@ function displayFilters(filtersList, container, column, type) {
   const htmlString = filtersList.map((item) => {
     return `
     <li class="${type}-li">
-      <input type="checkbox" id="${type} + ${item.name}" class="${type}-input" data-column="${column}" value="${item.name}">
+      <input type="checkbox" id="${type} + ${item.name}" class="${type}-input form-check-input" data-column="${column}" value="${item.name}">
       <label for="${type} + ${item.name}" class="${type}-label ellipsis">${item.name}</label>
       <br>
     </li>`;
