@@ -141,7 +141,6 @@ function generateFilters() {
   filterList2 = getFiltersList("4");
   sortByList = getFiltersList("3");
   displaySortBy(sortByList, dropContent);
-  // console.log(dropContent.innerHTML);
   startSortBy();
   displayFilters(capsuleList, capsuleFilters, 2, "radio");
   document.getElementById('All').checked = true;
@@ -162,7 +161,6 @@ function generateFilters() {
 
 function startSortBy() {
   sortBtn.textContent = dropContent.firstElementChild.getAttribute("data-value");
-  // sortBtn.appendChild(arrowIcon);
   sortValue = sortBtn.textContent;
   let searchResult = getResults();
   displayResults(searchResult);
@@ -272,7 +270,6 @@ function activateCapsule(e) {
 
 //when filter is checked/unchecked, adds or deletes filter value from array and calls getResults
 function selectFilter(e) {
-  // console.log("clicou");
   let filter = e.target;
   let column = filter.getAttribute("data-column");
   let capAllInput = document.getElementById('All');
@@ -365,21 +362,6 @@ function isStringIncluded(array, string) {
     }
   }
 }
-
-// tagSearch.addEventListener('keyup', () => {
-//   let searchResult = searchTags();
-//   displayFilters(searchResult, filters2, 4, "checkbox");
-// });
-
-// function searchTags() {
-//   const searchString = tagSearch.value.toLowerCase();
-//   let filteredTags = filterList2.filter((tag) => {
-//     return (
-//       tag.name.toLowerCase().includes(searchString)
-//     );
-//   });
-//   return filteredTags;
-// }
 
 tagSearch.addEventListener('keyup', () => {
   const searchString = tagSearch.value.toLowerCase();

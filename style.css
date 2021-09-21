@@ -181,7 +181,6 @@
 
 /* HEADER */
 header {
-    /* display: block; */
     text-align: center;
 }
 
@@ -239,7 +238,6 @@ header {
     position: absolute;
     left: 1rem;
     z-index: 1;
-    /* display: flex; */
 }
 
 /* #leftOuterDiv {
@@ -269,7 +267,6 @@ header {
     position: absolute;
     right: 1rem;
     z-index: 1;
-    /* display: flex; */
 }
 
 .cap-btn {
@@ -285,7 +282,6 @@ header {
 } */
 
 #capsuleFilters {
-    /* margin: .5em 0; */
     overflow: auto;
     white-space: nowrap;
     -ms-overflow-style: none;
@@ -338,7 +334,6 @@ header {
 /* SORT BY */
 .dropdown {
     float: right;
-    /* margin-right: 2em; */
 }
 
 .sort-by {
