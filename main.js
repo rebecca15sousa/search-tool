@@ -385,17 +385,17 @@ function displayResults(searchResult) {
       <a href="${item[6]}" target="_blank" rel="noopener noreferrer"><img src="${item[5]}" class="item-img"></a>
       <div class="item-content">
         <h2 class="item-title"><a class="item-title-link" href="${item[6]}" target="_blank" rel="noopener noreferrer">${item[0]}</a></h2>
-        <div>
-          <div class="status-div display-inline" style="background-color: ${setStatusBack(item)}">
-            <div class="status-circle display-inline" style="background-color: ${setStatusColour(item)}"></div>
-            <p class="item-text display-inline" style="color: ${setStatusColour(item)}">${item[3]}</p>
+        <div class="item-subtitle">
+          <div class="status-div me-3" style="background-color: ${setStatusBack(item)}">
+            <div class="status-circle me-1" style="background-color: ${setStatusColour(item)}"></div>
+            <p class="item-text" style="color: ${setStatusColour(item)}">${item[3]}</p>
           </div>
-          <p class="item-text display-inline">${displayTags(item[2], "type")}</p>
+          <p class="item-text">${displayTags(item[2], "type")}</p>
         </div>
         <div>
-          <a class="item-text-link" href="${item[6]}" target="_blank" rel="noopener noreferrer"><p class="item-text margin">${checkDescription(item)}</p></a>
-          <p class="item-text margin">${displayDate(item)}</p>
-          <p class="item-text margin">Tags: ${displayTags(item[4], "tag")}</p>
+          <a class="item-text-link" href="${item[6]}" target="_blank" rel="noopener noreferrer"><p class="item-text mt-2 mb-3">${checkDescription(item)}</p></a>
+          <p class="item-text my-1">${displayDate(item)}</p>
+          <p class="item-text">Tags: ${displayTags(item[4], "tag")}</p>
         </div>
       </div>
     </li>`;
@@ -453,13 +453,12 @@ function searchTextType(e) {
 }
 
 function displayDate(item) {
-  if (formDate.value != "") {
+  if (localStorage.getItem("formDate")) {
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     return (months[item[7].getMonth()] + " " + item[7].getFullYear());
   } else {
     return item[7];
   }
-  
 }
 
 function setStatusBack(item) {

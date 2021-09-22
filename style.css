@@ -453,6 +453,11 @@ header {
     text-decoration: none;
 }
 
+.item-subtitle {
+    display: flex;
+    align-items: center;
+}
+
 .item-text {
     font-family: var(--ff);
     font-size: var(--fs-body);
@@ -470,15 +475,17 @@ header {
     text-decoration: none;
 }
 
-.display-inline {
+/* .display-inline {
     display: inline-block;
-}
+} */
 
-.margin {
+/* .margin {
     margin: 1em 0;
-}
+} */
 
 .status-div {
+    display: flex;
+    align-items: center;
     border-radius: 20px;
     border: 2px solid black;
     padding: .3em .5em;
@@ -488,7 +495,7 @@ header {
     border-radius: 50px;
     width: var(--fs-body);
     height: var(--fs-body);
-    vertical-align: text-top;
+    /* vertical-align: text-top; */
 }
 
 .tag-text, .type-text {
