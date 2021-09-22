@@ -394,8 +394,8 @@ function displayResults(searchResult) {
         </div>
         <div>
           <a class="item-text-link" href="${item[6]}" target="_blank" rel="noopener noreferrer"><p class="item-text mt-2 mb-3">${checkDescription(item)}</p></a>
-          <p class="item-text my-1">${displayDate(item)}</p>
-          <p class="item-text">Tags: ${displayTags(item[4], "tag")}</p>
+          <p class="item-text my-1 fs-small">${displayDate(item)}</p>
+          <p class="item-text fs-small">Tags: ${displayTags(item[4], "tag")}</p>
         </div>
       </div>
     </li>`;
