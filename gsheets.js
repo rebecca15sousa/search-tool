@@ -26,6 +26,11 @@ const formImg = document.getElementById('formImg');
 const formLink = document.getElementById('formLink');
 const formDate = document.getElementById('formDate');
 
+const searchBarDiv = document.querySelector('.search-bar-div');
+const capsuleDiv = document.getElementById('capsuleDiv');
+const dropContainer = document.querySelector('.drop-container');
+const content = document.querySelector('.content');
+
 function start() {
   // Initializes the Google Sheets API library.
   gapi.client.init({
@@ -36,6 +41,7 @@ function start() {
   }).then(function() {
     parseSheet(sheetId);
     resetInputs();
+    removeDisplayNone();
     loader.style.display = "none";
   });
 };
@@ -151,7 +157,15 @@ if (localStorage.getItem("ID")) {
   sheetId = localStorage.getItem("ID");
   formInputs = JSON.parse(localStorage.getItem("formInputs"));
   loader.style.display = "block";
+  removeDisplayNone();
   gapi.load('client', start); // Loads the Google Sheets API library.
+}
+
+function removeDisplayNone() {
+  searchBarDiv.classList.remove("display-none");
+  capsuleDiv.classList.remove("display-none");
+  dropContainer.classList.remove("display-none");
+  content.classList.remove("display-none");
 }
 
 // Clears all input fields

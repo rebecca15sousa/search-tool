@@ -83,13 +83,13 @@
     </header>
 
     <!-- SEARCH BAR -->
-    <div class="m-3 mb-0 search-bar-div">
-        <i class="bi bi-search"></i>
+    <div class="m-3 mb-0 search-bar-div display-none">
+        <i class="bi bi-search me-1"></i>
         <input type="text" name="searchBar" id="searchBar" placeholder="Search for a document Title, Description, Tag, Etc">
     </div>
 
     <!-- CAPSULE FILTERS -->
-    <div id="capsuleDiv" class="m-3 mt-0">
+    <div id="capsuleDiv" class="m-3 mt-0 capsule-div display-none">
         <!-- <div id="leftOuterDiv">
             <div id="leftInnerDiv">
                 <button id="leftBtn"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
@@ -97,25 +97,25 @@
         </div> -->
 
         <!-- <div id="leftBtnDiv"> -->
-            <button id="leftBtn" class="btn cap-btn" aria-label="Scroll left"><i class="bi bi-caret-left-fill"></i></button>
+        <button id="leftBtn" class="btn cap-btn" aria-label="Scroll left"><i class="bi bi-caret-left-fill"></i></button>
         <!-- </div> -->
         
         <ul id="capsuleFilters" class="no-bullet"></ul>
 
         <!-- <div id="rightBtnDiv"> -->
-            <button id="rightBtn" class="btn cap-btn" aria-label="Scroll right"><i class="bi bi-caret-right-fill"></i></button>
+        <button id="rightBtn" class="btn cap-btn" aria-label="Scroll right"><i class="bi bi-caret-right-fill"></i></button>
         <!-- </div> -->
     </div>
 
     <!-- SORT BY -->
-    <div class="m-3 drop-container dropdown">
-        <p class="sort-by">Sort by: </p>
+    <div class="m-3 drop-container dropdown display-none">
+        <p class="sort-by me-1">Sort by: </p>
         <button type="button" id="sortBtn" class="btn dropdown-toggle"></button>
         <div id="dropContent" class="drop-content dropdown-menu" aria-labelledby="sortBtn"></div>
     </div>
     
     <!-- CONTENT -->
-    <div class="m-3 content">
+    <div class="m-3 content display-none">
         <!-- SIDE FILTERS -->
         <div class="filters-left">
             <h3 class="filters-title" id="filterTitle1"></h3>

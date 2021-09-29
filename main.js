@@ -4,7 +4,6 @@ const resultsList = document.getElementById('resultsList');
 const filters1 = document.getElementById('filters1');
 const filters2 = document.getElementById('filters2');
 const capsuleFilters = document.getElementById('capsuleFilters');
-const capsuleDiv = document.getElementById('capsuleDiv');
 let spreadsheet;
 const leftCapBtn = document.getElementById('leftBtn');
 const rightCapBtn = document.getElementById('rightBtn');
@@ -384,7 +383,7 @@ function displayResults(searchResult) {
     <li class="item-complete">
       <a href="${item[6]}" target="_blank" rel="noopener noreferrer"><img src="${item[5]}" class="item-img"></a>
       <div class="item-content">
-        <h2 class="item-title"><a class="item-title-link" href="${item[6]}" target="_blank" rel="noopener noreferrer">${item[0]}</a></h2>
+        <h2 class="item-title mb-2"><a class="item-title-link" href="${item[6]}" target="_blank" rel="noopener noreferrer">${item[0]}</a></h2>
         <div class="item-subtitle">
           <div class="status-div me-3" style="background-color: ${setStatusBack(item)}">
             <div class="status-circle me-1" style="background-color: ${setStatusColour(item)}"></div>
@@ -393,7 +392,7 @@ function displayResults(searchResult) {
           <p class="item-text">${displayTags(item[2], "type")}</p>
         </div>
         <div>
-          <a class="item-text-link" href="${item[6]}" target="_blank" rel="noopener noreferrer"><p class="item-text mt-2 mb-3">${checkDescription(item)}</p></a>
+          <a class="item-text-link" href="${item[6]}" target="_blank" rel="noopener noreferrer"><p class="item-text item-desc">${checkDescription(item)}</p></a>
           <p class="item-text my-1 fs-small">${displayDate(item)}</p>
           <p class="item-text fs-small">Tags: ${displayTags(item[4], "tag")}</p>
         </div>
