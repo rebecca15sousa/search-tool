@@ -69,6 +69,7 @@ sortBtn.addEventListener('click', toggleSortBy);
 
 function toggleSortBy() {
   dropContent.classList.toggle("show");
+  sortBtn.classList.toggle("dropdown-toggle-open");
 }
 
 window.addEventListener('click', closeSortBy);
@@ -76,6 +77,7 @@ window.addEventListener('click', closeSortBy);
 function closeSortBy(e) {
   if (!e.target.matches('#sortBtn')) {
     dropContent.classList.remove("show");
+    sortBtn.classList.remove("dropdown-toggle-open");
   }
 }
 
