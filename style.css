@@ -20,6 +20,8 @@
     --clr-select: #000000;
     --clr-hover-select: #7a7a7a;
     --clr-hover-select-border: #6d6d6d;
+body {
+    margin: 0 39px;
 }
 
 /* LOADER */
@@ -182,6 +184,8 @@
 /* HEADER */
 header {
     text-align: center;
+    margin-bottom: 36px;
+    margin-top: 13px;
 }
 
 .title {
@@ -203,7 +207,7 @@ header {
     border: 1px solid var(--clr-dark);
     border-radius: 20px;
     padding: .3em .5em;
-    margin-bottom: .5em;
+    /* margin-bottom: .5em; */
     transition: 0.3s;
 }
 
@@ -218,6 +222,7 @@ header {
     align-items: center;
     border-radius: 5px;
     padding: .5rem;
+    margin-bottom: 7px;
 }
 
 #searchBar {
@@ -340,6 +345,7 @@ header {
 /* SORT BY */
 .dropdown {
     float: right;
+    margin: 3rem auto;
 }
 
 .sort-by {
