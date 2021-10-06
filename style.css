@@ -270,7 +270,7 @@ header {
     z-index: 1;
 } */
 
-/* #leftOuterDiv {
+#leftOuterDiv {
     position: absolute;
     z-index: 1;
     display: flex;
@@ -291,7 +291,7 @@ header {
 #leftBtn {
     background: transparent;
     border: none;
-} */
+}
 
 /* #rightBtnDiv {
     position: absolute;
