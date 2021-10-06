@@ -19,6 +19,8 @@
     --clr-grey-5: #7a7a7a;
     --clr-grey-6: #6d6d6d;
     --clr-black: #000000;
+    --clr-accent-1: #188038;
+    --clr-accent-2: #105625;
 }
 
 body {
@@ -123,7 +125,7 @@ body {
 
 #sheetIdInput {
     border-color: transparent;
-    background-color: var(--clr-grey-1);
+    background-color: var(--bs-gray-200);
     border-radius: 5px;
     padding: .5rem;
     margin: 1em 0;
@@ -135,14 +137,28 @@ body {
     outline: none;
 }
 
-.sheet-id-btn-div {
-    display: flex;
-}
-
-.sheet-id-btn {
+.modal-btn {
     font-family: var(--ff);
     font-size: var(--fs-body);
-    background-color: var(--clr-grey-3);
+    /* background-color: var(--clr-grey-3); */
+}
+
+.modal-submit {
+    background-color: var(--clr-accent-1);
+    color: var(--bs-white);
+}
+
+.modal-submit:hover {
+    background-color: var(--clr-accent-2);
+    color: var(--bs-white);
+}
+
+.modal-cancel {
+    background-color: var(--bs-gray-300);
+}
+
+.modal-cancel:hover {
+    background-color: var(--bs-gray-400);
 }
 
 /* FORM */
@@ -168,7 +184,7 @@ body {
 
 .form-items {
     border-color: transparent;
-    background-color: var(--clr-grey-1);
+    background-color: var(--bs-gray-200);
     border-radius: 5px;
     padding: .5rem;
     width: 3em;
@@ -206,8 +222,9 @@ header {
 #changeIdBtn {
     font-family: var(--ff);
     cursor: pointer;
-    background-color: var(--clr-grey-2);
-    border: 1px solid var(--clr-grey-6);
+    background-color: var(--clr-accent-1);
+    color: var(--bs-white);
+    border: 1px solid var(--bs-gray-600);
     border-radius: 20px;
     padding: .3em .5em;
     /* margin-bottom: .5em; */
@@ -215,8 +232,7 @@ header {
 }
 
 #changeIdBtn:hover {
-    background-color: var(--clr-grey-3);
-    /* color: var(--clr-green-1); */
+    background-color: var(--clr-accent-2);
 }
 
 /* SEARCH BAR */
@@ -226,7 +242,7 @@ header {
     /* border: 1px solid var(--clr-green-6); */
     border-color: transparent;
     border-radius: 5px;
-    background-color: var(--clr-grey-1);
+    background-color: var(--bs-gray-200);
     padding: .5rem;
     margin-bottom: 7px;
 }
@@ -234,7 +250,7 @@ header {
 #searchBar {
     width: 100%;
     border: none;
-    background-color: var(--clr-grey-1);
+    background-color: var(--bs-gray-200);
 }
 
 #searchBar:focus {
@@ -328,8 +344,8 @@ header {
 .radio-label {
     font-family: var(--ff);
     cursor: pointer;
-    background-color: var(--clr-grey-2);
-    border: 1px solid var(--clr-grey-6);
+    background-color: var(--bs-gray-300);
+    border: 1px solid var(--bs-gray-600);
     /* color: var(--fc-light); */
     border-radius: 20px;
     padding: .3em .5em;
@@ -337,15 +353,15 @@ header {
     transition: 0.3s;
 }
 
-.radio-label:hover, .radio-input:checked + label:hover {
-    background-color: var(--clr-grey-3);
-    /* color: var(--clr-grey-1); */
+.radio-label:hover {
+    background-color: var(--bs-gray-400);
+    /* color: var(--bs-gray-900); */
 }
 
 .radio-input:checked + label {
-    background-color: var(--clr-grey-6);
+    background-color: var(--bs-gray-600);
     /* border-color: var(--clr-select); */
-    color: var(--clr-white);
+    color: var(--bs-white);
 }
 
 /* .radio-input:checked + label:hover {
@@ -368,12 +384,12 @@ header {
 .dropdown-toggle {
     font-family: var(--ff);
     font-size: var(--fs-body);
-    background-color: var(--clr-grey-3);
+    background-color: var(--bs-gray-300);
 }
 
 .dropdown-toggle:hover, .dropdown-toggle:focus {
-    background-color: var(--clr-grey-4);
-    color: var(--clr-white);
+    background-color: var(--bs-gray-400);
+    /* color: var(--clr-white); */
 }
 
 .dropdown-toggle-open::after {
@@ -387,7 +403,7 @@ header {
     min-width: 0;
     inset: 0px 0px auto auto;
     transform: translate(0px, 40px);
-    background-color: var(--clr-grey-3);
+    background-color: var(--bs-gray-400);
 }
 
 .dropdown-item {
@@ -397,8 +413,8 @@ header {
 }
 
 .dropdown-item:hover {
-    background-color: var(--clr-grey-4);
-    color: var(--clr-white);
+    background-color: var(--bs-gray-600);
+    color: var(--bs-white);
 }
 
 .show {
@@ -429,7 +445,7 @@ header {
     border-radius: 5px;
     width: 95%;
     margin-bottom: 0.5em;
-    background-color: var(--clr-grey-1);
+    background-color: var(--bs-gray-200);
 }
 
 .divider {
@@ -438,8 +454,8 @@ header {
 
 .checkbox-input {
     cursor: pointer;
-    background-color: var(--clr-white);
-    border: 2px solid var(--clr-grey-3);
+    /* background-color: var(--clr-white); */
+    border: 2px solid var(--bs-gray-500);
 }
 
 .checkbox-label {
@@ -450,16 +466,16 @@ header {
 }
 
 .checkbox-input:hover, .checkbox-label:hover {
-    border-color: var(--clr-grey-6);
+    border-color: var(--bs-gray-600);
 }
 
 .checkbox-input:checked {
-    background-color: var(--clr-grey-5);
+    background-color: var(--bs-gray-600);
     border-color: transparent;
 }
 
 .checkbox-input:checked:hover {
-    background-color: var(--clr-grey-3);
+    background-color: var(--bs-gray-700);
     border-color: transparent;
 }
 
