@@ -262,6 +262,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 0.5em;
 }
 
 /* #leftBtnDiv {
@@ -271,27 +272,41 @@ header {
 } */
 
 #leftOuterDiv {
+    /* left: 0%; */
+}
+
+#rightOuterDiv {
+    right: 0;
+}
+
+.outer-div {
     position: absolute;
     z-index: 1;
     display: flex;
 }
 
-#leftInnerDiv {
-    background-color: white;
+.inner-div {
+    /* background-color: white; */
     display: flex;
     justify-content: center;
 }
 
 #leftInnerDiv::after {
     background: linear-gradient(to right, white 20%, rgba(255, 255, 255, 0) 80%);
+    width: 20px;
+    content: "";
+}
+
+#rightInnerDiv::before {
+    background: linear-gradient(to left, white 20%, rgba(255, 255, 255, 0) 80%);
     width: 50px;
     content: "";
 }
 
-#leftBtn {
+/* #leftBtn {
     background: transparent;
     border: none;
-}
+} */
 
 /* #rightBtnDiv {
     position: absolute;
@@ -300,13 +315,12 @@ header {
 } */
 
 .cap-btn {
-    background-color: var(--clr-grey-3);
+    background-color: var(--bs-gray-300);
     /* color: var(--clr-grey-1); */
 }
 
 .cap-btn:hover {
-    background-color: var(--clr-grey-4);
-    color: var(--clr-white);
+    background-color: var(--bs-gray-400);
 }
 
 /* #rightBtnDiv::before {
