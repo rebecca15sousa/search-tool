@@ -349,6 +349,7 @@ header {
 
 .radio-input {
     position: absolute;
+    left: 0;
     opacity: 0;
     cursor: pointer;
     height: 0;
