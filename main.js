@@ -62,6 +62,7 @@ function scrollRight() {
     left: 400,
     behavior: 'smooth'
   });
+  // console.log("fui pra direita");
 }
 
 //"Sort by" button functionality
@@ -152,12 +153,13 @@ function generateFilters() {
   });
   displayFilters(filterList1, filters1, 3, "checkbox");
   displayFilters(filterList2, filters2, 4, "checkbox");
-  addEllipsis();
+  // addEllipsis();
   const checkboxesNode = document.querySelectorAll('input[type=checkbox]');
   const checkboxesArray = Array.from(checkboxesNode);
   checkboxesArray.forEach((checkbox) => {
     checkbox.addEventListener('change', selectFilter);
   });
+  // console.log("gerou filtros");
 }
 
 function startSortBy() {
@@ -165,6 +167,7 @@ function startSortBy() {
   sortValue = sortBtn.textContent;
   let searchResult = getResults();
   displayResults(searchResult);
+  // console.log("começou sort");
 }
 
 //loops through all cells of a specific collumn and gets every unique element to create a ordered filter list
@@ -241,15 +244,15 @@ function displaySortBy(sortByList, container) {
   container.innerHTML += htmlString;
 }
 
-function addEllipsis() {
-  let labels = document.querySelectorAll('.ellipsis');
-  for (let i = 0; i < labels.length; i++) {
-    let label = labels[i];
-    if (label.textContent.length > 27) {
-      label.textContent = label.textContent.substr(0, 24) + " (...)";
-    }
-  }
-}
+// function addEllipsis() {
+//   let labels = document.querySelectorAll('.ellipsis');
+//   for (let i = 0; i < labels.length; i++) {
+//     let label = labels[i];
+//     if (label.textContent.length > 27) {
+//       label.textContent = label.textContent.substr(0, 24) + " (...)";
+//     }
+//   }
+// }
 
 //changes checked status for capsule filters
 function activateCapsule(e) {

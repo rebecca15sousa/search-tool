@@ -442,8 +442,9 @@ header {
 }
 
 .filters-left {
-    flex: 20%;
-    margin: 3rem auto;
+    max-width: 20%;
+    /* flex: 20%; */
+    margin-top: 3rem;
     border-right: 1px solid var(--clr-grey-6);
 }
 
@@ -467,6 +468,12 @@ header {
     border-top: 1px solid var(--clr-grey-6);
 }
 
+/* .checkbox-li {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+} */
+
 .checkbox-input {
     cursor: pointer;
     /* background-color: var(--clr-white); */
@@ -474,10 +481,14 @@ header {
 }
 
 .checkbox-label {
+    max-width: 90%;
     font-family: var(--ff);
     font-size: var(--fs-body);
     font-weight: var(--fw-reg);
     cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .checkbox-input:hover, .checkbox-label:hover {
@@ -502,7 +513,8 @@ header {
 
 /* SEARCH RESULTS */
 #resultsList {
-    flex: 80%;
+    /* flex: 80%; */
+    width: 80%;
     display: flex;
     flex-direction: column;
     gap: 35px;
