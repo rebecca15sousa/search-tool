@@ -617,3 +617,34 @@ header {
 .display-none {
     display: none;
 }
+
+/* MEDIA QUERY XL */
+@media (max-width: 1341px) {
+    .checkbox-label {
+        max-width: 89%;
+    }
+}
+
+/* MEDIA QUERY LG */
+@media (max-width: 1168px) {
+    .checkbox-label {
+        max-width: 88%;
+    }
+}
+
+/* MEDIA QUERY MD */
+@media (max-width: 1092px) {
+    .checkbox-label {
+        max-width: 87%;
+    }
+}
+
+/* MEDIA QUERY SM */
+@media (max-width: 767.98px) {
+
+}
+
+/* MEDIA QUERY XS */
+@media (max-width: 575.98px) {
+
+}
