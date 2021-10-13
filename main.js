@@ -419,6 +419,12 @@ function displayResults(searchResult) {
 
 function displayTags(item, tagClass) {
   const htmlString = item.map((tag) => {
+    for (let i = 0; i < valuesMode.length; i++) {
+      if (tag == valuesMode[i]) {
+        return `
+        <span class="${tagClass}-text" style="font-weight: bold">${tag}</span>`
+      }
+    }
     return `
     <span class="${tagClass}-text">${tag}</span>`
   }).join();
