@@ -618,6 +618,18 @@ header {
     display: none;
 }
 
+.checked-tags {
+    margin: 0 .3rem;
+    padding: .3em .5em;
+    background-color: transparent;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.checked-tags:hover {
+    background-color: var(--bs-gray-200);
+}
+
 /* MEDIA QUERY XL */
 @media (max-width: 1341px) {
     .checkbox-label {

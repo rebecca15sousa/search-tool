@@ -12,6 +12,7 @@ let valuesComplex = []; //array with complexity filter values that are checked
 let valuesPlayed = []; //array with played filter values that are checked
 let valuesMode = []; //array with mode filter values that are checked
 const tagSearch = document.getElementById('tagSearch');
+const checkedTags = document.getElementById('checkedTags');
 
 let filterList2;
 
@@ -170,7 +171,7 @@ function startSortBy() {
   // console.log("começou sort");
 }
 
-//loops through all cells of a specific collumn and gets every unique element to create a ordered filter list
+//loops through all cells of a specific column and gets every unique element to create a ordered filter list
 function getFiltersList(category) {
   const filtersList = [];
   //loops through entire spreadsheet, line by line
@@ -244,6 +245,45 @@ function displaySortBy(sortByList, container) {
   container.innerHTML += htmlString;
 }
 
+function displayCheckedTags(tag, column) {
+  let btn = document.createElement('button');
+  btn.textContent = tag;
+  btn.classList.add("checked-tags");
+  let icon = document.createElement('i');
+  icon.classList.add("bi", "bi-x");
+  btn.appendChild(icon);
+  checkedTags.appendChild(btn);
+  btn.addEventListener('click', () => {
+    checkedTags.removeChild(btn);
+    if (column == 3) {
+      let index = valuesPlayed.indexOf(btn.textContent);
+      valuesPlayed.splice(index, 1);
+      console.log(valuesPlayed);
+    } else {
+      let index = valuesMode.indexOf(btn.textContent);
+      valuesMode.splice(index, 1);
+      console.log(valuesMode);
+    }
+    let checkboxes = document.querySelectorAll(".checkbox-input");
+    for (let i = 0; i < checkboxes.length; i++) {
+      if (btn.textContent == checkboxes[i].value) {
+        checkboxes[i].checked = false;
+      }
+    }
+    let searchResult = getResults();
+    displayResults(searchResult);
+  });
+}
+
+function deleteCheckedTags(tag) {
+  let btns = document.querySelectorAll(".checked-tags");
+  for (let i = 0; i < btns.length; i++) {
+    if (tag == btns[i].textContent) {
+      checkedTags.removeChild(btns[i]);
+    }
+  }
+}
+
 // function addEllipsis() {
 //   let labels = document.querySelectorAll('.ellipsis');
 //   for (let i = 0; i < labels.length; i++) {
@@ -288,16 +328,24 @@ function selectFilter(e) {
   } else if (column == 3) {
     if (filter.checked) {
       valuesPlayed.push(filter.value);
+      displayCheckedTags(filter.value, column);
+      console.log(valuesPlayed);
     } else {
       let index = valuesPlayed.indexOf(filter.value);
       valuesPlayed.splice(index, 1);
+      deleteCheckedTags(filter.value);
+      console.log(valuesPlayed);
     }
   } else if (column == 4) {
     if (filter.checked) {
       valuesMode.push(filter.value);
+      displayCheckedTags(filter.value, column);
+      console.log(valuesMode);
     } else {
       let index = valuesMode.indexOf(filter.value);
       valuesMode.splice(index, 1);
+      deleteCheckedTags(filter.value);
+      console.log(valuesMode);
     }
   }
   let searchResult = getResults();
