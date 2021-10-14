@@ -630,6 +630,10 @@ header {
     background-color: var(--bs-gray-200);
 }
 
+.bi-x {
+    padding-left: .5em;
+}
+
 /* MEDIA QUERY XL */
 @media (max-width: 1341px) {
     .checkbox-label {
