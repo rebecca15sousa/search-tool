@@ -438,9 +438,9 @@ function displayResults(searchResult) {
       <div class="item-content">
         <h2 class="item-title mb-2"><a class="item-title-link" href="${item[6]}" target="_blank" rel="noopener noreferrer">${item[0]}</a></h2>
         <div class="item-subtitle">
-          <div class="status-div me-3" style="background-color: ${setStatusBack(item)}">
+          <div class="status-div me-3" style="border-color: ${setStatusColour(item)}">
             <div class="status-circle me-1" style="background-color: ${setStatusColour(item)}"></div>
-            <p class="item-text" style="color: ${setStatusColour(item)}">${item[3]}</p>
+            <p class="item-text">${item[3]}</p>
           </div>
           <p class="item-text">${displayTags(item[2], "type")}</p>
         </div>
@@ -542,6 +542,8 @@ function setStatusColour(item) {
     return "green";
   } else if (item[3] == "On-going") {
     return "yellow";
+  } else if (item[3] == "Archived") {
+    return "purple";
   } else {
     return "orange";
   }
