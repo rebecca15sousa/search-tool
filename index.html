@@ -72,70 +72,77 @@
         </div>
       </div>
 
-    <!-- HEADER -->
-    <header>
-        <h1 class="title">Spreadsheet search tool</h1>
-        <p class="attribution">Developed by 
-            <a href="https://github.com/rebecca15sousa" target="_blank" rel="noopener noreferrer">Rebecca Sousa</a> and 
-            <a href="https://github.com/visampaio" target="_blank" rel="noopener noreferrer">Viviane Sampaio</a>
-        </p>
-        <button type="button" id="changeIdBtn">Select a Spreadsheet</button>
-    </header>
+    <div class="wrapper-div">
+        <!-- HEADER -->
+        <header>
+            <h1 class="title">Spreadsheet search tool</h1>
+            <p class="attribution">Developed by 
+                <a href="https://github.com/rebecca15sousa" target="_blank" rel="noopener noreferrer">Rebecca Sousa</a> and 
+                <a href="https://github.com/visampaio" target="_blank" rel="noopener noreferrer">Viviane Sampaio</a>
+            </p>
+            <button type="button" id="changeIdBtn">Select a Spreadsheet</button>
+        </header>
 
-    <!-- SEARCH BAR -->
-    <div class="search-bar-div display-none">
-        <i class="bi bi-search me-1"></i>
-        <input type="text" name="searchBar" id="searchBar" placeholder="Search for a document Title, Description, Tag, Etc">
-    </div>
-
-    <!-- CAPSULE FILTERS -->
-    <div id="capsuleDiv" class="capsule-div display-none">
-
-        <!-- <div id="leftOuterDiv" class="outer-div">
-            <div id="leftInnerDiv" class="inner-div">
-                <button id="leftBtn" class="btn cap-btn" aria-label="Scroll left"><i class="bi bi-caret-left-fill"></i></button>
-            </div>
-        </div> -->
-
-        <!-- <div id="leftInnerDiv" class="inner-div"> -->
-        <button id="leftBtn" class="btn cap-btn" aria-label="Scroll left"><i class="bi bi-caret-left-fill"></i></button>
-        <!-- </div> -->
-        
-        <ul id="capsuleFilters" class="no-bullet"></ul>
-
-        <!-- <div id="rightOuterDiv" class="outer-div">
-            <div id="rightInnerDiv" class="inner-div">
-                <button id="rightBtn" class="btn cap-btn" aria-label="Scroll right"><i class="bi bi-caret-right-fill"></i></button>
-            </div>
-        </div> -->
-        
-        <button id="rightBtn" class="btn cap-btn" aria-label="Scroll right"><i class="bi bi-caret-right-fill"></i></button>
-
-    </div>
-
-    <!-- CHECKED TAGS -->
-    <div id="checkedTags"></div>
-
-    <!-- SORT BY -->
-    <div class="drop-container dropdown display-none">
-        <p class="sort-by me-1">Sort by: </p>
-        <button type="button" id="sortBtn" class="btn dropdown-toggle"></button>
-        <div id="dropContent" class="drop-content dropdown-menu" aria-labelledby="sortBtn"></div>
-    </div>
-    
-    <!-- CONTENT -->
-    <div class="content display-none">
-        <!-- SIDE FILTERS -->
-        <div class="filters-left">
-            <h3 class="filters-title" id="filterTitle1"></h3>
-            <ul id="filters1" class="no-bullet"></ul>
-            <hr class="divider">
-            <h3 class="filters-title" id="filterTitle2"></h3>
-            <input type="text" name="tagSearch" id="tagSearch" placeholder="Filter tags...">
-            <ul id="filters2" class="no-bullet"></ul>
+        <!-- SEARCH BAR -->
+        <div class="search-bar-div display-none">
+            <i class="bi bi-search me-1"></i>
+            <input type="text" name="searchBar" id="searchBar" placeholder="Search for a document Title, Description, Tag, Etc">
         </div>
-        <!-- SEARCH RESULTS -->
-        <ul id="resultsList" class="no-bullet"></ul>
+
+        <!-- CAPSULE FILTERS -->
+        <div id="capsuleDiv" class="capsule-div display-none">
+
+            <!-- <div id="leftOuterDiv" class="outer-div">
+                <div id="leftInnerDiv" class="inner-div">
+                    <button id="leftBtn" class="btn cap-btn" aria-label="Scroll left"><i class="bi bi-caret-left-fill"></i></button>
+                </div>
+            </div> -->
+
+            <!-- <div id="leftInnerDiv" class="inner-div"> -->
+            <button id="leftBtn" class="btn cap-btn" aria-label="Scroll left"><i class="bi bi-caret-left-fill"></i></button>
+            <!-- </div> -->
+            
+            <ul id="capsuleFilters" class="no-bullet"></ul>
+
+            <!-- <div id="rightOuterDiv" class="outer-div">
+                <div id="rightInnerDiv" class="inner-div">
+                    <button id="rightBtn" class="btn cap-btn" aria-label="Scroll right"><i class="bi bi-caret-right-fill"></i></button>
+                </div>
+            </div> -->
+            
+            <button id="rightBtn" class="btn cap-btn" aria-label="Scroll right"><i class="bi bi-caret-right-fill"></i></button>
+
+        </div>
+
+        <!-- CHECKED TAGS -->
+        <div id="checkedTags"></div>
+        
+        <!-- SORT BY -->
+        <div class="drop-container dropdown display-none">
+            <p class="sort-by me-1">Sort by: </p>
+            <button type="button" id="sortBtn" class="btn dropdown-toggle"></button>
+            <div id="dropContent" class="drop-content dropdown-menu" aria-labelledby="sortBtn"></div>
+        </div>
+
+        <!-- sort by offcanvas -->
+
+        <!-- CONTENT -->
+        <div class="content display-none">
+            <!-- SIDE FILTERS -->
+            <div class="filters-left">
+                <h3 class="filters-title" id="filterTitle1"></h3>
+                <ul id="filters1" class="no-bullet"></ul>
+                <hr class="divider">
+                <h3 class="filters-title" id="filterTitle2"></h3>
+                <input type="text" name="tagSearch" id="tagSearch" placeholder="Filter tags...">
+                <ul id="filters2" class="no-bullet"></ul>
+            </div>
+
+            <!-- side filters offcanvas -->
+
+            <!-- SEARCH RESULTS -->
+            <ul id="resultsList" class="no-bullet"></ul>
+        </div>
     </div>
 
     <!-- SCRIPTS -->
