@@ -434,7 +434,7 @@ function displayResults(searchResult) {
   const htmlString = searchResult.map((item) => {
     return `
     <li class="item-complete">
-      <a href="${item[6]}" target="_blank" rel="noopener noreferrer"><img src="${item[5]}" class="item-img"></a>
+      <a href="${item[6]}" target="_blank" rel="noopener noreferrer"><img src="${checkImage(item)}" class="item-img"></a>
       <div class="item-content">
         <h2 class="item-title mb-2"><a class="item-title-link" href="${item[6]}" target="_blank" rel="noopener noreferrer">${item[0]}</a></h2>
         <div class="item-subtitle">
@@ -534,6 +534,15 @@ function checkDescription(item) {
     return "No description available.";
   } else {
     return item[1];
+  }
+}
+
+function checkImage(item) {
+  if (item[5] == "") {
+    // console.log("placeholder");
+    return "/Image_Placeholder_v1.svg";
+  } else {
+    return item[5];
   }
 }
 
