@@ -63,7 +63,6 @@ function scrollRight() {
     left: 400,
     behavior: 'smooth'
   });
-  // console.log("fui pra direita");
 }
 
 //"Sort by" button functionality
@@ -154,13 +153,11 @@ function generateFilters() {
   });
   displayFilters(filterList1, filters1, 3, "checkbox");
   displayFilters(filterList2, filters2, 4, "checkbox");
-  // addEllipsis();
   const checkboxesNode = document.querySelectorAll('input[type=checkbox]');
   const checkboxesArray = Array.from(checkboxesNode);
   checkboxesArray.forEach((checkbox) => {
     checkbox.addEventListener('change', selectFilter);
   });
-  // console.log("gerou filtros");
 }
 
 function startSortBy() {
@@ -168,7 +165,6 @@ function startSortBy() {
   sortValue = sortBtn.textContent;
   let searchResult = getResults();
   displayResults(searchResult);
-  // console.log("começou sort");
 }
 
 //loops through all cells of a specific column and gets every unique element to create a ordered filter list
@@ -258,11 +254,9 @@ function displayCheckedTags(tag, column) {
     if (column == 3) {
       let index = valuesPlayed.indexOf(btn.textContent);
       valuesPlayed.splice(index, 1);
-      console.log(valuesPlayed);
     } else {
       let index = valuesMode.indexOf(btn.textContent);
       valuesMode.splice(index, 1);
-      console.log(valuesMode);
     }
     let checkboxes = document.querySelectorAll(".checkbox-input");
     for (let i = 0; i < checkboxes.length; i++) {
@@ -283,16 +277,6 @@ function deleteCheckedTags(tag) {
     }
   }
 }
-
-// function addEllipsis() {
-//   let labels = document.querySelectorAll('.ellipsis');
-//   for (let i = 0; i < labels.length; i++) {
-//     let label = labels[i];
-//     if (label.textContent.length > 27) {
-//       label.textContent = label.textContent.substr(0, 24) + " (...)";
-//     }
-//   }
-// }
 
 //changes checked status for capsule filters
 function activateCapsule(e) {
@@ -329,23 +313,19 @@ function selectFilter(e) {
     if (filter.checked) {
       valuesPlayed.push(filter.value);
       displayCheckedTags(filter.value, column);
-      console.log(valuesPlayed);
     } else {
       let index = valuesPlayed.indexOf(filter.value);
       valuesPlayed.splice(index, 1);
       deleteCheckedTags(filter.value);
-      console.log(valuesPlayed);
     }
   } else if (column == 4) {
     if (filter.checked) {
       valuesMode.push(filter.value);
       displayCheckedTags(filter.value, column);
-      console.log(valuesMode);
     } else {
       let index = valuesMode.indexOf(filter.value);
       valuesMode.splice(index, 1);
       deleteCheckedTags(filter.value);
-      console.log(valuesMode);
     }
   }
   let searchResult = getResults();
@@ -539,7 +519,6 @@ function checkDescription(item) {
 
 function checkImage(item) {
   if (item[5] == "") {
-    // console.log("placeholder");
     return "/Image_Placeholder_v1.svg";
   } else {
     return item[5];
