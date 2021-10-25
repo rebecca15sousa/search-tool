@@ -14,6 +14,11 @@ let valuesMode = []; //array with mode filter values that are checked
 const tagSearch = document.getElementById('tagSearch');
 const checkedTags = document.getElementById('checkedTags');
 
+
+const filtersMobileBtn = document.getElementById('filtersMobileBtn');
+const filtersLeft = document.getElementById('filtersLeft');
+const filtersClose = document.getElementById('filtersClose');
+
 let filterList2;
 
 let sortValue;
@@ -45,6 +50,26 @@ let sortValue;
 //   //   scrollRight();
 //   // }
 // });
+
+
+
+
+filtersMobileBtn.addEventListener('click', () => {
+  filtersLeft.classList.add("show");
+  // filtersClose.classList.add("show-mobile");
+});
+
+filtersClose.addEventListener('click', () => {
+  filtersLeft.classList.remove("show");
+  // filtersClose.classList.remove("show-mobile");
+});
+
+
+
+
+
+
+
 
 
 

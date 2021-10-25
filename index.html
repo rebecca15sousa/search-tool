@@ -73,6 +73,7 @@
       </div>
 
     <div class="wrapper-div">
+
         <!-- HEADER -->
         <header>
             <h1 class="title">Spreadsheet search tool</h1>
@@ -108,29 +109,33 @@
 
         <!-- sort by offcanvas -->
 
+        <!-- side filters mobile -->
+        <button type="button" id="filtersMobileBtn" class="mobile-btn">Filters</button>
+
+        <!-- close-mobile-btn -->
+
         <!-- CONTENT -->
         <div class="content display-none">
-            <!-- SIDE FILTERS -->
-            <div class="filters-left">
-                <h3 class="filters-title" id="filterTitle1"></h3>
-                <ul id="filters1" class="no-bullet"></ul>
-                <hr class="divider">
-                <h3 class="filters-title" id="filterTitle2"></h3>
-                <input type="text" name="tagSearch" id="tagSearch" placeholder="Filter tags...">
-                <ul id="filters2" class="no-bullet"></ul>
-            </div>
-
-            <!-- side filters offcanvas -->
-
-            <!-- SEARCH RESULTS -->
-            <ul id="resultsList" class="no-bullet"></ul>
+          <!-- SIDE FILTERS -->
+          <div id="filtersLeft" class="filters-left">
+            <button type="button" id="filtersClose" class="close-mobile-btn" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+            <h3 class="filters-title" id="filterTitle1"></h3>
+            <ul id="filters1" class="no-bullet"></ul>
+            <hr class="divider">
+            <h3 class="filters-title" id="filterTitle2"></h3>
+            <input type="text" name="tagSearch" id="tagSearch" placeholder="Filter tags...">
+            <ul id="filters2" class="no-bullet"></ul>
+          </div>
+          <!-- SEARCH RESULTS -->
+          <ul id="resultsList" class="no-bullet"></ul>
         </div>
+
     </div>
 
     <!-- SCRIPTS -->
     <script src="https://apis.google.com/js/api.js" type="text/javascript"></script>
     <script src="gsheets.js"></script>
     <script src="main.js"></script>
-    <!-- <script src="bootstrap/bootstrap.bundle.js"></script> -->
+    <script src="bootstrap/bootstrap.bundle.js"></script>
 </body>
 </html>
