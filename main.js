@@ -57,11 +57,13 @@ let sortValue;
 filtersMobileBtn.addEventListener('click', () => {
   filtersLeft.classList.add("show");
   // filtersClose.classList.add("show-mobile");
+  document.body.classList.add("overlay-scroll");
 });
 
 filtersClose.addEventListener('click', () => {
   filtersLeft.classList.remove("show");
   // filtersClose.classList.remove("show-mobile");
+  document.body.classList.remove("overlay-scroll");
 });
 
 

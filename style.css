@@ -556,6 +556,10 @@ header {
     color: var(--bs-white);
 }
 
+.overlay-scroll {
+    overflow-y: auto;
+}
+
 /* .show-mobile {
     display: none;
 } */
@@ -621,6 +625,10 @@ header {
     /* .show-mobile {
         display: block;
     } */
+
+    .overlay-scroll {
+        overflow-y: hidden;
+    }
 }
 
 /* MEDIA QUERY XS */
