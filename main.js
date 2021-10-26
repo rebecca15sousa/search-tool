@@ -18,6 +18,10 @@ const checkedTags = document.getElementById('checkedTags');
 const filtersMobileBtn = document.getElementById('filtersMobileBtn');
 const filtersLeft = document.getElementById('filtersLeft');
 const filtersClose = document.getElementById('filtersClose');
+const sortMobileBtn = document.getElementById('sortMobileBtn');
+const dropContentMobile = document.getElementById('dropContentMobile');
+const sortItemsList = document.getElementById('sortItemsList');
+const dropContentClose = document.getElementById('dropContentClose');
 
 let filterList2;
 
@@ -53,7 +57,7 @@ let sortValue;
 
 
 
-
+//Mobile buttons functionality
 filtersMobileBtn.addEventListener('click', () => {
   filtersLeft.classList.add("show");
   // filtersClose.classList.add("show-mobile");
@@ -66,7 +70,15 @@ filtersClose.addEventListener('click', () => {
   document.body.classList.remove("overlay-scroll");
 });
 
+sortMobileBtn.addEventListener('click', () => {
+  dropContentMobile.classList.add("show");
+  document.body.classList.add("overlay-scroll");
+});
 
+dropContentClose.addEventListener('click', () => {
+  dropContentMobile.classList.remove("show");
+  document.body.classList.remove("overlay-scroll");
+});
 
 
 
@@ -111,6 +123,7 @@ function closeSortBy(e) {
 
 //Sorting functionality
 dropContent.addEventListener('click', getSortValue);
+sortItemsList.addEventListener('click', getSortValue);
 
 function getSortValue(e) {
   let target = e.target;
@@ -170,6 +183,7 @@ function generateFilters() {
   filterList2 = getFiltersList("4");
   sortByList = getFiltersList("3");
   displaySortBy(sortByList, dropContent);
+  displaySortBy(sortByList, sortItemsList);
   startSortBy();
   displayFilters(capsuleList, capsuleFilters, 2, "radio");
   document.getElementById('All').checked = true;
