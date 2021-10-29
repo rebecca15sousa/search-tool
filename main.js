@@ -459,7 +459,7 @@ function displayResults(searchResult) {
       <div class="item-content">
         <h2 class="item-title mb-2"><a class="item-title-link" href="${item[6]}" target="_blank" rel="noopener noreferrer">${item[0]}</a></h2>
         <div class="item-subtitle">
-          <div class="status-div me-3" style="border-color: ${setStatusColour(item)}">
+          <div class="status-div" style="border-color: ${setStatusColour(item)}">
             <div class="status-circle me-1" style="background-color: ${setStatusColour(item)}"></div>
             <p class="item-text">${item[3]}</p>
           </div>

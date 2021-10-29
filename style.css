@@ -461,6 +461,7 @@ header {
     font-family: var(--ff);
     font-size: var(--fs-h2);
     font-weight: var(--fw-bold);
+    overflow-wrap: anywhere;
 }
 
 .item-title-link:link {
@@ -480,6 +481,7 @@ header {
 
 .item-subtitle {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     margin-bottom: 1.9em;
 }
@@ -490,6 +492,7 @@ header {
     border-radius: 5px;
     border: 2px solid;
     padding: .3em .5em;
+    margin-right: 1em;
 }
 
 .status-circle {
@@ -503,6 +506,7 @@ header {
     font-size: var(--fs-body);
     font-weight: var(--fw-reg);
     margin: 0;
+    overflow-wrap: anywhere;
 }
 
 .item-text-link:link {
@@ -583,6 +587,12 @@ header {
     }
 }
 
+@media (max-width: 1332px) {
+    #resultsList {
+        width: 70%;
+    }
+}
+
 /* MEDIA QUERY LG */
 @media (max-width: 1168px) {
     .checkbox-label {
@@ -590,7 +600,11 @@ header {
     }
 
     #resultsList {
-        width: 60%;
+        width: 65%;
+    }
+
+    .item-img {
+        width: 15rem;
     }
 }
 
@@ -598,6 +612,16 @@ header {
 @media (max-width: 1092px) {
     .checkbox-label {
         max-width: 80%;
+    }
+}
+
+@media (max-width: 966px) {
+    #resultsList {
+        margin-left: 3em;
+    }
+
+    .item-img {
+        width: 12rem;
     }
 }
 
@@ -653,11 +677,54 @@ header {
     .overlay-scroll {
         overflow-y: hidden;
     }
+
+    #resultsList {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .item-complete {
+        align-items: center;
+    }
 }
 
 /* MEDIA QUERY XS */
-@media (max-width: 575.98px) {
+@media (max-width: 576px) {
+    #resultsList {
+        gap: 0.6em;
+    }
 
+    .item-complete {
+        gap: 1.1em;
+        padding-bottom: 0.6em;
+    }
+
+    .item-img {
+        width: 10rem;
+    }
+
+    .item-title {
+        font-size: var(--fs-body);
+    }
+
+    .item-subtitle {
+        margin-bottom: 1.2em;
+    }
+
+    .item-desc {
+        margin-bottom: 1.2em;
+    }
+}
+
+@media (max-width: 463px) {
+    /* .item-subtitle {
+        flex-direction: column;
+        align-items: flex-start;
+    } */
+
+    .status-div {
+        margin-right: 0;
+    }
 }
 
 
