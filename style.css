@@ -644,6 +644,11 @@ header {
 
     .sort-items-list {
         display: block;
+        margin: 1em 2em;
+    }
+
+    .dropdown-item {
+        margin-bottom: 1.5em;
     }
 
     .dropdown {
@@ -676,6 +681,22 @@ header {
 
     .overlay-scroll {
         overflow-y: hidden;
+    }
+
+    .filters-title {
+        margin: 1em;
+    }
+
+    #tagSearch {
+        margin: 0 1em;
+    }
+
+    .side-filters {
+        margin: 1em 2em;
+    }
+
+    .checkbox-li {
+        margin-bottom: 1.5em;
     }
 
     #resultsList {
