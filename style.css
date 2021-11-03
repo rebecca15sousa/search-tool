@@ -368,6 +368,30 @@ header {
     background-color: var(--clr-cf-selected);
 }
 
+/* CHECKED TAGS */
+.checked-tags-div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1em;
+}
+
+.checked-tags {
+    /* margin: 0 .3rem; */
+    padding: .3em .5em;
+    background-color: transparent;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.checked-tags:hover {
+    background-color: var(--bs-gray-200);
+}
+
+.bi-x {
+    padding-left: .5em;
+}
+
 /* SIDE FILTERS */
 .content {
     display: flex;
@@ -483,7 +507,8 @@ header {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin-bottom: 1.9em;
+    gap: 1em;
+    /* margin-bottom: 1.9em; */
 }
 
 .status-div {
@@ -535,25 +560,28 @@ header {
     display: none;
 }
 
-.checked-tags {
-    margin: 0 .3rem;
-    padding: .3em .5em;
-    background-color: transparent;
-    border: 1px solid grey;
-    border-radius: 5px;
-}
 
-.checked-tags:hover {
-    background-color: var(--bs-gray-200);
-}
-
-.bi-x {
-    padding-left: .5em;
-}
 
 /* MOBILE */
+.mobile-btn-div {
+    display: flex;
+    /* text-align: center; */
+}
+
 .mobile-btn {
     display: none;
+    flex: 1;
+    font-family: var(--ff);
+    font-size: var(--fs-body);
+    background-color: var(--clr-cf);
+}
+
+#filtersMobileBtn {
+    margin-right: 0.5em;
+}
+
+#sortMobileBtn {
+    margin-left: 0.5em;
 }
 
 .close-mobile-btn {
@@ -574,6 +602,13 @@ header {
 
 .sort-items-list {
     display: none;
+}
+
+#sortedByMobile {
+    font-family: var(--ff);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-reg);
+    margin-top: 1em;
 }
 
 /* .show-mobile {
@@ -638,6 +673,7 @@ header {
         height: 100vh;
         max-width: 75vw;
         overflow-y: auto;
+        overflow-x: hidden;
         margin-top: 0;
         background-color: var(--bs-white);
     }
@@ -660,7 +696,8 @@ header {
     } */
 
     .mobile-btn {
-        display: block;
+        display: inline-block;
+        /* padding: 1em 9em; */
     }
 
     .close-mobile-btn {
@@ -711,6 +748,22 @@ header {
 
 /* MEDIA QUERY XS */
 @media (max-width: 576px) {
+    .title {
+        font-size: var(--fs-h2);
+    }
+
+    .attribution {
+        font-size: var(--fs-small);
+    }
+
+    /* .mobile-btn {
+        padding: 1em 4.3em;
+    } */
+
+    #tagSearch {
+        width: 93%;
+    }
+
     #resultsList {
         gap: 0.6em;
     }
@@ -745,6 +798,20 @@ header {
 
     .status-div {
         margin-right: 0;
+    }
+}
+
+@media (max-width: 375px) {
+    /* .mobile-btn {
+        padding: 1em 2.1em;
+    } */
+
+    #tagSearch {
+        width: 89%;
+    }
+
+    .item-complete {
+        flex-direction: column;
     }
 }
 

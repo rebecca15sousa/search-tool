@@ -22,6 +22,7 @@ const sortMobileBtn = document.getElementById('sortMobileBtn');
 const dropContentMobile = document.getElementById('dropContentMobile');
 const sortItemsList = document.getElementById('sortItemsList');
 const dropContentClose = document.getElementById('dropContentClose');
+const sortedByMobile = document.getElementById('sortedByMobile');
 
 let filterList2;
 
@@ -129,6 +130,7 @@ function getSortValue(e) {
   let target = e.target;
   sortValue = target.getAttribute("data-value");
   sortBtn.textContent = sortValue;
+  sortedByMobile.textContent = "Sorted by: " + sortValue;
   let searchResult = getResults();
   displayResults(searchResult);
 }
@@ -204,6 +206,7 @@ function generateFilters() {
 function startSortBy() {
   sortBtn.textContent = dropContent.firstElementChild.getAttribute("data-value");
   sortValue = sortBtn.textContent;
+  sortedByMobile.textContent = "Sorted by: " + sortValue;
   let searchResult = getResults();
   displayResults(searchResult);
 }

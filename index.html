@@ -96,9 +96,6 @@
             <ul id="capsuleFilters" class="no-bullet"></ul>
             <button id="rightBtn" class="btn cap-btn" aria-label="Scroll right"><i class="bi bi-caret-right-fill"></i></button>
         </div>
-
-        <!-- CHECKED TAGS -->
-        <div id="checkedTags"></div>
         
         <!-- SORT BY -->
         <div class="drop-container dropdown display-none">
@@ -107,15 +104,21 @@
             <div id="dropContent" class="drop-content dropdown-menu" aria-labelledby="sortBtn"></div>
         </div>
 
-        
-
         <!-- MOBILE -->
-        <button type="button" id="filtersMobileBtn" class="mobile-btn">Filters</button>
-        <button type="button" id="sortMobileBtn" class="mobile-btn">Sort by</button>
+        <div class="mobile-btn-div">
+          <button type="button" id="filtersMobileBtn" class="btn mobile-btn">Filters</button>
+          <button type="button" id="sortMobileBtn" class="btn mobile-btn">Sort by</button>
+        </div>
+
+        <p id="sortedByMobile">Sorted by:</p>
+        
         <div id="dropContentMobile" class="drop-content-mobile">
           <button type="button" id="dropContentClose" class="close-mobile-btn" aria-label="Close"><i class="bi bi-x-lg"></i></button>
           <div id="sortItemsList" class="sort-items-list"></div>
         </div>
+
+        <!-- CHECKED TAGS -->
+        <div id="checkedTags" class="checked-tags-div"></div>
 
         <!-- CONTENT -->
         <div class="content display-none">
